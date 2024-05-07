@@ -1,0 +1,9 @@
+node_modules/*
+**/dist/*
+**/asset/*
+typings/*.d.ts
+
+
+**/lib/*
+**/.turbo/*
+ 

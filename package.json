@@ -1,0 +1,47 @@
+{
+    "name": "lowcode-platform",
+    "version": "1.0.0",
+    "description": "低代码平台",
+    "main": "index.ts",
+    "scripts": {
+        "bootstrap": "pnpm run syncpack-fix && pnpm update -r",
+        "preinstall": "npx only-allow pnpm",
+        "lint": "eslint --ext vue,js,jsx,cjs,mjs,ts,tsx,cts,mts --fix .",
+        "prepare": "husky install",
+        "prettier": "prettier . --write",
+        "start": "pnpm  --filter \"@lowcode/playgroud\" --filter \"@lowcode/runtime-vue3\" run dev",
+        "stylelint": "stylelint \"./**/*.{css,scss,sass,vue,html}\" --fix",
+        "syncpack-fix": "npx syncpack fix-mismatches --indent \"    \"",
+        "commit": "git add . && git-cz"
+    },
+    "lint-staged": {
+        "**/*": "prettier --write --ignore-unknown",
+        "*.{vue,js,jsx,cjs,mjs,ts,tsx,cts,mts}": "eslint --fix",
+        "package.json": "sort-package-json",
+        "packages/**/package.json": "sort-package-json"
+    },
+    "config": {
+        "commitizen": {
+            "path": "cz-git"
+        }
+    },
+    "devDependencies": {
+        "@denaro-config/config-commitlint": "^1.4.6",
+        "@denaro-config/config-cz-git": "^1.4.6",
+        "@denaro-config/eslint-config-typescript": "^1.4.6",
+        "@denaro-config/eslint-config-vue3": "^1.4.6",
+        "@denaro-config/prettier": "^1.4.6",
+        "@denaro-config/stylelint-scss": "^1.4.6",
+        "@types/node": "^20.12.10",
+        "@vitejs/plugin-vue": "^5.0.4",
+        "@vitejs/plugin-vue-jsx": "^3.1.0",
+        "eslint": "8.57.0",
+        "husky": "^9.0.11",
+        "lint-staged": "^15.2.2",
+        "sort-package-json": "^2.10.0",
+        "syncpack": "^12.3.2",
+        "typescript": "^5.4.5",
+        "vite": "^5.2.11",
+        "vite-plugin-dts": "^3.9.1"
+    }
+}

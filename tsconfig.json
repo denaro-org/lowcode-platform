@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "strict": true,
+        "jsx": "preserve",
+        "jsxFactory": "h",
+        "allowJs": true,
+        "checkJs": true,
+        "jsxFragmentFactory": "Fragment",
+        "lib": [
+            "ESNext",
+            "DOM"
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "@lowcode/*": [
+                "packages/*",
+                "example/*"
+            ]
+        },
+        "types": [
+            "node",
+            "vite/client"
+        ]
+    },
+    "exclude": [
+        "**/node_modules/*",
+        "**/lib/*",
+        "commitlint.config.cjs",
+        "cz.config.cjs"
+    ]
+}

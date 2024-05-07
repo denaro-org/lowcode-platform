@@ -1,0 +1,33 @@
+{
+  "source": [
+    "./package.json",
+    "**/package.json"
+  ],
+  "versionGroups": [
+    {
+      "dependencies": [
+        "eslint"
+      ],
+      "dependencyTypes": [
+        "!peer"
+      ],
+      "packages": [
+        "**"
+      ],
+      "pinVersion": "8.57.0"
+    },
+    {
+      "dependencies": [
+        "@lowcode/*"
+      ],
+      "dependencyTypes": [
+        "prod",
+        "dev"
+      ],
+      "packages": [
+        "**"
+      ],
+      "pinVersion": "workspace:^"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+    "name": "@lowcode/playgroud",
+    "version": "1.0.0",
+    "description": "低代码平台-运行例子",
+    "main": "index.ts",
+    "scripts": {
+        "dev": "vite dev"
+    }
+}
