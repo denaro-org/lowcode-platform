@@ -1,0 +1,6 @@
+{
+    "name": "@lowcode/shared",
+    "version": "1.0.0",
+    "description": "低代码平台-共享 typescript 类型",
+    "main": "index.ts"
+}

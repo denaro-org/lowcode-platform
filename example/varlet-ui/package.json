@@ -1,0 +1,13 @@
+{
+    "name": "@lowcode/varlet-ui",
+    "version": "1.0.0",
+    "description": "低代码平台-varlet-ui",
+    "main": "index.ts",
+    "type": "module",
+    "dependencies": {
+        "@varlet/ui": "^3.2.7"
+    },
+    "devDependencies": {
+        "@lowcode/shared": "workspace:^"
+    }
+}

@@ -11,21 +11,12 @@
         "allowJs": true,
         "checkJs": true,
         "jsxFragmentFactory": "Fragment",
-        "lib": [
-            "ESNext",
-            "DOM"
-        ],
+        "lib": ["ESNext", "DOM"],
         "baseUrl": ".",
         "paths": {
-            "@lowcode/*": [
-                "packages/*",
-                "example/*"
-            ]
+            "@lowcode/*": ["packages/*", "example/*"]
         },
-        "types": [
-            "node",
-            "vite/client"
-        ]
+        "types": ["node", "vite/client"]
     },
     "exclude": [
         "**/node_modules/*",
