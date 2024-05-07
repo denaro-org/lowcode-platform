@@ -1,2 +1,2 @@
-export type * from './src/editor'
-export type * from './src/dsl'
+export type * from './src/types/index.js'
+export * from './src/utils/index.js'

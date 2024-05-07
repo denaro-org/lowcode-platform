@@ -1,13 +1,16 @@
 <template>
-    <div></div>
+    <LowCodeEditor :ui-schema="uiSchema" :runtime-url="runtimeUrl" />
 </template>
 
 <script lang="ts" setup>
-import uiSchema from '@lowcode/varlet-ui'
-
-console.log('%c [ uiSchema ]-7', 'font-size:13px; background:pink; color:#bf2c9f;', uiSchema)
+import { LowCodeEditor } from '@lowcode/editor'
+import { uiSchema } from '@lowcode/varlet-ui'
+import '@lowcode/editor/index.css'
+import { ref } from 'vue'
 
 defineOptions({
     name: 'PlaygroundApp'
 })
+
+const runtimeUrl = ref('http://localhost:5174/')
 </script>

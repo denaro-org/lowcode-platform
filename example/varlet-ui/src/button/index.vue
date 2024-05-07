@@ -6,6 +6,6 @@
 import { Button } from '@varlet/ui'
 
 defineOptions({
-    name: 'VeButton'
+    name: 'VarButton'
 })
 </script>

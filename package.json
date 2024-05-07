@@ -14,6 +14,10 @@
         "syncpack-fix": "npx syncpack fix-mismatches --indent \"    \"",
         "commit": "git add . && git-cz"
     },
+    "workspaces": [
+        "packages/*",
+        "examples/*"
+    ],
     "lint-staged": {
         "**/*": "prettier --write --ignore-unknown",
         "*.{vue,js,jsx,cjs,mjs,ts,tsx,cts,mts}": "eslint --fix",

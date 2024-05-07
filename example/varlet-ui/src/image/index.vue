@@ -6,6 +6,6 @@
 import { Image } from '@varlet/ui'
 
 defineOptions({
-    name: 'VeImage'
+    name: 'VarImage'
 })
 </script>

@@ -9,7 +9,6 @@
     },
     "include": [
         "src",
-        "index.ts",
-        "../../typings/*.d.ts"
+        "index.ts"
     ]
 }

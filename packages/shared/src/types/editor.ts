@@ -3,7 +3,7 @@ import type { CSSProperties, VNode } from 'vue'
 // 组件接入的配置
 export interface EditorComponent {
     // 唯一标识
-    _vid?: string
+    UUID?: string
     // 是否可被进行拖拽
     draggable?: boolean
     // 组件英文名称
@@ -14,6 +14,8 @@ export interface EditorComponent {
     moduleName: keyof ComponentModules
     // 组件预览函数
     preview: () => VNode
+    // 排序号
+    sortNum?: number
     // 组件样式
     styles?: CSSProperties
 }
@@ -29,7 +31,7 @@ export interface ComponentModules {
 // 当前被操作的组件
 export interface EditorBlockData {
     // 唯一标识
-    _vid?: string
+    UUID?: string
     // 组件的名称
     label: string
     // 组件所属的模块（基础组件、容器组件）

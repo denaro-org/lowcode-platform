@@ -1,0 +1,36 @@
+@mixin flex() {
+    display: flex;
+}
+
+.flex {
+    @include flex;
+}
+
+.flex-row {
+    @include flex;
+
+    flex-direction: row;
+}
+
+.flex-column {
+    @include flex;
+
+    flex-direction: column;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-between {
+    justify-content: space-between;
+}
+
+.flex-around {
+    justify-content: space-around;
+}
+
+.flex-warp {
+    flex-wrap: wrap;
+}

@@ -1,4 +1,5 @@
 import type { EditorComponent } from '@lowcode/shared'
+import type { Plugin } from 'vue'
 
 import '@varlet/ui/es/style'
 
@@ -6,17 +7,33 @@ interface Module {
   default: EditorComponent
 }
 
+interface VueModule {
+  default: Plugin
+}
+
 type EditorComponents = Record<string, EditorComponent>
+type VueComponents = Plugin[]
 
 // 批量导出所有的配置
-const modules = import.meta.glob<Module>('./src/**/index.tsx', { eager: true })
-const components: EditorComponents = {};
+const modules = import.meta.glob<Module>('./src/**/config.tsx', { eager: true })
+const uiSchema: EditorComponents = {}
 
-const keys = Object.entries(modules);
-
-keys.forEach(([key, module]) => {
+const modulesKeys = Object.entries(modules)
+modulesKeys.forEach(([key, module]) => {
   const name = key.replace(/\.\/(.*)\/index\.(tsx|vue)/, '$1').replace(/src\//g, '');
-  components[name] = module?.default || module;
-});
+  uiSchema[name] = module?.default || module;
+})
 
-export default components;
+// 批量导出所有组件
+const components = import.meta.glob<VueModule>('./src/**/index.ts', { eager: true })
+const componentSchema: VueComponents = []
+
+const componentsKeys = Object.entries(components)
+componentsKeys.forEach(([key, module]) => {
+  componentSchema.push(module?.default || module)
+})
+
+export {
+  uiSchema,
+  componentSchema
+}

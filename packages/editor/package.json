@@ -1,0 +1,33 @@
+{
+    "name": "@lowcode/editor",
+    "version": "1.0.0",
+    "description": "低代码平台-编辑器",
+    "exports": {
+        ".": {
+            "import": "./lib/es/index.mjs",
+            "require": "./lib/cjs/index.js"
+        },
+        "./index.css": "./lib/es/style.css"
+    },
+    "type": "module",
+    "scripts": {
+        "dev": "vite build --watch",
+        "build": "vite build"
+    },
+    "dependencies": {
+        "@lowcode/shared": "workspace:^",
+        "@vueuse/core": "^10.9.0",
+        "ant-design-vue": "^4.2.1",
+        "lodash-es": "^4.17.21",
+        "uuid": "^9.0.1",
+        "vue": "^3.4.27",
+        "vuedraggable": "^4.1.0",
+        "wujie-vue3": "^1.0.22"
+    },
+    "devDependencies": {
+        "@types/lodash-es": "^4.17.12",
+        "@types/uuid": "^9.0.8",
+        "sass": "^1.77.0",
+        "vite": "^5.2.11"
+    }
+}
