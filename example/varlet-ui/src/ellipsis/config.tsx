@@ -8,7 +8,7 @@ const ellipsisConfig: EditorComponent = {
     key: 'var-ellipsis',
     label: '文本省略',
     moduleName: 'baseWidgets',
-    preview: () => h(VeEllipsis, '这里写文案'),
+    preview: () => h(VeEllipsis, '这里写文案')
 }
 
 export default ellipsisConfig

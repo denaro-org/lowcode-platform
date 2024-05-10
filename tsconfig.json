@@ -11,17 +11,7 @@
         "allowJs": true,
         "checkJs": true,
         "jsxFragmentFactory": "Fragment",
-        "lib": ["ESNext", "DOM"],
-        "baseUrl": ".",
-        "paths": {
-            "@lowcode/*": ["packages/*", "example/*"]
-        },
-        "types": ["node", "vite/client"]
+        "lib": ["ESNext", "DOM"]
     },
-    "exclude": [
-        "**/node_modules/*",
-        "**/lib/*",
-        "commitlint.config.cjs",
-        "cz.config.cjs"
-    ]
+    "exclude": ["commitlint.config.cjs", "cz.config.cjs"]
 }

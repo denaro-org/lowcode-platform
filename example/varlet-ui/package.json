@@ -4,10 +4,20 @@
     "description": "低代码平台-varlet-ui",
     "main": "index.ts",
     "type": "module",
+    "scripts": {
+        "build": "vite build"
+    },
     "dependencies": {
-        "@varlet/ui": "^3.2.7"
+        "@lowcode/shared": "workspace:^",
+        "@varlet/ui": "^3.2.7",
+        "vue": "^3.4.27"
     },
     "devDependencies": {
-        "@lowcode/shared": "workspace:^"
+        "@types/fs-extra": "^11.0.4",
+        "fs-extra": "^11.2.0",
+        "kolorist": "^1.8.0",
+        "rollup": "^4.17.2",
+        "vite": "^5.2.11",
+        "vite-plugin-dts": "^3.9.1"
     }
 }
