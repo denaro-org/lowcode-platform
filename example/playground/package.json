@@ -5,5 +5,9 @@
     "main": "index.ts",
     "scripts": {
         "dev": "vite dev"
+    },
+    "dependencies": {
+        "@lowcode/varlet-ui": "workspace:^",
+        "@lowcode/editor": "workspace:^"
     }
 }

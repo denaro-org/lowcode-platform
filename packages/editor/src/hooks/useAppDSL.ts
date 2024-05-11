@@ -45,10 +45,18 @@ export const useAppDSL = (): UseAppDSL => {
         localStorage.setItem(localKey, JSON.stringify(appDSL))
     }
 
+    // 初始化 DSL
+    const initAppDSL = (): void => {
+        if (Object.keys(localData).length === 0) {
+            updateAppDSL(appDSL)
+        }
+    }
+
     return {
         appDSL: readonly(state.appDSL),
         currentPage: computed(() => state.currentPage),
         currentBlock: computed(() => state.currentBlock),
-        setCurrentBlock
+        setCurrentBlock,
+        initAppDSL
     }
 }

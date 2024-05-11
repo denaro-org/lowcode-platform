@@ -16,9 +16,10 @@
 import type { EditorComponent } from '@lowcode/shared'
 import type { PropType } from 'vue'
 
-import { provide } from 'vue'
+import { onMounted, provide } from 'vue'
 
 import { EditorHeader, EditorNav, EditorRuntime } from '@/components/index.js'
+import { useAppDSL } from '@/hooks/index.js'
 import styles from '@/index.module.scss'
 
 defineOptions({
@@ -38,6 +39,11 @@ const props = defineProps({
         required: true,
         default: null
     }
+})
+
+const { initAppDSL } = useAppDSL()
+onMounted(() => {
+    initAppDSL()
 })
 
 provide<EditorComponent[]>('uiSchema', Object.values(props.uiSchema))

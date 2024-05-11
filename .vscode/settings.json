@@ -7,7 +7,7 @@
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
     "[typescriptreact]": {
-        "editor.defaultFormatter": "vscode.typescript-language-features"
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
     },
     "eslint.validate": [
         "javascript",

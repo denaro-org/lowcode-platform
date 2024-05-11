@@ -2,10 +2,7 @@
     "extends": "../../tsconfig.json",
     "compilerOptions": {
         "baseUrl": ".",
-        "types": ["node", "vite/client"],
-        "paths": {
-            "@varlet/ui": ["src/index.ts"]
-        }
+        "types": ["node", "vite/client"]
     },
     "include": ["src", "src/index.ts"]
 }

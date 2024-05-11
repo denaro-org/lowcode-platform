@@ -1,9 +1,6 @@
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { resolve } from 'node:path'
-import autoImport from 'unplugin-auto-import/vite'
-import { VarletUIResolver } from 'unplugin-vue-components/resolvers'
-import components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import dtsPlugin from 'vite-plugin-dts'
 
@@ -25,13 +22,6 @@ export default defineConfig({
             entryDir: resolve(__dirname, 'src'),
             outDir: 'lib/types',
             prefix: 'TmVar'
-        }),
-
-        components({
-            resolvers: [VarletUIResolver()]
-        }),
-        autoImport({
-            resolvers: [VarletUIResolver({ autoImport: true })]
         })
     ],
     build: {

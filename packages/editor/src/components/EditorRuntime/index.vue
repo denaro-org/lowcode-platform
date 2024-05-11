@@ -6,7 +6,7 @@
             sync
             :class="[styles.runtimeWarpper, 'box-shadow-base']"
             :style="warpperStyle"
-            :props="{ appDSL }" />
+            :props="{ appDSL, path: '/' }" />
 
         <section :class="[styles.editorMaskWrapper]" :style="warpperStyle">
             <DraggableTransitionGroup
@@ -20,9 +20,7 @@
                             styles.listGroupItem,
                             element.focus && 'is-focus'
                         ]"
-                        :data-label="element.label">
-                        {{ element.label }}
-                    </div>
+                        :data-label="element.label"></div>
                 </template>
             </DraggableTransitionGroup>
         </section>

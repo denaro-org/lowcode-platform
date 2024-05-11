@@ -14,6 +14,8 @@ export interface UseAppDSL {
     currentBlock: ComputedRef<EditorBlock>
     // 当前被操作的组件
     currentPage: ComputedRef<EditorPage>
+    // 初始化 DSL
+    initAppDSL: () => void
     // 设置当前被操作的组件
     setCurrentBlock: (block: EditorBlock) => void
 }

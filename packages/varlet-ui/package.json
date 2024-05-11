@@ -10,15 +10,14 @@
     "files": [
         "lib"
     ],
-    "types": "lib/types/index.ts",
+    "types": "./lib/types/index.d.ts",
     "dependencies": {
+        "@iconify/vue": "^4.1.2",
         "@lowcode/shared": "workspace:^",
         "@varlet/ui": "^3.2.9",
         "vue": "^3.4.27"
     },
     "devDependencies": {
-        "unplugin-auto-import": "^0.17.6",
-        "unplugin-vue-components": "^0.26.0",
         "@types/fs-extra": "^11.0.4",
         "fs-extra": "^11.2.0",
         "kolorist": "^1.8.0",

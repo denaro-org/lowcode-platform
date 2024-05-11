@@ -1,4 +1,5 @@
 import Vue, { VNode } from 'vue'
+import { WujieProps } from '@lowcode/shared'
 
 type VVue = typeof Vue
 
@@ -33,7 +34,7 @@ declare global {
         // 注入对象
         $wujie: {
             shadowRoot?: ShadowRoot
-            props?: { [key: string]: any }
+            props?: WujieProps
             location?: Object
         }
     }
