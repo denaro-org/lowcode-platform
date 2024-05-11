@@ -27,7 +27,7 @@
     "devDependencies": {
         "@types/lodash-es": "^4.17.12",
         "@types/uuid": "^9.0.8",
-        "sass": "^1.77.0",
+        "sass": "^1.77.1",
         "vite": "^5.2.11"
     }
 }

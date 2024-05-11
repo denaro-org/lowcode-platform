@@ -1,9 +1,0 @@
-{
-    "name": "@lowcode/runtime-vue3",
-    "version": "1.0.0",
-    "description": "低代码平台-运行时",
-    "main": "index.ts",
-    "scripts": {
-        "dev": "vite dev"
-    }
-}

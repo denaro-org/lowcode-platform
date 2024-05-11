@@ -8,7 +8,7 @@ import { createNewPage } from './createNewPage.js'
 import { CacheEnum } from '@/config/index.js'
 
 // 保存到本地JSON数据的key
-export const localKey = CacheEnum.APP_DSL
+export const localKey: string = CacheEnum.APP_DSL
 
 const defaultValue: AppDSL = {
     type: 'app',
@@ -37,7 +37,7 @@ export const useAppDSL = (): UseAppDSL => {
     // 设置当前被操作的组件
     const setCurrentBlock = (block: EditorBlock): void => {
         state.currentBlock = block
-        updateAppDSL(state.appDSL)
+        updateAppDSL(state.appDSL as AppDSL)
     }
 
     // 更新本地存储的 appDSL

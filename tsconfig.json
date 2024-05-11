@@ -13,5 +13,5 @@
         "jsxFragmentFactory": "Fragment",
         "lib": ["ESNext", "DOM"]
     },
-    "exclude": ["commitlint.config.cjs", "cz.config.cjs"]
+    "exclude": ["**/lib/*", "commitlint.config.cjs", "cz.config.cjs"]
 }

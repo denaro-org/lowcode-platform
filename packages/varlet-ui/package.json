@@ -1,0 +1,29 @@
+{
+    "name": "@lowcode/varlet-ui",
+    "version": "1.0.0",
+    "description": "低代码平台-varlet-ui",
+    "main": "src/index.ts",
+    "type": "module",
+    "scripts": {
+        "build": "vite build"
+    },
+    "files": [
+        "lib"
+    ],
+    "types": "lib/types/index.ts",
+    "dependencies": {
+        "@lowcode/shared": "workspace:^",
+        "@varlet/ui": "^3.2.9",
+        "vue": "^3.4.27"
+    },
+    "devDependencies": {
+        "unplugin-auto-import": "^0.17.6",
+        "unplugin-vue-components": "^0.26.0",
+        "@types/fs-extra": "^11.0.4",
+        "fs-extra": "^11.2.0",
+        "kolorist": "^1.8.0",
+        "rollup": "^4.17.2",
+        "vite": "^5.2.11",
+        "vite-plugin-dts": "^3.9.1"
+    }
+}

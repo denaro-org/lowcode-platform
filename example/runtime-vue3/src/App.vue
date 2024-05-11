@@ -1,5 +1,7 @@
 <template>
-    <div></div>
+    <div>
+        <tm-var-button />
+    </div>
 </template>
 
 <script setup lang="ts">

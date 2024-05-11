@@ -11,6 +11,7 @@ module.exports = {
                 ecmaVersion: 2020,
                 sourceType: 'module',
                 jsxPragma: 'React',
+                project: './tsconfig.json',
                 ecmaFeatures: {
                     jsx: true,
                     tsx: true
