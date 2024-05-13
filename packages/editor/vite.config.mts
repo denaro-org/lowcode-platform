@@ -41,7 +41,7 @@ export default defineConfig({
         emptyOutDir: true,
         lib: {
             entry: join(__dirname, './index.ts'),
-            name: '@lowcode/editor',
+            name: packageJson.name,
             fileName: 'index'
         },
         // 删除调试信息
@@ -70,7 +70,7 @@ export default defineConfig({
                 // {
                 //     // 打包格式
                 //     format: 'commonjs',
-                //     name: '@lowcode/editor',
+                //     name: packageJson.name,
                 //     // 打包后文件名
                 //     entryFileNames: '[name].js',
                 //     // 配置打包根目录

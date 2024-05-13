@@ -14,6 +14,14 @@ export interface EditorComponent {
     moduleName: keyof ComponentModules
     // 组件预览函数
     preview: () => VNode
+    // 组件渲染函数
+    render: (data: {
+        block: EditorBlockData
+        custom: Record<string, unknown>
+        model: Record<string, unknown>
+        props: Record<string, unknown>
+        styles: CSSProperties
+    }) => () => JSX.Element
     // 排序号
     sortNum?: number
     // 组件样式

@@ -6,8 +6,8 @@
         <section :class="[styles.editorBody, 'flex-row']">
             <!-- 左边组件选择区域 -->
             <EditorNav />
-            <!-- 中间 runtime 区域 -->
-            <EditorRuntime />
+            <!-- 中间渲染区域 -->
+            <SimulatorEditor />
         </section>
     </section>
 </template>
@@ -18,7 +18,7 @@ import type { PropType } from 'vue'
 
 import { onMounted, provide } from 'vue'
 
-import { EditorHeader, EditorNav, EditorRuntime } from '@/components/index.js'
+import { EditorHeader, EditorNav, SimulatorEditor } from '@/components/index.js'
 import { useAppDSL } from '@/hooks/index.js'
 import styles from '@/index.module.scss'
 

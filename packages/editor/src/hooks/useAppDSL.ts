@@ -1,7 +1,7 @@
 import type { IState, UseAppDSL } from '@/types/index.js'
 import type { AppDSL, EditorBlock } from '@lowcode/shared'
 
-import { computed, reactive, readonly } from 'vue'
+import { computed, readonly, ref } from 'vue'
 
 import { createNewPage } from './createNewPage.js'
 
@@ -26,7 +26,7 @@ export const useAppDSL = (): UseAppDSL => {
 
     const currentPage = appDSL.pages['/']
 
-    const state: IState = reactive({
+    const state = ref<IState>({
         appDSL,
         currentPage,
         currentBlock:
@@ -36,8 +36,8 @@ export const useAppDSL = (): UseAppDSL => {
 
     // 设置当前被操作的组件
     const setCurrentBlock = (block: EditorBlock): void => {
-        state.currentBlock = block
-        updateAppDSL(state.appDSL as AppDSL)
+        state.value.currentBlock = block
+        updateAppDSL(state.value.appDSL as AppDSL)
     }
 
     // 更新本地存储的 appDSL
@@ -53,9 +53,9 @@ export const useAppDSL = (): UseAppDSL => {
     }
 
     return {
-        appDSL: readonly(state.appDSL),
-        currentPage: computed(() => state.currentPage),
-        currentBlock: computed(() => state.currentBlock),
+        appDSL: readonly(state.value.appDSL),
+        currentPage: computed(() => state.value.currentPage),
+        currentBlock: computed(() => state.value.currentBlock),
         setCurrentBlock,
         initAppDSL
     }
