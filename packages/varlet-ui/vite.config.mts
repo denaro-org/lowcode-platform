@@ -11,16 +11,18 @@ const deps = Object.keys(packageJson.dependencies)
 
 const distEs = resolve(__dirname, 'lib/es')
 const distCjs = resolve(__dirname, 'lib/cjs')
+const typesDir = resolve(__dirname, 'lib/types')
 const entryFile = resolve(__dirname, 'src/index.ts')
+const srcDir = resolve(__dirname, 'src')
 
 export default defineConfig({
     plugins: [
         vue(),
         vueJsx(),
-        dtsPlugin({ outDir: 'lib/types' }),
+        dtsPlugin({ outDir: typesDir }),
         genComDTs({
-            entryDir: resolve(__dirname, 'src'),
-            outDir: 'lib/types',
+            entryDir: srcDir,
+            outDir: typesDir,
             prefix: 'TmVar'
         })
     ],
@@ -31,7 +33,7 @@ export default defineConfig({
         emptyOutDir: true,
         lib: {
             entry: entryFile,
-            name: '@lowcode/varlet-ui'
+            name: packageJson.name
         },
         rollupOptions: {
             // 忽略打包vue文件
@@ -42,7 +44,7 @@ export default defineConfig({
             output: [
                 {
                     // 打包格式
-                    format: 'es',
+                    format: 'esm',
                     // 打包后文件名
                     entryFileNames: '[name].mjs',
                     // 配置打包根目录
@@ -55,7 +57,7 @@ export default defineConfig({
                 {
                     // 打包格式
                     format: 'commonjs',
-                    name: '@lowcode/varlet-ui',
+                    name: packageJson.name,
                     // 打包后文件名
                     entryFileNames: '[name].js',
                     // 配置打包根目录

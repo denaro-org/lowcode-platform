@@ -1,5 +1,5 @@
 import type { EditorComponent } from '@lowcode/shared'
-import type { App, Plugin } from 'vue'
+import type { App } from 'vue'
 
 import TmVarButton from './button/index.js'
 import TmVarEllipsis from './ellipsis/index.js'
@@ -23,11 +23,11 @@ modulesKeys.forEach(([key, module]) => {
     uiSchema[name] = module?.default || module
 })
 
-const components: Plugin[] = [TmVarButton, TmVarEllipsis, TmVarImage]
+const components = [TmVarButton, TmVarEllipsis, TmVarImage]
 
 const install = (app: App): void => {
     components.forEach(component => {
-        app.use(component)
+        app.component(component.name ?? '', component)
     })
 }
 
