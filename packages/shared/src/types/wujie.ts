@@ -1,4 +1,7 @@
-import { type AppDSL } from './dsl'
+import type { AppDSL } from './dsl'
+import type { bus } from 'wujie'
+
+export type WujieBus = typeof bus
 
 export interface WujieProps {
     // appDSL 不可被直接修改

@@ -1,23 +1,26 @@
-import type { App, Plugin } from 'vue'
+import type { App, Component, Plugin } from 'vue'
 
-// 类型必须导出否则生成不了.d.ts文件
-export type SFCWithInstall<T> = T & Plugin
-
-// 定义组件的默认属性
-interface Comp {
-    name: string
-}
+export type ComponentWithInstall<T> = T & Plugin
 
 /**
  * 为 vue 组件设置安装方法
  * @param comp vue 组件 实例
  * @returns {SFCWithInstall<T>}
  */
-export const withInstall = <T extends Comp>(comp: T): SFCWithInstall<T> => {
-    // eslint-disable-next-line prettier/prettier
-    ;(comp as SFCWithInstall<T>).install = (app: App): void => {
-        app.component(comp.name, comp)
+export const withInstall = <T extends Component>(
+    component: Component,
+    target?: T
+): ComponentWithInstall<T> => {
+    const componentWithInstall = (target ??
+        component) as ComponentWithInstall<T>
+
+    componentWithInstall.install = (app: App): void => {
+        const { name } = component
+
+        if (name) {
+            app.component(name, component)
+        }
     }
 
-    return comp as SFCWithInstall<T>
+    return componentWithInstall
 }
