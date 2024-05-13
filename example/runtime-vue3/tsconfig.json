@@ -1,8 +1,4 @@
 {
     "extends": "../../tsconfig.json",
-    "compilerOptions": {
-        "baseUrl": ".",
-        "types": ["node", "vite/client"]
-    },
     "include": ["src", "src/main.ts", "../../typings/*.d.ts"]
 }

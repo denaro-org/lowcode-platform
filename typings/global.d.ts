@@ -1,5 +1,5 @@
-import Vue, { VNode } from 'vue'
-import { WujieProps } from '@lowcode/shared'
+import Vue, { type VNode } from 'vue'
+import type { WujieProps, WujieBus } from '@lowcode/shared'
 
 type VVue = typeof Vue
 
@@ -9,8 +9,14 @@ declare global {
         interface Element extends VNode { }
         // tslint:disable no-empty-interface 
         interface ElementClass extends VVue { }
+        interface ElementAttributesProperty {
+            $props: any;
+        }
         interface IntrinsicElements {
             [elem: string]: any
+        }
+        interface IntrinsicAttributes {
+            [elem: string]: any;
         }
     }
 
@@ -33,6 +39,7 @@ declare global {
         __WUJIE: { mount: () => void }
         // 注入对象
         $wujie: {
+            bus: WujieBus;
             shadowRoot?: ShadowRoot
             props?: WujieProps
             location?: Object

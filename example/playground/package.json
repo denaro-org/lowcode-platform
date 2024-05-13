@@ -6,8 +6,12 @@
     "scripts": {
         "dev": "vite dev"
     },
-    "dependencies": {
-        "@lowcode/varlet-ui": "workspace:^",
-        "@lowcode/editor": "workspace:^"
+    "dependencies": { 
+        "@lowcode/editor": "workspace:^",
+        "@lowcode/varlet-ui": "workspace:^" 
+    },
+    "devDependencies": {
+        "unplugin-auto-import": "^0.17.6",
+        "unplugin-vue-components": "^0.26.0"
     }
 }

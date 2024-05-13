@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
         "target": "ESNext",
         "module": "NodeNext",
         "moduleResolution": "NodeNext",
@@ -7,11 +8,12 @@
         "esModuleInterop": true,
         "strict": true,
         "jsx": "preserve",
-        "jsxFactory": "h",
+        "jsxFactory": "vueJsxCompat",
         "allowJs": true,
         "checkJs": true,
-        "jsxFragmentFactory": "Fragment",
-        "lib": ["ESNext", "DOM"]
+        // "jsxFragmentFactory": "Fragment",
+        "lib": ["ESNext", "DOM"],
+        "typeRoots": ["./node_modules/@types"]
     },
     "exclude": ["**/lib/*", "commitlint.config.cjs", "cz.config.cjs"]
 }

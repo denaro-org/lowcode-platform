@@ -9,7 +9,9 @@
         "lint": "eslint --ext vue,js,jsx,cjs,mjs,ts,tsx,cts,mts --fix .",
         "prepare": "husky install",
         "prettier": "prettier . --write",
-        "start": "pnpm  --filter \"@lowcode/playgroud\" --filter \"@lowcode/runtime-vue3\" run dev",
+        "start:dev": "concurrently \"pnpm run compile-dev:editor\" \"pnpm run start:example\"",
+        "compile-dev:editor": "pnpm --filter \"@lowcode/editor\" run dev",
+        "start:example": "pnpm  --filter \"@lowcode/playgroud\" --filter \"@lowcode/runtime-vue3\" run dev",
         "stylelint": "stylelint \"./**/*.{css,scss,sass,vue,html}\" --fix",
         "syncpack-fix": "npx syncpack fix-mismatches --indent \"    \"",
         "commit": "git add . && git-cz"
@@ -39,6 +41,7 @@
         "@types/node": "^20.12.11",
         "@vitejs/plugin-vue": "^5.0.4",
         "@vitejs/plugin-vue-jsx": "^3.1.0",
+        "concurrently": "^8.2.2",
         "eslint": "8.57.0",
         "husky": "^9.0.11",
         "lint-staged": "^15.2.2",
@@ -46,6 +49,7 @@
         "syncpack": "^12.3.2",
         "typescript": "^5.4.5",
         "vite": "^5.2.11",
-        "vite-plugin-dts": "^3.9.1"
+        "vite-plugin-dts": "^3.9.1",
+        "wujie": "^1.0.22"
     }
 }
