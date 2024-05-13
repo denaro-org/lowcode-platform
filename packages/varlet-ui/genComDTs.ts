@@ -43,19 +43,16 @@ export function genComDTs(config: Config): Plugin {
                 })
 
                 let content =
-                    'import type { ' +
-                    files
-                        .map(
-                            (file: string) =>
-                                `${config.prefix}${file} as _${file}Component`
-                        )
-                        .join(', ') +
-                    " } from './index.d.ts'\n\n"
+                    '/* eslint-disable */\n' +
+                    '/* prettier-ignore */\n' +
+                    '// @ts-nocheck\n' +
+                    'export {}\n\n'
 
                 content += `declare module 'vue' { \n`
                 content += `  export interface GlobalComponents { \n`
                 files.forEach((file: string) => {
-                    content += `    ${config.prefix + file}: typeof ${'_' + file + 'Component'}; \n`
+                    content += `    ${'Var' + file}: typeof import('@varlet/ui')['_${file}Component']; \n`
+                    content += `    ${config.prefix + file}: typeof import('@lowcode/varlet-ui')['${config.prefix + file}']; \n`
                 })
                 content += `  } \n`
                 content += `} \n`

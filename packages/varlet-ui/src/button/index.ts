@@ -4,6 +4,4 @@ import Button from './index.vue'
 
 withInstall(Button)
 
-export const _ButtonComponent = Button
-
 export default Button

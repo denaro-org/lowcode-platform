@@ -1,11 +1,8 @@
 <template>
-    <Button type="primary">按钮</Button>
+    <var-button type="primary">按钮</var-button>
 </template>
 
 <script setup lang="ts">
-import { Button } from '@varlet/ui'
-import '@varlet/ui/es/button/style'
-
 defineOptions({
     name: 'TmVarButton'
 })

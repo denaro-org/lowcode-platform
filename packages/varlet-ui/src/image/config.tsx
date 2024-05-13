@@ -11,7 +11,14 @@ const imageConfig: EditorComponent = {
         h(Icon, {
             icon: 'ion:image-outline',
             style: { fontSize: '32px' }
-        })
+        }),
+    render: ({ props, block, styles }) => {
+        return () => (
+            <div style={styles}>
+                <tm-var-image {...props} />
+            </div>
+        )
+    }
 }
 
 export default imageConfig

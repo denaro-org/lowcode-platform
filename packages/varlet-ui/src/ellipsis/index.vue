@@ -1,13 +1,10 @@
 <template>
-    <Ellipsis>
+    <var-ellipsis>
         <slot></slot>
-    </Ellipsis>
+    </var-ellipsis>
 </template>
 
 <script setup lang="ts">
-import { Ellipsis } from '@varlet/ui'
-import '@varlet/ui/es/ellipsis/style'
-
 defineOptions({
     name: 'TmVarEllipsis'
 })

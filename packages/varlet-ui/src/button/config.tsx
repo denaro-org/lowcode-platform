@@ -11,7 +11,14 @@ const buttonConfig: EditorComponent = {
         h(Icon, {
             icon: 'teenyicons:button-solid',
             style: { fontSize: '32px' }
-        })
+        }),
+    render: ({ props, block, styles }) => {
+        return () => (
+            <div style={styles}>
+                <tm-var-button {...props} />
+            </div>
+        )
+    }
 }
 
 export default buttonConfig

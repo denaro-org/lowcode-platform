@@ -11,7 +11,14 @@ const ellipsisConfig: EditorComponent = {
         h(Icon, {
             icon: 'solar:text-bold',
             style: { fontSize: '32px' }
-        })
+        }),
+    render: ({ props, block, styles }) => {
+        return () => (
+            <div style={styles}>
+                <tm-var-ellipsis {...props} />
+            </div>
+        )
+    }
 }
 
 export default ellipsisConfig

@@ -2,7 +2,7 @@
     "name": "@lowcode/varlet-ui",
     "version": "1.0.0",
     "description": "低代码平台-varlet-ui",
-    "main": "src/index.ts",
+    "main": "src/index.ts", 
     "type": "module",
     "scripts": {
         "build": "vite build"
