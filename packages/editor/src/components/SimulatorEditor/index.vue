@@ -35,8 +35,8 @@ import type { EditorBlock } from '@lowcode/shared'
 
 import { ref, computed } from 'vue'
 
-import CompRender from './comp-render.jsx'
 import styles from './index.module.scss'
+import CompRender from '../PreviewRender/CompRender.tsx'
 
 import DraggableTransitionGroup from '@/components/DraggableTransitionGroup/index.vue'
 import { MOBILE_SIZE } from '@/config/index.js'

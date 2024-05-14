@@ -8,6 +8,7 @@ export default defineComponent({
     props: {
         element: {
             type: Object as PropType<EditorBlock>,
+            required: true,
             default: () => ({})
         }
     },
