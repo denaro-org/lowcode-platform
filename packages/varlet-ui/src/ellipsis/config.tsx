@@ -1,21 +1,14 @@
 import type { EditorComponent } from '@lowcode/shared'
 
-import { Icon } from '@iconify/vue'
-import { h } from 'vue'
-
 const ellipsisConfig: EditorComponent = {
     key: 'tm-var-ellipsis',
     label: '文本省略',
     moduleName: 'baseWidgets',
-    preview: () =>
-        h(Icon, {
-            icon: 'solar:text-bold',
-            style: { fontSize: '32px' }
-        }),
+    preview: () => <tm-var-ellipsis>这是一段文案</tm-var-ellipsis>,
     render: ({ props, block, styles }) => {
         return () => (
             <div style={styles}>
-                <tm-var-ellipsis {...props} />
+                <tm-var-ellipsis {...props}>这是一段文案</tm-var-ellipsis>
             </div>
         )
     }

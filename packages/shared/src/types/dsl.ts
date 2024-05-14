@@ -15,8 +15,10 @@ export interface EditorBlock {
     label: string
     // 组件所属的模块（基础组件、容器组件）
     moduleName: keyof ComponentModules
+    // 组件的 props 配置
+    props: Record<string, unknown>
     // 样式
-    style?: CSSProperties
+    styles?: CSSProperties
 }
 
 // 页面节点
@@ -26,7 +28,7 @@ export interface EditorPage {
     // 页面路径
     path: string
     // 样式
-    style?: CSSProperties
+    styles?: CSSProperties
     // 页面标题
     title: string
     // 节点类型

@@ -1,17 +1,12 @@
 import type { EditorComponent } from '@lowcode/shared'
 
-import { Icon } from '@iconify/vue'
-import { h } from 'vue'
-
 const imageConfig: EditorComponent = {
     key: 'tm-var-image',
     label: '图片',
     moduleName: 'baseWidgets',
-    preview: () =>
-        h(Icon, {
-            icon: 'ion:image-outline',
-            style: { fontSize: '32px' }
-        }),
+    preview: () => (
+        <tm-var-image lazy src={'https://picsum.photos/200/200'}></tm-var-image>
+    ),
     render: ({ props, block, styles }) => {
         return () => (
             <div style={styles}>
