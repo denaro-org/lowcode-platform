@@ -6,9 +6,9 @@
     "scripts": {
         "dev": "vite dev"
     },
-    "dependencies": { 
+    "dependencies": {
         "@lowcode/editor": "workspace:^",
-        "@lowcode/varlet-ui": "workspace:^" 
+        "@lowcode/varlet-ui": "workspace:^"
     },
     "devDependencies": {
         "unplugin-auto-import": "^0.17.6",

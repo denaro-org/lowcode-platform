@@ -33,7 +33,8 @@ export default defineConfig({
         emptyOutDir: true,
         lib: {
             entry: entryFile,
-            name: packageJson.name
+            name: packageJson.name,
+            fileName: 'index'
         },
         rollupOptions: {
             // 忽略打包vue文件
@@ -44,12 +45,9 @@ export default defineConfig({
             output: [
                 {
                     // 打包格式
-                    format: 'esm',
-                    // 打包后文件名
-                    entryFileNames: '[name].mjs',
-                    // 配置打包根目录
-                    dir: distEs,
-                    // 让打包目录和我们目录对应
+                    format: 'esm', // 打包后文件名
+                    entryFileNames: '[name].mjs', // 配置打包根目录
+                    dir: distEs, // 让打包目录和我们目录对应
                     preserveModules: true,
                     exports: 'named',
                     preserveModulesRoot: 'src'
@@ -57,12 +55,9 @@ export default defineConfig({
                 {
                     // 打包格式
                     format: 'commonjs',
-                    name: packageJson.name,
-                    // 打包后文件名
-                    entryFileNames: '[name].js',
-                    // 配置打包根目录
-                    dir: distCjs,
-                    // 让打包目录和我们目录对应
+                    name: packageJson.name, // 打包后文件名
+                    entryFileNames: '[name].js', // 配置打包根目录
+                    dir: distCjs, // 让打包目录和我们目录对应
                     preserveModules: true,
                     exports: 'named',
                     preserveModulesRoot: 'src'

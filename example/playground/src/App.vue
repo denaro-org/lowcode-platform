@@ -1,5 +1,5 @@
 <template>
-    <LowCodeEditor :ui-schema="uiSchema" :runtime-url="runtimeUrl" />
+    <LowCodeEditor :ui-schema="uiSchema" :preview-url="previewUrl" />
 </template>
 
 <script lang="ts" setup>
@@ -12,5 +12,5 @@ defineOptions({
     name: 'PlaygroundApp'
 })
 
-const runtimeUrl = ref('http://localhost:5174/')
+const previewUrl = ref('http://localhost:5173/preview.html')
 </script>

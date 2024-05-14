@@ -1,5 +1,6 @@
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import { resolve } from 'node:path'
 import autoImport from 'unplugin-auto-import/vite'
 import { VarletUIResolver } from 'unplugin-vue-components/resolvers'
 import components from 'unplugin-vue-components/vite'
@@ -18,7 +19,19 @@ export default defineConfig({
     ],
     server: {
         host: '0.0.0.0',
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        },
         port: 5173,
-        strictPort: true
+        strictPort: true,
+        cors: true
+    },
+    build: {
+        rollupOptions: {
+            input: {
+                main: resolve(__dirname, 'index.html'),
+                preview: resolve(__dirname, 'preview.html')
+            }
+        }
     }
 })

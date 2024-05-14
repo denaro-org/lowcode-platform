@@ -5,4 +5,23 @@
     z-index: 999;
     width: 100%;
     height: var(--editor-header-height);
+    padding: 0 20px;
+
+    > section {
+        height: 100%;
+    }
+
+    > section.header-left,
+    > section.header-right {
+        width: 20%;
+    }
+
+    > section.header-right {
+        margin-left: auto;
+        justify-content: flex-end;
+    }
+
+    > section.header-center {
+        width: 60%;
+    }
 }

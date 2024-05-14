@@ -3,7 +3,6 @@
     "version": "1.0.0",
     "description": "低代码平台-varlet-ui",
     "main": "src/index.ts",
-    "type": "module",
     "scripts": {
         "build": "vite build"
     },
@@ -11,7 +10,7 @@
         "lib"
     ],
     "types": "./lib/types/index.d.ts",
-    "dependencies": { 
+    "dependencies": {
         "@lowcode/shared": "workspace:^",
         "@varlet/ui": "^3.2.9",
         "vue": "^3.4.27"

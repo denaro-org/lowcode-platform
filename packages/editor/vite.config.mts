@@ -1,6 +1,6 @@
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import { resolve, join } from 'node:path'
+import { resolve } from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import dtsPlugin from 'vite-plugin-dts'
@@ -11,8 +11,11 @@ const deps = Object.keys(packageJson.dependencies)
 
 const distEs = resolve(__dirname, 'lib/es')
 const distCjs = resolve(__dirname, 'lib/cjs')
+const typesDir = resolve(__dirname, 'lib/types')
+const entryFile = resolve(__dirname, './index.ts')
 
 export default defineConfig({
+    plugins: [vue(), vueJsx(), dtsPlugin({ outDir: typesDir })],
     css: {
         modules: {
             localsConvention: 'camelCase' // 默认只支持驼峰，修改为同时支持横线和驼峰
@@ -40,48 +43,38 @@ export default defineConfig({
         target: 'esnext',
         emptyOutDir: true,
         lib: {
-            entry: join(__dirname, './index.ts'),
+            entry: entryFile,
             name: packageJson.name,
             fileName: 'index'
-        },
-        // 删除调试信息
+        }, // 删除调试信息
         // terserOptions: {
         //     compress: {
-        //         drop_console: true,
-        //         drop_debugger: true
+        //         drop_console: true,     //         drop_debugger: true
         //     }
-        // },
-        // 打包文件目录
+        // },     // 打包文件目录
         rollupOptions: {
             // 忽略打包vue文件
             external(id: string) {
                 return deps.some(k => new RegExp(`^${k}`).test(id))
             },
-            input: ['./index.ts'],
+            input: [entryFile],
             output: [
                 {
                     // 打包格式
-                    format: 'es',
-                    // 打包后文件名
-                    entryFileNames: '[name].mjs',
-                    // 配置打包根目录
-                    dir: distEs
+                    format: 'es', // 打包后文件名
+                    entryFileNames: '[name].mjs', // 配置打包根目录
+                    dir: distEs, // 让打包目录和我们目录对应
+                    preserveModules: true,
+                    exports: 'named',
+                    preserveModulesRoot: 'src'
                 }
                 // {
                 //     // 打包格式
-                //     format: 'commonjs',
-                //     name: packageJson.name,
-                //     // 打包后文件名
-                //     entryFileNames: '[name].js',
-                //     // 配置打包根目录
+                //     format: 'commonjs',             //     name: packageJson.name,             //     // 打包后文件名
+                //     entryFileNames: '[name].js',             //     // 配置打包根目录
                 //     dir: distCjs
                 // }
             ]
         }
-    },
-    plugins: [
-        vue(),
-        vueJsx(),
-        dtsPlugin({ rollupTypes: true, outDir: [distEs, distCjs] })
-    ]
+    }
 })

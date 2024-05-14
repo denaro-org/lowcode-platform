@@ -9,7 +9,6 @@
         },
         "./index.css": "./lib/es/style.css"
     },
-    "type": "module",
     "scripts": {
         "dev": "vite build --watch",
         "build": "vite build"

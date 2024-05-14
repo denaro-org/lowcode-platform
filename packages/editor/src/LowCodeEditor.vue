@@ -33,8 +33,8 @@ const props = defineProps({
         required: true,
         default: () => ({})
     },
-    // runtime url
-    runtimeUrl: {
+    // preview url
+    previewUrl: {
         type: String,
         required: true,
         default: null
@@ -47,7 +47,7 @@ onMounted(() => {
 })
 
 provide<EditorComponent[]>('uiSchema', Object.values(props.uiSchema))
-provide<string>('runtimeUrl', props.runtimeUrl)
+provide<string>('previewUrl', props.previewUrl)
 </script>
 
 <style lang="scss">

@@ -61,12 +61,7 @@ const draggableBind = computed(() => ({
 
 /** ---- 组件选择操作 -----   */
 // 给当前点击的组件设置聚焦
-const handleSlotsFocus = (block: EditorBlock, uuid: string): void => {
-    console.log(
-        '%c [ uuid ]-58',
-        'font-size:13px; background:pink; color:#bf2c9f;',
-        uuid
-    )
+const handleSlotsFocus = (block: EditorBlock): void => {
     const slots = block.props?.slots || {}
     if (Object.keys(slots).length > 0) {
         //
@@ -80,7 +75,7 @@ const selectComp = (element: EditorBlock): void => {
 
     blocks.forEach(block => {
         block.focus = element.UUID === block.UUID
-        handleSlotsFocus(block, element.UUID)
+        handleSlotsFocus(block)
     })
 }
 </script>
