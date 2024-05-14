@@ -1,3 +1,3 @@
-export * from './useAppDSL.js'
-export * from './createNewPage.js'
-export * from './createNewBlock.js'
+export * from './useAppDSL'
+export * from './createNewPage'
+export * from './createNewBlock'

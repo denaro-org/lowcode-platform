@@ -18,8 +18,8 @@ import type { PropType } from 'vue'
 
 import { onMounted, provide } from 'vue'
 
-import { EditorHeader, EditorNav, SimulatorEditor } from '@/components/index.js'
-import { useAppDSL } from '@/hooks/index.js'
+import { EditorHeader, EditorNav, SimulatorEditor } from '@/components'
+import { useAppDSL } from '@/hooks'
 import styles from '@/index.module.scss'
 
 defineOptions({

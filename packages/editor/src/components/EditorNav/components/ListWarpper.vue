@@ -43,7 +43,7 @@ import { computed, inject, ref } from 'vue'
 import styles from './index.module.scss'
 
 import DraggableTransitionGroup from '@/components/DraggableTransitionGroup/index.vue'
-import { createNewBlock } from '@/hooks/index.js'
+import { createNewBlock } from '@/hooks'
 
 defineOptions({
     name: 'ListWarpper'

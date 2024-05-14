@@ -35,13 +35,13 @@
 </template>
 
 <script lang="ts" setup>
-import type { NavConfig } from '@/types/index.js'
+import type { NavConfig } from '@/types'
 
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons-vue'
 import { merge } from 'lodash-es'
 import { PropType, computed, ref } from 'vue'
 
-import { defaultNavConfig } from './const.js'
+import { defaultNavConfig } from './const'
 import styles from './index.module.scss'
 
 defineOptions({

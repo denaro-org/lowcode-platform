@@ -27,7 +27,7 @@ const props = defineProps({
     }
 })
 
-const currentPage = props.appDsl.pages['/']
-const blocks = currentPage.blocks
+const currentPage = props.appDsl?.pages?.['/'] ?? {}
+const blocks = currentPage?.blocks ?? []
 provide<EditorComponent[]>('uiSchema', Object.values(props.uiSchema))
 </script>

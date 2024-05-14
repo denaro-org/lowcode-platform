@@ -13,4 +13,4 @@ LowCodePreview.install = (app: App): void => {
 
 export { LowCodeEditor, LowCodePreview }
 
-export type * from './src/types/index.js'
+export type * from '@/types'

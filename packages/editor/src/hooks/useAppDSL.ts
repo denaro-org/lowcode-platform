@@ -1,14 +1,14 @@
-import type { IState, UseAppDSL } from '@/types/index.js'
+import type { IState, UseAppDSL } from '@/types'
 import type { AppDSL, EditorBlock } from '@lowcode/shared'
 
 import { computed, reactive, readonly, watch } from 'vue'
 
-import { createNewPage } from './createNewPage.js'
+import { createNewPage } from './createNewPage'
 
-import { CacheEnum } from '@/config/index.js'
+import { CacheEnum } from '@/config'
 
 // 保存到本地JSON数据的key
-export const localKey: string = CacheEnum.APP_DSL
+const localKey: string = CacheEnum.APP_DSL
 
 const defaultValue: AppDSL = {
     type: 'app',

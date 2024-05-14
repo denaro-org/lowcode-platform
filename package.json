@@ -11,7 +11,7 @@
         "prettier": "prettier . --write",
         "start:dev": "concurrently \"pnpm run compile-dev:editor\" \"pnpm run start:example\"",
         "compile-dev:editor": "pnpm --filter \"@lowcode/editor\" run dev",
-        "start:example": "pnpm  --filter \"@lowcode/playgroud\" --filter \"@lowcode/runtime-vue3\" run dev",
+        "start:example": "pnpm  --filter \"@lowcode/playgroud\" run dev",
         "stylelint": "stylelint \"./**/*.{css,scss,sass,vue,html}\" --fix",
         "syncpack-fix": "npx syncpack fix-mismatches --indent \"    \"",
         "commit": "git add . && git-cz"

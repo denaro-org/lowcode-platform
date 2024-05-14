@@ -36,11 +36,11 @@ import type { EditorBlock } from '@lowcode/shared'
 import { ref, computed } from 'vue'
 
 import styles from './index.module.scss'
-import CompRender from '../PreviewRender/CompRender.tsx'
 
 import DraggableTransitionGroup from '@/components/DraggableTransitionGroup/index.vue'
-import { MOBILE_SIZE } from '@/config/index.js'
-import { useAppDSL } from '@/hooks/index.js'
+import CompRender from '@/components/PreviewRender/CompRender.tsx'
+import { MOBILE_SIZE } from '@/config'
+import { useAppDSL } from '@/hooks'
 
 defineOptions({
     name: 'SimulatorEditor'

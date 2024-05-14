@@ -26,11 +26,12 @@ export default defineConfig({
         strictPort: true,
         cors: true
     },
+    base: '/',
     build: {
         rollupOptions: {
             input: {
-                main: resolve(__dirname, 'index.html'),
-                preview: resolve(__dirname, 'preview.html')
+                main: resolve(__dirname, './index.html'),
+                preview: resolve(__dirname, './preview.html')
             }
         }
     }

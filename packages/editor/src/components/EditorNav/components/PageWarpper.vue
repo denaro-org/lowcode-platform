@@ -18,7 +18,7 @@ import { computed } from 'vue'
 
 import styles from './index.module.scss'
 
-import { useAppDSL } from '@/hooks/index.js'
+import { useAppDSL } from '@/hooks'
 
 defineOptions({
     name: 'PageWarpper'
