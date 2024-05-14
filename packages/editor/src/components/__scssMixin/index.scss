@@ -1,0 +1,70 @@
+/**
+  * 显示容器边界
+  */
+@mixin show-container-border {
+    @include show-dashed-outline;
+
+    &::before {
+        @include show-comp-label;
+    }
+}
+
+/**
+  * 显示组件边界
+  */
+@mixin show-component-border {
+    @include show-soli-outline;
+
+    &::before {
+        @include show-comp-label;
+    }
+}
+
+/**
+  * 显示组件标签名称
+  */
+@mixin show-comp-label($direction: left) {
+    @if $direction == 'left' {
+        top: 0;
+        left: -3px;
+        transform: translate(-100%, 0);
+    }
+
+    @if $direction == 'right' {
+        top: 0;
+        right: -3px;
+        transform: translate(100%, 0);
+    }
+
+    @if $direction == 'top' {
+        top: 2px;
+        left: 0;
+        transform: translate(0, -100%);
+    }
+
+    position: absolute;
+    padding: 3px 5px;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    background-color: #006eff;
+    border-radius: 3px;
+    content: attr(data-label);
+}
+
+/**
+  * 显示实心外边框线
+  */
+@mixin show-soli-outline($width: 2px) {
+    outline: $width solid #006eff;
+    outline-offset: -2px;
+}
+
+/**
+  * 显示虚线外边框线
+  */
+
+@mixin show-dashed-outline($width: 2px) {
+    outline: $width dashed #b0c1d7;
+    outline-offset: -2px;
+}

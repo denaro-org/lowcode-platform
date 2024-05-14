@@ -8,10 +8,12 @@
 
 .grid-row2 {
     @include grid;
+
     grid-template-columns: repeat(2, 1fr);
 }
 
 .grid-row3 {
     @include grid;
+
     grid-template-columns: repeat(3, 1fr);
 }

@@ -10,7 +10,15 @@ export const createNewBlock = (component: EditorComponent): EditorBlock => {
         componentKey: component.key,
         label: component.label,
         focus: false,
-        style: {},
-        draggable: component.draggable ?? true
+        styles: {
+            display: 'flex',
+            justifyContent: 'flex-start',
+            paddingTop: '0',
+            paddingRight: '0',
+            paddingLeft: '0',
+            paddingBottom: '0'
+        },
+        draggable: component.draggable ?? true,
+        props: {}
     }
 }
