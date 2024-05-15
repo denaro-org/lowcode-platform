@@ -37,8 +37,7 @@ import { ref, computed } from 'vue'
 
 import styles from './index.module.scss'
 
-import DraggableTransitionGroup from '@/components/DraggableTransitionGroup/index.vue'
-import CompRender from '@/components/PreviewRender/CompRender.tsx'
+import { DraggableTransitionGroup, CompRender } from '@/components'
 import { MOBILE_SIZE } from '@/config'
 import { useAppDSL } from '@/hooks'
 

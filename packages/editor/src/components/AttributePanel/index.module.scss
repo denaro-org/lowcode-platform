@@ -1,0 +1,38 @@
+$box-shadow: -2px 0 4px 0 rgb(0 0 0 / 10%);
+
+.attribute-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    width: var(--attribute-panel-width);
+    height: 100%;
+    padding: 0 15px;
+    background-color: var(--color-white);
+    box-shadow: $box-shadow;
+    transition: var(--transition-transform);
+    transform: translateX(100%);
+    contain: layout;
+
+    &.is-open {
+        transform: translateX(0);
+    }
+}
+
+.floating-action-btn {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 30px;
+    height: 80px;
+    cursor: pointer;
+    background: var(--color-white);
+    transform: translateX(-30px);
+    box-shadow: $box-shadow;
+    transition: var(--transition-transform);
+}
+
+.panel-item {
+    padding: 10px;
+}

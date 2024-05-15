@@ -3,6 +3,8 @@
     height: 100%;
 
     .editor-body {
+        position: relative;
+        overflow: hidden;
         height: calc(100% - var(--editor-header-height));
         flex: 1;
     }

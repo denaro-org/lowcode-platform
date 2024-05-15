@@ -42,14 +42,15 @@ import { computed, inject, ref } from 'vue'
 
 import styles from './index.module.scss'
 
-import DraggableTransitionGroup from '@/components/DraggableTransitionGroup/index.vue'
+import { DraggableTransitionGroup } from '@/components'
 import { createNewBlock } from '@/hooks'
+import { UISchemaSymbol } from '@/symbol'
 
 defineOptions({
     name: 'ListWarpper'
 })
 
-const uiSchema = inject<EditorComponent[]>('uiSchema')
+const uiSchema = inject<EditorComponent[]>(UISchemaSymbol)
 const searchValue = ref('')
 
 // 克隆组件节点信息

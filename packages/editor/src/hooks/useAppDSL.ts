@@ -1,11 +1,12 @@
 import type { IState, UseAppDSL } from '@/types'
 import type { AppDSL, EditorBlock } from '@lowcode/shared'
 
-import { computed, reactive, readonly, watch } from 'vue'
+import { computed, inject, reactive, readonly } from 'vue'
 
 import { createNewPage } from './createNewPage'
 
 import { CacheEnum } from '@/config'
+import { InitDSLDataSymbol } from '@/symbol'
 
 // 保存到本地JSON数据的key
 const localKey: string = CacheEnum.APP_DSL
@@ -18,7 +19,7 @@ const defaultValue: AppDSL = {
     }
 }
 
-export const useAppDSL = (): UseAppDSL => {
+export const initDSLData = (): UseAppDSL => {
     const localData: AppDSL = JSON.parse(localStorage.getItem(localKey) ?? '{}')
     const appDSL: AppDSL = Object.keys(localData?.pages ?? {}).length
         ? localData
@@ -34,18 +35,6 @@ export const useAppDSL = (): UseAppDSL => {
             currentPage?.blocks?.find(item => item.focus) ?? ({} as EditorBlock)
     })
 
-    // 用于更新缓存中的 appDSL
-    watch(
-        () => state.currentPage,
-        val => {
-            state.appDSL.pages[val.path] = val
-            updateAppDSL(state.appDSL as AppDSL)
-        },
-        {
-            deep: true
-        }
-    )
-
     // 设置当前被操作的组件
     const setCurrentBlock = (block: EditorBlock): void => {
         state.currentBlock = block
@@ -59,9 +48,9 @@ export const useAppDSL = (): UseAppDSL => {
 
     // 初始化 DSL
     const initAppDSL = (): void => {
-        if (Object.keys(localData).length === 0) {
-            updateAppDSL(appDSL)
-        }
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem(localKey, JSON.stringify(appDSL))
+        })
     }
 
     return {
@@ -72,3 +61,6 @@ export const useAppDSL = (): UseAppDSL => {
         initAppDSL
     }
 }
+
+export const useAppDSL = (): UseAppDSL =>
+    inject<UseAppDSL>(InitDSLDataSymbol as symbol) as UseAppDSL

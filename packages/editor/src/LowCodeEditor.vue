@@ -8,19 +8,28 @@
             <EditorNav />
             <!-- 中间渲染区域 -->
             <SimulatorEditor />
+            <!-- 右边属性配置 -->
+            <AttributePanel />
         </section>
     </section>
 </template>
 
 <script lang="ts" setup>
-import type { EditorComponent } from '@lowcode/shared'
+import type { EditorComponent, EditorComponents } from '@lowcode/shared'
 import type { PropType } from 'vue'
 
 import { onMounted, provide } from 'vue'
 
-import { EditorHeader, EditorNav, SimulatorEditor } from '@/components'
-import { useAppDSL } from '@/hooks'
+import {
+    EditorHeader,
+    EditorNav,
+    SimulatorEditor,
+    AttributePanel
+} from '@/components'
+import { initDSLData } from '@/hooks'
 import styles from '@/index.module.scss'
+import { UISchemaSymbol, PreviewUrlSymbol, InitDSLDataSymbol } from '@/symbol'
+import { UseAppDSL } from '@/types'
 
 defineOptions({
     name: 'LowCodeEditor'
@@ -29,7 +38,7 @@ defineOptions({
 const props = defineProps({
     // ui schema
     uiSchema: {
-        type: Object as PropType<Record<string, EditorComponent>>,
+        type: Object as PropType<EditorComponents>,
         required: true,
         default: () => ({})
     },
@@ -41,13 +50,14 @@ const props = defineProps({
     }
 })
 
-const { initAppDSL } = useAppDSL()
+const { initAppDSL } = initDSLData()
 onMounted(() => {
     initAppDSL()
 })
 
-provide<EditorComponent[]>('uiSchema', Object.values(props.uiSchema))
-provide<string>('previewUrl', props.previewUrl)
+provide<UseAppDSL>(InitDSLDataSymbol, initDSLData())
+provide<EditorComponent[]>(UISchemaSymbol, Object.values(props.uiSchema))
+provide<string>(PreviewUrlSymbol, props.previewUrl)
 </script>
 
 <style lang="scss">

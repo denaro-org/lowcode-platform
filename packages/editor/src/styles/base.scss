@@ -43,3 +43,10 @@ i.icon-26 {
         height: 6px;
     }
 }
+
+// 文本超出隐藏
+.text-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

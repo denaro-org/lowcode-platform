@@ -5,17 +5,18 @@
 </template>
 
 <script lang="ts" setup>
-import type { AppDSL, EditorComponent } from '@lowcode/shared'
+import type { AppDSL, EditorComponent, EditorComponents } from '@lowcode/shared'
 import type { PropType } from 'vue'
 
 import { provide } from 'vue'
 
 import { PreviewSlotItem } from '@/components'
+import { UISchemaSymbol } from '@/symbol'
 
 const props = defineProps({
     // ui schema
     uiSchema: {
-        type: Object as PropType<Record<string, EditorComponent>>,
+        type: Object as PropType<EditorComponents>,
         required: true,
         default: () => ({})
     },
@@ -29,5 +30,6 @@ const props = defineProps({
 
 const currentPage = props.appDsl?.pages?.['/'] ?? {}
 const blocks = currentPage?.blocks ?? []
-provide<EditorComponent[]>('uiSchema', Object.values(props.uiSchema))
+
+provide<EditorComponent[]>(UISchemaSymbol, Object.values(props.uiSchema))
 </script>

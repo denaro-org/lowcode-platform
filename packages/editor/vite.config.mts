@@ -13,6 +13,7 @@ const distEs = resolve(__dirname, 'lib/es')
 const distCjs = resolve(__dirname, 'lib/cjs')
 const typesDir = resolve(__dirname, 'lib/types')
 const entryFile = resolve(__dirname, './index.ts')
+const srcDir = resolve(__dirname, './src')
 
 export default defineConfig({
     plugins: [vue(), vueJsx(), dtsPlugin({ outDir: typesDir })],
@@ -33,9 +34,14 @@ export default defineConfig({
         alias: [
             {
                 find: '@',
-                replacement: fileURLToPath(new URL('./src', import.meta.url))
+                replacement: fileURLToPath(new URL(srcDir, import.meta.url))
             }
         ]
+    },
+    // 删除调试信息
+    esbuild: {
+        pure: ['console.log'], // 删除 console.log
+        drop: ['debugger'] // 删除 debugger
     },
     build: {
         outDir: 'lib',
@@ -46,14 +52,8 @@ export default defineConfig({
             entry: entryFile,
             name: packageJson.name,
             fileName: 'index'
-        }, // 删除调试信息
-        // terserOptions: {
-        //     compress: {
-        //         drop_console: true,     //         drop_debugger: true
-        //     }
-        // },     // 打包文件目录
+        },
         rollupOptions: {
-            // 忽略打包vue文件
             external(id: string) {
                 return deps.some(k => new RegExp(`^${k}`).test(id))
             },
@@ -67,13 +67,17 @@ export default defineConfig({
                     preserveModules: true,
                     exports: 'named',
                     preserveModulesRoot: 'src'
+                },
+                {
+                    // 打包格式
+                    format: 'commonjs',
+                    name: packageJson.name, // 打包后文件名
+                    entryFileNames: '[name].js', // 配置打包根目录
+                    dir: distCjs, // 让打包目录和我们目录对应
+                    preserveModules: true,
+                    exports: 'named',
+                    preserveModulesRoot: 'src'
                 }
-                // {
-                //     // 打包格式
-                //     format: 'commonjs',             //     name: packageJson.name,             //     // 打包后文件名
-                //     entryFileNames: '[name].js',             //     // 配置打包根目录
-                //     dir: distCjs
-                // }
             ]
         }
     }

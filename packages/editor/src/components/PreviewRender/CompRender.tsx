@@ -3,6 +3,8 @@ import type { PropType } from 'vue'
 
 import { defineComponent, inject } from 'vue'
 
+import { UISchemaSymbol } from '@/symbol'
+
 export default defineComponent({
     name: 'CompRender',
     props: {
@@ -13,7 +15,8 @@ export default defineComponent({
         }
     },
     setup(props) {
-        const uiSchema = inject<EditorComponent[]>('uiSchema') ?? []
+        const uiSchema =
+            inject<EditorComponent[]>(UISchemaSymbol as symbol) ?? []
 
         const thatRender = uiSchema.find(
             item => item.key === props.element.componentKey

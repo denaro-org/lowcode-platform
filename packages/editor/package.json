@@ -17,7 +17,6 @@
     "dependencies": {
         "@ant-design/icons-vue": "^7.0.1",
         "@lowcode/shared": "workspace:^",
-        "@vueuse/core": "^10.9.0",
         "ant-design-vue": "^4.2.1",
         "lodash-es": "^4.17.21",
         "uuid": "^9.0.1",

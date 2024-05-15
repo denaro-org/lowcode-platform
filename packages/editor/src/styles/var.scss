@@ -1,7 +1,16 @@
 :root {
     // 编辑器相关
+    // 编辑的 header 部分
     --editor-header-height: 60px;
+
+    // 编辑器左边导航栏的宽度
     --editor-nav-width: 87px;
+
+    // 编辑器右边属性面板的宽度
+    --attribute-panel-width: 390px;
+
+    // 编辑器左边工具栏的宽度
+    --editor-tools-width: 290px;
 
     // 颜色
     --color-primary: #409eff;
@@ -10,4 +19,7 @@
 
     // 边框
     --base-border-width: 4px;
+
+    // transition 动画
+    --transition-transform: transform 0.5s ease-in-out;
 }

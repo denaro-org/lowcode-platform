@@ -8,9 +8,9 @@
                     styles.navItem,
                     'flex-column',
                     'flex-center',
-                    item.name === activeName && styles.isActive
+                    item.name === state.activeName && styles.isActive
                 ]"
-                @click="activeName = item.name">
+                @click="state.activeName = item.name">
                 <i :class="[styles.navIcon, 'icon-26']">
                     <component :is="item.icon" />
                 </i>
@@ -19,17 +19,19 @@
         </nav>
 
         <section :class="[styles.contentWarpper]">
-            <section v-show="isExpand" :class="[styles.contentWarpperBody]">
+            <section
+                :class="[
+                    styles.contentWarpperBody,
+                    state.isOpen && styles.isOpen
+                ]">
+                <div
+                    :class="[styles.contentBtn, 'flex', 'flex-center']"
+                    @click="state.isOpen = !state.isOpen">
+                    <DoubleLeftOutlined v-if="state.isOpen" />
+                    <DoubleRightOutlined v-else />
+                </div>
                 <component :is="activeComponent" />
             </section>
-            <div
-                :class="[styles.contentBtn, 'flex', 'flex-center']"
-                @click="isExpand = !isExpand">
-                <i>
-                    <DoubleLeftOutlined v-if="isExpand" />
-                    <DoubleRightOutlined v-else />
-                </i>
-            </div>
         </section>
     </section>
 </template>
@@ -39,7 +41,7 @@ import type { NavConfig } from '@/types'
 
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons-vue'
 import { merge } from 'lodash-es'
-import { PropType, computed, ref } from 'vue'
+import { PropType, computed, reactive } from 'vue'
 
 import { defaultNavConfig } from './const'
 import styles from './index.module.scss'
@@ -60,12 +62,12 @@ const stateNavConfig = computed(() => {
 })
 // 当前激活的导航对应渲染
 const activeComponent = computed(() => {
-    return stateNavConfig.value.find(item => item.name === activeName.value)
+    return stateNavConfig.value.find(item => item.name === state.activeName)
         ?.component
 })
 
-// 激活的导航
-const activeName = ref('basic-components')
-// 展开收起
-const isExpand = ref(true)
+const state = reactive({
+    activeName: 'basic-components',
+    isOpen: true
+})
 </script>

@@ -22,12 +22,13 @@ import { inject, watchEffect } from 'vue'
 import WujieVue from 'wujie-vue3'
 
 import { useAppDSL } from '@/hooks'
+import { PreviewUrlSymbol } from '@/symbol'
 
 defineOptions({
     name: 'PreviewDialog'
 })
 
-const previewUrl = inject('previewUrl')
+const previewUrl = inject(PreviewUrlSymbol)
 const dialogVisible = defineModel('visible', { type: Boolean, default: false })
 
 const { appDSL } = useAppDSL()

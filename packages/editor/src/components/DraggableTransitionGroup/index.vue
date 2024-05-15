@@ -26,7 +26,6 @@
 import type { EditorComponent } from '@lowcode/shared'
 import type { PropType } from 'vue'
 
-import { useVModel } from '@vueuse/core'
 import { computed } from 'vue'
 import draggable from 'vuedraggable'
 
@@ -36,15 +35,7 @@ defineOptions({
     name: 'DraggableTransitionGroup'
 })
 
-const props = defineProps({
-    moduleValue: {
-        type: Array as PropType<EditorComponent[]>,
-        default: () => []
-    },
-    drag: {
-        type: Boolean,
-        default: false
-    },
+defineProps({
     itemKey: {
         type: String,
         default: 'UUID'
@@ -55,10 +46,15 @@ const props = defineProps({
     },
     fallbackClass: { type: String, default: undefined }
 })
-const emit = defineEmits(['update:moduleValue', 'update:drag'])
 
-const list = useVModel(props, 'moduleValue', emit)
-const isDrag = useVModel(props, 'drag', emit)
+const list = defineModel('moduleValue', {
+    type: Array as PropType<EditorComponent[]>,
+    default: () => []
+})
+const isDrag = defineModel('drag', {
+    type: Boolean,
+    default: false
+})
 
 const dragOptions = computed(() => ({
     animation: 200,

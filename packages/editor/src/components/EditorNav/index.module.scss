@@ -1,4 +1,5 @@
 $border-width: 3px;
+$box-shadow: 2px 0 4px 0 rgb(0 0 0 / 10%);
 
 .nav-warppewarpperr,
 .content-warpper {
@@ -6,9 +7,12 @@ $border-width: 3px;
 }
 
 .nav-warpper {
+    position: sticky;
+    z-index: 999;
     width: var(--editor-nav-width);
-    border-right: $border-width solid var(--color-bgcolor);
     height: 100%;
+    background-color: var(--color-white);
+    border-right: $border-width solid var(--color-bgcolor);
 
     .nav-item {
         height: 90px;
@@ -41,22 +45,37 @@ $border-width: 3px;
 .content-warpper {
     position: relative;
     width: max-content;
+    transition: var(--transition-transform);
 
     .content-warpper-body {
-        width: 290px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 99;
+        width: var(--editor-tools-width);
         height: 100%;
+        background-color: var(--color-white);
+        box-shadow: $box-shadow;
+        transition: var(--transition-transform);
+        transform: translateX(-100%);
+        contain: layout;
+
+        &.is-open {
+            transform: translateX(0);
+        }
     }
 
     .content-btn {
         position: absolute;
-        top: 20%;
-        right: -30px;
-        z-index: 99;
+        top: 50%;
+        right: 0;
         width: 30px;
         height: 80px;
         background-color: var(--color-white);
-        border: 1px solid #ece7e7;
-        border-left: none;
         cursor: pointer;
+        transform: translateX(30px);
+        box-shadow: $box-shadow;
+        transition: var(--transition-transform);
     }
 }
