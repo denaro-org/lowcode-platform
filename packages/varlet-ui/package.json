@@ -2,8 +2,14 @@
     "name": "@lowcode/varlet-ui",
     "version": "1.0.0",
     "description": "低代码平台-varlet-ui",
-    "main": "src/index.ts",
+    "exports": {
+        ".": {
+            "import": "./lib/es/index.mjs",
+            "require": "./lib/cjs/index.js"
+        }
+    },
     "scripts": {
+        "dev": "vite build --watch",
         "build": "vite build"
     },
     "files": [

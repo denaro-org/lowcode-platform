@@ -1,6 +1,7 @@
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { resolve } from 'node:path'
+import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import dtsPlugin from 'vite-plugin-dts'
 
@@ -26,6 +27,14 @@ export default defineConfig({
             prefix: 'TmVar'
         })
     ],
+    resolve: {
+        alias: [
+            {
+                find: '@',
+                replacement: fileURLToPath(new URL(srcDir, import.meta.url))
+            }
+        ]
+    },
     build: {
         outDir: 'lib',
         minify: 'esbuild',
@@ -35,6 +44,13 @@ export default defineConfig({
             entry: entryFile,
             name: packageJson.name,
             fileName: 'index'
+        },
+        // 删除调试信息
+        terserOptions: {
+            compress: {
+                drop_console: true,
+                drop_debugger: true
+            }
         },
         rollupOptions: {
             // 忽略打包vue文件

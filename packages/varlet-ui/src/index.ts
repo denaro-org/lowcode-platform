@@ -1,15 +1,13 @@
-import type { EditorComponent } from '@lowcode/shared'
+import type { EditorComponent, EditorComponents } from '@lowcode/shared'
 import type { App } from 'vue'
 
-import TmVarButton from './button/index.js'
-import TmVarEllipsis from './ellipsis/index.js'
-import TmVarImage from './image/index.js'
+import TmVarButton from './button'
+import TmVarEllipsis from './ellipsis'
+import TmVarImage from './image'
 
 interface Module {
     default: EditorComponent
 }
-
-type EditorComponents = Record<string, EditorComponent>
 
 // 批量导出所有的配置
 const modules = import.meta.glob<Module>('./**/config.tsx', { eager: true })
@@ -36,3 +34,5 @@ export { uiSchema, TmVarButton, TmVarEllipsis, TmVarImage }
 export default {
     install
 }
+
+export type * from '@/__types'

@@ -37,9 +37,11 @@ export function genComDTs(config: Config): Plugin {
                 })
                 // 过滤掉非文件夹
                 files = files.filter((file: string) => {
-                    return fs
-                        .lstatSync(path.resolve(entryDir, file))
-                        .isDirectory()
+                    return (
+                        fs
+                            .lstatSync(path.resolve(entryDir, file))
+                            .isDirectory() && !file.startsWith('__')
+                    )
                 })
 
                 let content =

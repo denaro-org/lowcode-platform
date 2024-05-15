@@ -5,7 +5,11 @@ const imageConfig: EditorComponent = {
     label: '图片',
     moduleName: 'baseWidgets',
     preview: () => (
-        <tm-var-image lazy src={'https://picsum.photos/200/200'}></tm-var-image>
+        <tm-var-image
+            config={{
+                src: 'https://varlet.pages.dev/cat.jpg'
+            }}
+        />
     ),
     render: ({ props, block, styles }) => {
         return () => (

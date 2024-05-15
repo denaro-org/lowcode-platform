@@ -1,5 +1,5 @@
 <template>
-    <var-image lazy src="https://picsum.photos/200/200">
+    <var-image v-bind="config">
         <template #error>
             <svg viewBox="0 0 24 24" style="width: 100%; height: 100%">
                 <path
@@ -11,7 +11,10 @@
 </template>
 
 <script setup lang="ts">
+import { varImageProps } from './props'
+
 defineOptions({
     name: 'TmVarImage'
 })
+defineProps(varImageProps)
 </script>
