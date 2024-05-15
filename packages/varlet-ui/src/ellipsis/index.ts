@@ -1,6 +1,6 @@
 import { withInstall } from '@lowcode/shared'
 
-import Ellipsis from './index.vue'
+import Ellipsis from './src/index.vue'
 
 withInstall(Ellipsis)
 

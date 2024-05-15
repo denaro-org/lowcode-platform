@@ -1,6 +1,6 @@
 import { withInstall } from '@lowcode/shared'
 
-import Button from './index.vue'
+import Button from './src/index.vue'
 
 withInstall(Button)
 

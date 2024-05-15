@@ -6,7 +6,8 @@
         ".": {
             "import": "./lib/es/index.mjs",
             "require": "./lib/cjs/index.js"
-        }
+        },
+        "./index.css": "./lib/es/style.css"
     },
     "scripts": {
         "dev": "vite build --watch",

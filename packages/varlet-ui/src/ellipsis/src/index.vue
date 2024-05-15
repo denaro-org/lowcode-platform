@@ -1,10 +1,13 @@
 <template>
-    <var-ellipsis v-bind="config">
+    <Ellipsis v-bind="config">
         {{ config.text }}
-    </var-ellipsis>
+    </Ellipsis>
 </template>
 
 <script setup lang="ts">
+import { Ellipsis } from '@varlet/ui'
+import '@varlet/ui/es/ellipsis/style'
+
 import { varEllipsisProps } from './props'
 
 defineOptions({

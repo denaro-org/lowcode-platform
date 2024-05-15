@@ -35,6 +35,11 @@ export default defineConfig({
             }
         ]
     },
+    // 删除调试信息
+    esbuild: {
+        pure: ['console.log'], // 删除 console.log
+        drop: ['debugger'] // 删除 debugger
+    },
     build: {
         outDir: 'lib',
         minify: 'esbuild',
@@ -45,15 +50,7 @@ export default defineConfig({
             name: packageJson.name,
             fileName: 'index'
         },
-        // 删除调试信息
-        terserOptions: {
-            compress: {
-                drop_console: true,
-                drop_debugger: true
-            }
-        },
         rollupOptions: {
-            // 忽略打包vue文件
             external(id: string) {
                 return deps.some(k => new RegExp(`^${k}`).test(id))
             },
