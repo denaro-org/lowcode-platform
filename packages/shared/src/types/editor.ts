@@ -1,3 +1,4 @@
+import type { EditorProps } from './props'
 import type { CSSProperties, VNode } from 'vue'
 
 // 组件接入的配置
@@ -14,6 +15,8 @@ export interface EditorComponent {
     moduleName: keyof ComponentModules
     // 组件预览函数
     preview: () => VNode
+    // 组件的 props 配置
+    props?: Record<string, EditorProps>
     // 组件渲染函数
     render: (data: {
         block: EditorBlockData
@@ -27,6 +30,8 @@ export interface EditorComponent {
     // 组件样式
     styles?: CSSProperties
 }
+
+export type EditorComponents = Record<string, EditorComponent>
 
 // 组件模块
 export interface ComponentModules {

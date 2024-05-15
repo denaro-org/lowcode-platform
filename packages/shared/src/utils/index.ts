@@ -1,1 +1,2 @@
-export * from './withInstall.utils.js'
+export * from './withInstall.utils'
+export * from './editor.props'

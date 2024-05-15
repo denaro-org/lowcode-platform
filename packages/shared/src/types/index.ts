@@ -1,3 +1,4 @@
-export type * from './dsl.js'
-export type * from './editor.js'
-export type * from './wujie.js'
+export type * from './dsl'
+export type * from './editor'
+export type * from './wujie'
+export type * from './props'
