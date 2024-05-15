@@ -7,6 +7,7 @@ const imageConfig: EditorComponent = {
     preview: () => (
         <tm-var-image
             config={{
+                lazy: true,
                 src: 'https://varlet.pages.dev/cat.jpg'
             }}
         />
@@ -14,7 +15,7 @@ const imageConfig: EditorComponent = {
     render: ({ props, block, styles }) => {
         return () => (
             <div style={styles}>
-                <tm-var-image {...props} />
+                <tm-var-image config={props} />
             </div>
         )
     }

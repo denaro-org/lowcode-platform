@@ -11,14 +11,15 @@ const buttonConfig: EditorComponent = {
     preview: () => (
         <tm-var-button
             config={{
-                buttonText: '按钮'
+                buttonText: '按钮',
+                type: 'primary'
             }}
         />
     ),
     render: ({ props, block, styles }) => {
         return () => (
             <div style={styles}>
-                <tm-var-button {...props} />
+                <tm-var-button config={props} />
             </div>
         )
     },

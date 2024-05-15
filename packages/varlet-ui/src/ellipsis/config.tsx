@@ -9,14 +9,14 @@ const ellipsisConfig: EditorComponent = {
     preview: () => (
         <tm-var-ellipsis
             config={{
-                buttonText: '这是一段文案'
+                text: '这是一段文案'
             }}
         />
     ),
     render: ({ props, block, styles }) => {
         return () => (
             <div style={styles}>
-                <tm-var-ellipsis {...props} />
+                <tm-var-ellipsis config={props} />
             </div>
         )
     },

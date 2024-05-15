@@ -7,4 +7,4 @@ export const TYPE_LIST = [
     'warning',
     'danger'
 ]
-export const DEFAULT_TYPE = 'default'
+export const DEFAULT_TYPE = 'primary'
