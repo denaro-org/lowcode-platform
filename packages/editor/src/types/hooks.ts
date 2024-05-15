@@ -1,4 +1,9 @@
-import type { AppDSL, EditorBlock, EditorPage } from '@lowcode/shared'
+import type {
+    AppDSL,
+    EditorBlock,
+    EditorComponent,
+    EditorPage
+} from '@lowcode/shared'
 import type { ComputedRef, DeepReadonly } from 'vue'
 
 export interface IState {
@@ -18,4 +23,9 @@ export interface UseAppDSL {
     initAppDSL: () => void
     // 设置当前被操作的组件
     setCurrentBlock: (block: EditorBlock) => void
+}
+
+export interface UseUISchema {
+    // 当前操作的组件配置
+    currentSchema: ComputedRef<EditorComponent>
 }

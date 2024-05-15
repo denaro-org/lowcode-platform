@@ -3,7 +3,7 @@ import type { CSSProperties } from 'vue'
 
 // 组件节点
 export interface EditorBlock {
-    // 唯一的 id
+    // 唯一的 id, 自动生成无需手动配置
     UUID: string
     // 组件英文名字
     componentKey: string

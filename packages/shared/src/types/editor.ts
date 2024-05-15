@@ -3,7 +3,7 @@ import type { CSSProperties, VNode } from 'vue'
 
 // 组件接入的配置
 export interface EditorComponent {
-    // 唯一标识
+    // 唯一标识, 自动生成无需手动配置
     UUID?: string
     // 是否可被进行拖拽
     draggable?: boolean
@@ -25,8 +25,6 @@ export interface EditorComponent {
         props: Record<string, unknown>
         styles: CSSProperties
     }) => () => JSX.Element
-    // 排序号
-    sortNum?: number
     // 组件样式
     styles?: CSSProperties
 }
