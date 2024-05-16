@@ -15,9 +15,11 @@ export interface UserPropConfig<T extends object> {
     // 用于定义表单项显隐的函数
     display?: ({ model }: { model: Record<string, unknown> }) => boolean
     // 表单项标签名称
-    label: string
+    label?: string
     // 绑定给 antd 的表单项 props 配置
     propsBind?: T
+    // 表单项的提示信息
+    tooltip?: string
 }
 
 export interface EditorProps<T extends object = object>
@@ -31,6 +33,8 @@ export interface EditorProps<T extends object = object>
 type PropsBind = SelectProps & InputProps & InputNumberProps & SwitchProps
 
 export type EditorFormItemProps = EditorProps<PropsBind> & {
+    // 子项配置
+    children?: EditorProps[]
     // 表单项绑定的 prop
     propName: string
 }

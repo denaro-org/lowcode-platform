@@ -4,8 +4,7 @@
         :model="stateFormModel"
         auto-complete="off"
         :label-col="{ span: 8 }"
-        :wrapper-col="{ span: 16 }"
-        label-wrap>
+        :wrapper-col="{ span: 16 }">
         <FormItem label="组件 ID">
             <span :class="['text-ellipsis', styles.readonlyText]">
                 {{ currentBlock.UUID || '-' }}
@@ -14,38 +13,21 @@
 
         <template v-for="(item, index) in formItemConfigs" :key="index">
             <FormItem
-                :label="item.label"
                 :name="item.propName"
-                :rules="item.rules">
-                <!-- select -->
-                <template v-if="item.type === EditorPropsType.select">
-                    <Select
-                        v-model:value="stateFormModel[item.propName]"
-                        class="w-100"
-                        v-bind="item.propsBind" />
+                :rules="item.rules"
+                :tooltip="item.tooltip">
+                <template #label>
+                    <span class="text-ellipsis w-100" :title="item.label">
+                        {{ item.label }}
+                    </span>
                 </template>
 
-                <!-- input -->
-                <template v-if="item.type === EditorPropsType.input">
-                    <Input
-                        v-model:value="stateFormModel[item.propName]"
-                        class="w-100"
-                        v-bind="item.propsBind" />
-                </template>
+                <AttrFormItem v-model:model="stateFormModel" :item="item" />
 
-                <!-- switch -->
-                <template v-if="item.type === EditorPropsType.switch">
-                    <Switch
-                        v-model:checked="stateFormModel[item.propName]"
-                        v-bind="item.propsBind" />
-                </template>
-
-                <!-- number -->
-                <template v-if="item.type === EditorPropsType.number">
-                    <InputNumber
-                        v-model:value="stateFormModel[item.propName]"
-                        class="w-100"
-                        v-bind="item.propsBind" />
+                <template v-if="item.type === EditorPropsType.group">
+                    <AttrGroupItem
+                        v-model:model="stateFormModel"
+                        :item="item" />
                 </template>
             </FormItem>
         </template>
@@ -53,18 +35,15 @@
 </template>
 
 <script setup lang="ts">
-import { EditorPropsType, EditorFormItemProps } from '@lowcode/shared'
-import {
-    Form,
-    FormItem,
-    Select,
-    Input,
-    Switch,
-    InputNumber
-} from 'ant-design-vue'
+import type { EditorFormItemProps } from '@lowcode/shared'
+
+import { EditorPropsType } from '@lowcode/shared'
+import { Form, FormItem } from 'ant-design-vue'
 import { forEach } from 'lodash-es'
 import { computed } from 'vue'
 
+import AttrFormItem from './AttrFormItem.vue'
+import AttrGroupItem from './AttrGroupItem.vue'
 import styles from './index.module.scss'
 
 import { useAppDSL, useUISchema } from '@/hooks'

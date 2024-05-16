@@ -1,6 +1,7 @@
 import type { EditorComponent } from '@lowcode/shared'
 
 import {
+    createEditorGroupProp,
     createEditorInputProp,
     createEditorNumberProp,
     createEditorSelectProp,
@@ -76,13 +77,85 @@ const buttonConfig: EditorComponent = {
         // loading 的半径，只作用于 loading-type="circle" 时
         loadingRadius: createEditorNumberProp({
             label: 'loading 的半径',
-            defaultValue: 16,
+            tooltip: '最小值 0px, 最大值 24px',
             propsBind: {
                 min: 0,
-                max: 20
+                max: 24,
+                addonAfter: 'px'
             },
             display: ({ model }) =>
                 !!model.loading && model.loadingType === 'circle'
+        }),
+        // loading 的尺寸
+        loadingSize: createEditorSelectProp({
+            label: 'loading 的尺寸',
+            defaultValue: DEFAULT_SIZE,
+            constDict: SIZE_LIST,
+            display: ({ model }) => !!model.loading
+        }),
+        // loading 的颜色
+        // loadingColor: createEditorColorProp({
+        //     label: 'loading 的颜色',
+        //     defaultValue: '#1989fa',
+        //     display: ({ model }) => !!model.loading
+        // })
+        // 自动 loading 模式，方便处理异步任务
+        autoLoading: createEditorSwitchProp({
+            label: '自动 loading 模式',
+            defaultValue: false
+        }),
+        // 是否是圆形按钮
+        round: createEditorSwitchProp({
+            label: '是否是圆形按钮',
+            defaultValue: false
+        }),
+        // 是否是块级元素
+        block: createEditorSwitchProp({
+            label: '是否是块级元素',
+            defaultValue: false
+        }),
+        // 是否是文字按钮
+        text: createEditorSwitchProp({
+            label: '是否是文字按钮',
+            defaultValue: false
+        }),
+        // 是否作为图标容器
+        iconContainer: createEditorSwitchProp({
+            label: '是否作为图标容器',
+            defaultValue: false
+        }),
+        // 是否使用外边框
+        outline: createEditorSwitchProp({
+            label: '是否使用外边框',
+            defaultValue: false
+        }),
+        // 禁用状态
+        disabled: createEditorSwitchProp({
+            label: '禁用状态',
+            defaultValue: false
+        }),
+        // 是否使用水波纹
+        ripple: createEditorSwitchProp({
+            label: '是否使用水波纹',
+            defaultValue: true
+        }),
+        // 海拔高度
+        elevation: createEditorGroupProp({
+            label: '海拔高度',
+            defaultValue: true,
+            children: [
+                createEditorSwitchProp({
+                    defaultValue: true
+                }),
+                createEditorNumberProp({
+                    tooltip: '最小值 0px, 最大值 24px',
+                    propsBind: {
+                        min: 0,
+                        max: 24,
+                        addonAfter: 'px'
+                    }
+                })
+            ]
         })
     }
 }

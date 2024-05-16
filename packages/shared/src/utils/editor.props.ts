@@ -85,9 +85,7 @@ export const createEditorSwitchProp = (
 }
 
 // ---- number 输入类型的表单项配置 ----
-type EditorNumberProp = UserPropConfig<InputNumberProps> & {
-    suffix?: string
-}
+type EditorNumberProp = UserPropConfig<InputNumberProps>
 
 export const createEditorNumberProp = (
     propConfig: EditorNumberProp
@@ -101,8 +99,24 @@ export const createEditorNumberProp = (
             min: propsBind?.min ?? 0,
             max: propsBind?.max ?? 100,
             step: propsBind.step ?? 1
-            // formatter: (value: number) => `${value}${propConfig.suffix ?? ''}`
         },
+        ...propConfig
+    }
+}
+
+// ---- color 输入类型的表单项配置 ----
+
+// ---- group 输入类型的表单项配置 ----
+type EditorGroupProp = UserPropConfig<object> & {
+    // 子项配置
+    children: EditorProps[]
+}
+
+export const createEditorGroupProp = (
+    propConfig: EditorGroupProp
+): EditorProps => {
+    return {
+        type: EditorPropsType.group,
         ...propConfig
     }
 }

@@ -7,11 +7,22 @@
             <DoubleRightOutlined v-else />
         </div>
 
-        <Tabs v-model:activeKey="state.activeName">
-            <TabPane v-for="item in tabList" :key="item.tabKey" :tab="item.tab">
-                <component :is="item.component" :class="[styles.panelItem]" />
-            </TabPane>
-        </Tabs>
+        <div class="h-100">
+            <Tabs v-model:activeKey="state.activeName" class="h-100">
+                <TabPane
+                    v-for="item in tabList"
+                    :key="item.tabKey"
+                    :tab="item.tab">
+                    <section
+                        class="overflow-y-auto"
+                        :class="[styles.panelBody]">
+                        <component
+                            :is="item.component"
+                            :class="[styles.panelItem]" />
+                    </section>
+                </TabPane>
+            </Tabs>
+        </div>
     </div>
 </template>
 
