@@ -1,5 +1,21 @@
 import type { ComponentModules } from './editor'
+import type {
+    CheckboxProps,
+    InputNumberProps,
+    InputProps,
+    RadioProps,
+    SelectProps,
+    SwitchProps
+} from 'ant-design-vue'
 import type { CSSProperties } from 'vue'
+
+export type PropValue = SelectProps['value'] &
+    InputProps['value'] &
+    InputNumberProps['value'] &
+    RadioProps['checked'] &
+    SwitchProps['checked'] &
+    CheckboxProps['checked']
+export type BlockProps = Record<string, PropValue>
 
 // 组件节点
 export interface EditorBlock {
@@ -16,7 +32,7 @@ export interface EditorBlock {
     // 组件所属的模块（基础组件、容器组件）
     moduleName: keyof ComponentModules
     // 组件的 props 配置
-    props: Record<string, unknown>
+    props: BlockProps
     // 样式
     styles?: CSSProperties
 }

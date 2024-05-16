@@ -10,7 +10,7 @@
         "./index.css": "./lib/es/style.css"
     },
     "scripts": {
-        "dev": "vite build --watch",
+        "dev": "vite build --mode watch --watch",
         "build": "vite build"
     },
     "files": [

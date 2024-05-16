@@ -11,7 +11,7 @@
     },
     "types": "./lib/types/index.d.ts",
     "scripts": {
-        "dev": "vite build --watch",
+        "dev": "vite build --mode watch --watch",
         "build": "vite build"
     },
     "dependencies": {
@@ -27,6 +27,7 @@
     "devDependencies": {
         "@types/lodash-es": "^4.17.12",
         "@types/uuid": "^9.0.8",
+        "rollup": "^4.17.2",
         "sass": "^1.77.1",
         "vite": "^5.2.11"
     }

@@ -1,5 +1,7 @@
 import type { EditorComponent } from '@lowcode/shared'
 
+import { createEditorInputProp, createEditorSwitchProp } from '@lowcode/shared'
+
 const imageConfig: EditorComponent = {
     key: 'tm-var-image',
     label: '图片',
@@ -18,6 +20,17 @@ const imageConfig: EditorComponent = {
                 <tm-var-image config={props} />
             </div>
         )
+    },
+    props: {
+        src: createEditorInputProp({
+            label: '图片地址',
+            defaultValue: 'https://varlet.pages.dev/cat.jpg',
+            ruleNames: ['URL']
+        }),
+        lazy: createEditorSwitchProp({
+            label: '懒加载',
+            defaultValue: true
+        })
     }
 }
 

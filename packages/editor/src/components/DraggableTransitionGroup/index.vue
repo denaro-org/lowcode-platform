@@ -1,7 +1,7 @@
 <template>
     <draggable
         v-model="list"
-        :class="[styles.listGroup, isDrag && 'is-drag']"
+        :class="['list-group', isDrag && 'is-drag']"
         :component-data="{
             tag: 'ul',
             type: 'transition-group',
@@ -29,12 +29,9 @@ import type { PropType } from 'vue'
 import { computed } from 'vue'
 import draggable from 'vuedraggable'
 
-import styles from './index.module.scss'
-
 defineOptions({
     name: 'DraggableTransitionGroup'
 })
-
 defineProps({
     itemKey: {
         type: String,
@@ -76,5 +73,10 @@ const dragOptions = computed(() => ({
 .ghost {
     background: #c8ebfb;
     opacity: 0.5;
+}
+
+.list-group {
+    height: 100%;
+    min-height: 40px;
 }
 </style>

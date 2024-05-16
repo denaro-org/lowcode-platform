@@ -1,5 +1,5 @@
 import type { EditorPropsType } from '../enum'
-import type { SelectProps } from 'ant-design-vue'
+import type { FormItemProps, SelectProps } from 'ant-design-vue'
 
 export type SelectOptions = SelectProps['options']
 
@@ -17,9 +17,12 @@ export type EditorProps = {
 } & {
     // select 的 options
     options?: SelectOptions
+} & {
+    // 表单验证规则
+    rules?: FormItemProps['rules']
 }
 
-export type FormItemProps = EditorProps & {
+export type EditorFormItemProps = EditorProps & {
     // 表单项绑定的 prop
     propName: string
 }
