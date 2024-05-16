@@ -1,6 +1,9 @@
 import type { EditorComponent } from '@lowcode/shared'
+import type { VNode } from 'vue'
 
 import { createEditorInputProp, createEditorSwitchProp } from '@lowcode/shared'
+
+import { useRegisterRef } from '@/__utils'
 
 const imageConfig: EditorComponent = {
     key: 'tm-var-image',
@@ -17,7 +20,10 @@ const imageConfig: EditorComponent = {
     render: ({ props, block, styles }) => {
         return () => (
             <div style={styles}>
-                <tm-var-image config={props} />
+                <tm-var-image
+                    ref={(el: VNode) => useRegisterRef(el, block.UUID ?? '')}
+                    config={props}
+                />
             </div>
         )
     },

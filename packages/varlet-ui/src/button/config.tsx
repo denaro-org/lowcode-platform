@@ -1,4 +1,5 @@
 import type { EditorComponent } from '@lowcode/shared'
+import type { VNode } from 'vue'
 
 import {
     createEditorGroupProp,
@@ -18,6 +19,7 @@ import {
     SIZE_LIST,
     TYPE_LIST
 } from '@/__const'
+import { useRegisterRef } from '@/__utils'
 
 const buttonConfig: EditorComponent = {
     key: 'tm-var-button',
@@ -34,7 +36,10 @@ const buttonConfig: EditorComponent = {
     render: ({ props, block, styles }) => {
         return () => (
             <div style={styles}>
-                <tm-var-button config={props} />
+                <tm-var-button
+                    ref={(el: VNode) => useRegisterRef(el, block.UUID ?? '')}
+                    config={props}
+                />
             </div>
         )
     },

@@ -1,6 +1,9 @@
 import type { EditorComponent } from '@lowcode/shared'
+import type { VNode } from 'vue'
 
 import { createEditorInputProp } from '@lowcode/shared'
+
+import { useRegisterRef } from '@/__utils'
 
 const ellipsisConfig: EditorComponent = {
     key: 'tm-var-ellipsis',
@@ -16,7 +19,10 @@ const ellipsisConfig: EditorComponent = {
     render: ({ props, block, styles }) => {
         return () => (
             <div style={styles}>
-                <tm-var-ellipsis config={props} />
+                <tm-var-ellipsis
+                    ref={(el: VNode) => useRegisterRef(el, block.UUID ?? '')}
+                    config={props}
+                />
             </div>
         )
     },

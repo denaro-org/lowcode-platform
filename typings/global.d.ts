@@ -43,6 +43,7 @@ declare global {
             shadowRoot?: ShadowRoot
             props?: WujieProps
             location?: Object
-        }
+        },
+        $$refs: Record<string, VNode>
     }
 } 
