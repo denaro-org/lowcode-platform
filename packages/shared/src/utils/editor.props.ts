@@ -1,15 +1,16 @@
-import type { EditorProps, SelectOptions } from '../types'
+import type { EditorProps, SelectOptions, UserPropConfig } from '../types'
+import type {
+    InputNumberProps,
+    InputProps,
+    SelectProps,
+    SwitchProps
+} from 'ant-design-vue'
 
 import { URL_REGEX, URL_REGEX_MSG } from './pattern.utils'
 import { EditorPropsType } from '../enum'
 
-type EditorProp = Pick<
-    EditorProps,
-    'defaultValue' | 'label' | 'tips' | 'placeholder'
->
-
 // ---- input 输入类型的表单项配置 ----
-type EditorInputProp = EditorProp & {
+type EditorInputProp = UserPropConfig<InputProps> & {
     // 验证规则
     ruleNames?: Array<'URL'>
 }
@@ -28,14 +29,16 @@ export const createEditorInputProp = (
 
     return {
         type: EditorPropsType.input,
-        placeholder: propConfig.placeholder ?? '请输入...',
+        propsBind: {
+            placeholder: `请输入${propConfig.label}`
+        },
         rules,
         ...propConfig
     }
 }
 
 // ---- select 输入类型的表单项配置 ----
-type EditorSelectProp = EditorProp & {
+type EditorSelectProp = UserPropConfig<SelectProps> & {
     // 用于生成 options 的字典
     constDict?: string[]
     // 不采用字典生成, 使用 options
@@ -61,20 +64,45 @@ export const createEditorSelectProp = (
 
     return {
         type: EditorPropsType.select,
-        options: stateOptions,
-        placeholder: propConfig.placeholder ?? '请选择...',
+        propsBind: {
+            options: stateOptions,
+            placeholder: `请选择${propConfig.label}`
+        },
         ...args
     }
 }
 
 // ---- switch 输入类型的表单项配置 ----
-type EditorSwitchProp = EditorProp
+type EditorSwitchProp = UserPropConfig<SwitchProps>
 
 export const createEditorSwitchProp = (
     propConfig: EditorSwitchProp
 ): EditorProps => {
     return {
         type: EditorPropsType.switch,
+        ...propConfig
+    }
+}
+
+// ---- number 输入类型的表单项配置 ----
+type EditorNumberProp = UserPropConfig<InputNumberProps> & {
+    suffix?: string
+}
+
+export const createEditorNumberProp = (
+    propConfig: EditorNumberProp
+): EditorProps => {
+    const { propsBind = {} } = propConfig
+
+    return {
+        type: EditorPropsType.number,
+        propsBind: {
+            placeholder: `请输入${propConfig.label}`,
+            min: propsBind?.min ?? 0,
+            max: propsBind?.max ?? 100,
+            step: propsBind.step ?? 1
+            // formatter: (value: number) => `${value}${propConfig.suffix ?? ''}`
+        },
         ...propConfig
     }
 }

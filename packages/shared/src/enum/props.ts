@@ -4,6 +4,8 @@ export enum EditorPropsType {
     checkbox = 'checkbox',
     // 输入框
     input = 'input',
+    // 数字输入框
+    number = 'number',
     // 单选框
     radio = 'radio',
     // 下拉框
