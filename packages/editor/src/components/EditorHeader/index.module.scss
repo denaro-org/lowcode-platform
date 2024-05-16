@@ -2,10 +2,11 @@
     position: sticky;
     top: 0;
     left: 0;
-    z-index: 9999;
+    z-index: 999;
     width: 100%;
     height: var(--editor-header-height);
     padding: 0 20px;
+    background-color: var(--color-white);
 
     > section {
         height: 100%;

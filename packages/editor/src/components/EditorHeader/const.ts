@@ -7,7 +7,9 @@ import {
 } from '@ant-design/icons-vue'
 import { h } from 'vue'
 
-export const centerBtnList = [
+import { type BtnItem } from '@/types'
+
+export const centerBtnList: BtnItem[] = [
     {
         icon: h(CodeOutlined),
         label: '生成代码',

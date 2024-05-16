@@ -55,6 +55,8 @@ onMounted(() => {
     initAppDSL()
 })
 
+window.$$refs = {}
+
 provide<UseAppDSL>(InitDSLDataSymbol, initDSLData())
 provide<EditorComponent[]>(UISchemaSymbol, Object.values(props.uiSchema))
 provide<string>(PreviewUrlSymbol, props.previewUrl)

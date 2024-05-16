@@ -5,10 +5,25 @@
         auto-complete="off"
         :label-col="{ span: 8 }"
         :wrapper-col="{ span: 16 }">
-        <FormItem label="组件 ID">
-            <span :class="['text-ellipsis', styles.readonlyText]">
-                {{ currentBlock.UUID || '-' }}
-            </span>
+        <FormItem
+            label="组件 ID"
+            :tooltip="`你可以利用该组件ID。对该组件进行获取和设置其属性, 组件可用属性可在控制台输入：$$refs['${currentBlock.UUID}'] 进行查看`">
+            <div class="flex-row">
+                <span :class="['text-ellipsis', styles.readonlyText]">
+                    {{ currentBlock.UUID || '-' }}
+                </span>
+                <Tooltip
+                    :title="`复制 $$refs['${currentBlock.UUID}']`"
+                    placement="left">
+                    <i
+                        :class="[styles.copyIcon]"
+                        @click="
+                            copyToClipboard(`$$refs['${currentBlock.UUID}`)
+                        ">
+                        <CopyOutlined />
+                    </i>
+                </Tooltip>
+            </div>
         </FormItem>
 
         <template v-for="(item, index) in formItemConfigs" :key="index">
@@ -37,8 +52,9 @@
 <script setup lang="ts">
 import type { EditorFormItemProps } from '@lowcode/shared'
 
+import { CopyOutlined } from '@ant-design/icons-vue'
 import { EditorPropsType } from '@lowcode/shared'
-import { Form, FormItem } from 'ant-design-vue'
+import { Form, FormItem, Tooltip, message } from 'ant-design-vue'
 import { forEach } from 'lodash-es'
 import { computed } from 'vue'
 
@@ -84,4 +100,16 @@ const stateFormModel = computed({
         currentBlock.value.props = val
     }
 })
+
+// 复制到剪贴板
+const copyToClipboard = (text: string) => {
+    const input = document.createElement('input')
+    input.value = text
+    document.body.appendChild(input)
+    input.select()
+    document.execCommand('copy')
+    document.body.removeChild(input)
+
+    message.success(`${text} 复制成功 !!!`)
+}
 </script>

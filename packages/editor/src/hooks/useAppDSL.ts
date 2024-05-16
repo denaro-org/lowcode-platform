@@ -49,7 +49,7 @@ export const initDSLData = (): UseAppDSL => {
     // 初始化 DSL
     const initAppDSL = (): void => {
         window.addEventListener('beforeunload', () => {
-            localStorage.setItem(localKey, JSON.stringify(appDSL))
+            sessionStorage.setItem(localKey, JSON.stringify(appDSL))
         })
     }
 

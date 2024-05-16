@@ -14,11 +14,21 @@
                     :key="item.tabKey"
                     :tab="item.tab">
                     <section
-                        class="overflow-y-auto"
-                        :class="[styles.panelBody]">
-                        <component
-                            :is="item.component"
-                            :class="[styles.panelItem]" />
+                        :class="[
+                            styles.panelBody,
+                            'overflow-y-auto',
+                            isEmpty && 'flex flex-center'
+                        ]">
+                        <template v-if="!isEmpty">
+                            <component
+                                :is="item.component"
+                                :class="[styles.panelItem]"
+                                :children-config="item.childrenConfig" />
+                        </template>
+
+                        <template v-else>
+                            <Empty description="请在画布区域选中任意一个组件" />
+                        </template>
                     </section>
                 </TabPane>
             </Tabs>
@@ -28,11 +38,13 @@
 
 <script setup lang="ts">
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons-vue'
-import { Tabs, TabPane } from 'ant-design-vue'
-import { reactive } from 'vue'
+import { Tabs, TabPane, Empty } from 'ant-design-vue'
+import { computed, reactive } from 'vue'
 
 import { tabList } from './const'
 import styles from './index.module.scss'
+
+import { useAppDSL } from '@/hooks'
 
 defineOptions({
     name: 'AttributePanel'
@@ -42,4 +54,6 @@ const state = reactive({
     activeName: 'attr',
     isOpen: true
 })
+const { currentBlock } = useAppDSL()
+const isEmpty = computed(() => Object.keys(currentBlock.value).length === 0)
 </script>
