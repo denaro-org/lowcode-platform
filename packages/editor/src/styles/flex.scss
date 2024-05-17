@@ -42,3 +42,8 @@
 .flex-warp {
     flex-wrap: wrap;
 }
+
+.flex-row-end {
+    justify-content: flex-end;
+    margin-left: auto;
+}

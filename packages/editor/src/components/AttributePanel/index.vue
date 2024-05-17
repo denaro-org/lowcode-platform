@@ -22,7 +22,6 @@
                         <template v-if="!isEmpty">
                             <component
                                 :is="item.component"
-                                :class="[styles.panelItem]"
                                 :children-config="item.childrenConfig" />
                         </template>
 

@@ -6,3 +6,40 @@
 .copy-icon {
     cursor: pointer;
 }
+
+// --- FlexStyle.vue ---
+.flex-style {
+    gap: 12px;
+
+    &-item {
+        gap: 8px;
+    }
+}
+
+.flex-title {
+    color: #333;
+
+    > span:nth-child(1) {
+        &::after {
+            content: ':';
+        }
+    }
+
+    > span:nth-child(2) {
+        margin-left: 5px;
+        color: #d9d9d9;
+    }
+}
+.flex-icons {
+    gap: 12px;
+}
+.flex-icon {
+    display: inline-block;
+    cursor: pointer;
+
+    > svg {
+        font-size: 28px;
+        width: 28px;
+        height: 28px;
+    }
+}

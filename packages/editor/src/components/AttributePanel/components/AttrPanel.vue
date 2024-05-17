@@ -26,26 +26,9 @@
             </div>
         </FormItem>
 
-        <template v-for="(item, index) in formItemConfigs" :key="index">
-            <FormItem
-                :name="item.propName"
-                :rules="item.rules"
-                :tooltip="item.tooltip">
-                <template #label>
-                    <span class="text-ellipsis w-100" :title="item.label">
-                        {{ item.label }}
-                    </span>
-                </template>
-
-                <AttrFormItem v-model:model="stateFormModel" :item="item" />
-
-                <template v-if="item.type === EditorPropsType.group">
-                    <AttrGroupItem
-                        v-model:model="stateFormModel"
-                        :item="item" />
-                </template>
-            </FormItem>
-        </template>
+        <FormItems
+            v-model:model="stateFormModel"
+            :form-item-configs="formItemConfigs" />
     </Form>
 </template>
 
@@ -53,13 +36,11 @@
 import type { EditorFormItemProps } from '@lowcode/shared'
 
 import { CopyOutlined } from '@ant-design/icons-vue'
-import { EditorPropsType } from '@lowcode/shared'
 import { Form, FormItem, Tooltip, message } from 'ant-design-vue'
 import { forEach } from 'lodash-es'
 import { computed } from 'vue'
 
-import AttrFormItem from './AttrFormItem.vue'
-import AttrGroupItem from './AttrGroupItem.vue'
+import FormItems from './FormItems.vue'
 import styles from './index.module.scss'
 
 import { useAppDSL, useUISchema } from '@/hooks'
