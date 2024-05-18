@@ -2,6 +2,7 @@ import type { EditorComponent } from '@lowcode/shared'
 import type { VNode } from 'vue'
 
 import {
+    createEditorColorProp,
     createEditorGroupProp,
     createEditorInputProp,
     createEditorNumberProp,
@@ -98,11 +99,10 @@ const buttonConfig: EditorComponent = {
             display: ({ model }) => !!model.loading
         }),
         // loading 的颜色
-        // loadingColor: createEditorColorProp({
-        //     label: 'loading 的颜色',
-        //     defaultValue: '#1989fa',
-        //     display: ({ model }) => !!model.loading
-        // })
+        loadingColor: createEditorColorProp({
+            label: 'loading 的颜色',
+            display: ({ model }) => !!model.loading
+        }),
         // 自动 loading 模式，方便处理异步任务
         autoLoading: createEditorSwitchProp({
             label: '自动 loading 模式',
@@ -142,6 +142,16 @@ const buttonConfig: EditorComponent = {
         ripple: createEditorSwitchProp({
             label: '是否使用水波纹',
             defaultValue: true
+        }),
+        // 文字颜色
+        textColor: createEditorColorProp({
+            label: '文字颜色',
+            defaultValue: undefined
+        }),
+        // 背景颜色
+        color: createEditorColorProp({
+            label: '背景颜色',
+            defaultValue: undefined
         }),
         // 海拔高度
         elevation: createEditorGroupProp({
