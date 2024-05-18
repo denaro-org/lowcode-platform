@@ -25,7 +25,7 @@ import { computed, reactive } from 'vue'
 import AttrFormItem from './AttrFormItem.vue'
 
 const stateFormModel = defineModel<BlockProps>('model', {
-    type: Object as PropType<BlockProps>,
+    type: Object,
     default: () => ({})
 })
 const props = defineProps({

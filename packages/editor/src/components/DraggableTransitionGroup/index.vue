@@ -24,7 +24,6 @@
 
 <script lang="ts" setup>
 import type { EditorComponent } from '@lowcode/shared'
-import type { PropType } from 'vue'
 
 import { computed } from 'vue'
 import draggable from 'vuedraggable'
@@ -44,11 +43,11 @@ defineProps({
     fallbackClass: { type: String, default: undefined }
 })
 
-const list = defineModel('moduleValue', {
-    type: Array as PropType<EditorComponent[]>,
+const list = defineModel<EditorComponent[]>('moduleValue', {
+    type: Array,
     default: () => []
 })
-const isDrag = defineModel('drag', {
+const isDrag = defineModel<boolean>('drag', {
     type: Boolean,
     default: false
 })

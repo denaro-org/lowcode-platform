@@ -6,11 +6,23 @@
             <div :class="[styles.flexStyleItem, 'flex-column']">
                 <div :class="[styles.flexTitle, 'flex-row w-100']">
                     <span>{{ item.label }}</span>
-                    <span>{{ item.defaultValue }}</span>
+                    <span>
+                        {{
+                            stateFormModel[
+                                camelCase(item.label) as keyof CSSProperties
+                            ] || item.defaultValue
+                        }}
+                    </span>
 
                     <Radio
+                        :checked="
+                            stateFormModel[
+                                camelCase(item.label) as keyof CSSProperties
+                            ] === item.defaultValue
+                        "
                         :class="[styles.flexDefault, 'flex-row-end']"
-                        size="small">
+                        size="small"
+                        @click="changFlexStyle(item.label, item.defaultValue)">
                         默认
                     </Radio>
                 </div>
@@ -19,7 +31,16 @@
                     <template v-for="_item in item.options" :key="_item.value">
                         <Tooltip :title="`${item.label}: ${_item.value}`">
                             <i
-                                :class="[styles.flexIcon, 'flex flex-center']"
+                                :class="[
+                                    styles.flexIcon,
+                                    stateFormModel[
+                                        camelCase(
+                                            item.label
+                                        ) as keyof CSSProperties
+                                    ] === _item.value && styles.isActive,
+                                    'flex flex-center'
+                                ]"
+                                @click="changFlexStyle(item.label, _item.value)"
                                 v-html="_item.icon"></i>
                         </Tooltip>
                     </template>
@@ -30,18 +51,29 @@
 </template>
 
 <script setup lang="ts">
-import type { CSSProperties, PropType } from 'vue'
+import type { FlexStyleValue } from '@/types'
+import type { CSSProperties } from 'vue'
 
 import { Radio, Tooltip } from 'ant-design-vue'
+import { camelCase } from 'lodash-es'
 
 import styles from './index.module.scss'
 import { flexStyleConfig } from '../const'
 
-const stateFormModel = defineModel('model', {
-    type: Object as PropType<CSSProperties>,
+const stateFormModel = defineModel<CSSProperties>('model', {
+    type: Object,
     default: () => ({})
 })
 defineOptions({
     name: 'FlexStyle'
 })
+
+const changFlexStyle = (key: string, value: FlexStyleValue) => {
+    if (stateFormModel.value.display !== 'flex') {
+        stateFormModel.value.display = 'flex'
+    }
+
+    ;(stateFormModel.value[camelCase(key) as keyof CSSProperties] as unknown) =
+        value
+}
 </script>

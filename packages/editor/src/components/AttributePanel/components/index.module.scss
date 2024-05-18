@@ -17,7 +17,7 @@
 }
 
 .flex-title {
-    color: #333;
+    color: var(--color-text);
 
     > span:nth-child(1) {
         &::after {
@@ -30,16 +30,28 @@
         color: #d9d9d9;
     }
 }
+
 .flex-icons {
     gap: 12px;
 }
+
 .flex-icon {
-    display: inline-block;
     cursor: pointer;
+
+    &:last-child {
+        border-right: none;
+    }
 
     > svg {
         font-size: 28px;
         width: 28px;
         height: 28px;
+        fill: #d9d9d9;
+    }
+
+    &.is-active {
+        > svg {
+            fill: var(--color-primary);
+        }
     }
 }

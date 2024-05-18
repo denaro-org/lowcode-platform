@@ -33,7 +33,7 @@ defineOptions({
     name: 'FormItems'
 })
 const stateFormModel = defineModel<BlockProps>('model', {
-    type: Object as PropType<BlockProps>,
+    type: Object,
     default: () => ({})
 })
 defineProps({

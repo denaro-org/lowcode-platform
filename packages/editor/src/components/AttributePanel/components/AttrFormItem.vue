@@ -39,7 +39,7 @@ import { EditorPropsType } from '@lowcode/shared'
 import { Select, Input, Switch, InputNumber } from 'ant-design-vue'
 
 const stateFormModel = defineModel<BlockProps>('model', {
-    type: Object as PropType<BlockProps>,
+    type: Object,
     default: () => ({})
 })
 defineProps({

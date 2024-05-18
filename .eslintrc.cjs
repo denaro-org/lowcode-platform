@@ -19,5 +19,8 @@ module.exports = {
             }
         }
     ],
+    rules: {
+        'no-unused-vars': 'error'
+    },
     ignorePatterns: ['.eslintrc.*', 'commitlint.config.*', 'cz.config.*']
 }

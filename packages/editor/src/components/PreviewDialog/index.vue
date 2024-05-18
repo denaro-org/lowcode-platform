@@ -28,8 +28,11 @@ defineOptions({
     name: 'PreviewDialog'
 })
 
-const previewUrl = inject(PreviewUrlSymbol)
-const dialogVisible = defineModel('visible', { type: Boolean, default: false })
+const previewUrl = inject<string>(PreviewUrlSymbol)
+const dialogVisible = defineModel<boolean>('visible', {
+    type: Boolean,
+    default: false
+})
 
 const { appDSL } = useAppDSL()
 

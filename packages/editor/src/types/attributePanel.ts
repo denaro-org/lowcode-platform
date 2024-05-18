@@ -70,3 +70,10 @@ interface AlignItems {
     label: 'align-items'
     options: FlexOptions<Property.AlignItems>
 }
+
+export type FlexStyleValue =
+    | Property.FlexDirection
+    | Property.FlexWrap
+    | Property.AlignContent
+    | Property.JustifyContent
+    | Property.AlignItems
