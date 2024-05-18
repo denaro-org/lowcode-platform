@@ -27,7 +27,7 @@ import AttrFormItem from './AttrFormItem.vue'
 import AttrGroupItem from './AttrGroupItem.vue'
 
 defineOptions({
-    name: 'FormItems'
+    name: 'AttrFormItems'
 })
 const stateFormModel = defineModel<
     BlockProps | (CSSProperties & Record<string, string>)

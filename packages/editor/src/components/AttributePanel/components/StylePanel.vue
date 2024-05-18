@@ -12,7 +12,7 @@
 
                 <template v-else>
                     <AttrForm v-model:model="stateFormModel">
-                        <FormItems
+                        <AttrFormItems
                             v-model:model="stateFormModel"
                             :form-item-configs="getFormItemConfigs(item)" />
                     </AttrForm>
@@ -43,10 +43,9 @@ import { Collapse, CollapsePanel, Switch } from 'ant-design-vue'
 import { forEach } from 'lodash-es'
 import { computed, ref } from 'vue'
 
-import AttrForm from './AttrForm.vue'
 import FlexStyle from './FlexStyle.vue'
-import FormItems from './FormItems.vue'
 
+import { AttrForm, AttrFormItems } from '@/components'
 import { useAppDSL } from '@/hooks'
 
 defineOptions({

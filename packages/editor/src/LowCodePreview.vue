@@ -4,7 +4,7 @@
     </template>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { AppDSL, EditorComponent, EditorComponents } from '@lowcode/shared'
 import type { PropType } from 'vue'
 

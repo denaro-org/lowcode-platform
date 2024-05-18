@@ -26,6 +26,7 @@ const ellipsisConfig: EditorComponent = {
         return () => (
             <div style={styles}>
                 <tm-var-ellipsis
+                    v-model:expand={props.expand}
                     ref={(el: VNode) => useRegisterRef(el, block.UUID ?? '')}
                     config={props}
                 />
@@ -37,6 +38,11 @@ const ellipsisConfig: EditorComponent = {
         text: createEditorInputProp({
             label: '文案',
             defaultValue: '这是一段文案'
+        }),
+        // 是否展开
+        expand: createEditorSwitchProp({
+            label: '是否展开',
+            defaultValue: false
         }),
         // 展开触发方式
         expandTrigger: createEditorSelectProp({

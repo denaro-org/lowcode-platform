@@ -78,7 +78,6 @@ const changeAddonAfter = (
     item: EditorFormItemProps
 ) => {
     if (item.useAddonAfter && item['__propName__']) {
-        console.log(thatModel.value)
         stateFormModel.value[item['__propName__']] = value
             ? `${value}${item.propsBind?.addonAfter ?? thatModel.value['__addonAfter__'] ?? 'px'}`
             : undefined

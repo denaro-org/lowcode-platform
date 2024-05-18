@@ -4,7 +4,7 @@
     </div>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { EditorBlock } from '@lowcode/shared'
 import type { PropType } from 'vue'
 

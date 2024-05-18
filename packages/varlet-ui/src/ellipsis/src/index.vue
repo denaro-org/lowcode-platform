@@ -1,5 +1,5 @@
 <template>
-    <Ellipsis v-bind="config">
+    <Ellipsis v-model:expand="isExpand" v-bind="config">
         {{ config.text }}
     </Ellipsis>
 </template>
@@ -14,4 +14,8 @@ defineOptions({
     name: 'TmVarEllipsis'
 })
 defineProps(varEllipsisProps)
+const isExpand = defineModel('expand', {
+    type: Boolean,
+    default: false
+})
 </script>

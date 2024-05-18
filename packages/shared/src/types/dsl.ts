@@ -51,11 +51,29 @@ export interface EditorPage {
     type: 'page'
 }
 
+// 数据源
+export type DataSourceCategory = 'selectOptions'
+
+export interface DataSource {
+    // 数据源的唯一 id
+    UUID: string
+    // 数据源的类型分类, selectOptions 为下拉框数据源
+    category: DataSourceCategory
+    // 数据源的配置值
+    config: SelectProps['options']
+    // 数据源名称
+    name: string
+    // 节点类型
+    type: 'data-source'
+}
+
 // 页面集合
 export type EditorPages = Record<string, EditorPage>
 
 // appDSL
 export interface AppDSL {
+    // 数据源
+    dataSources?: DataSource[]
     // 页面
     pages: EditorPages
     // 节点类型

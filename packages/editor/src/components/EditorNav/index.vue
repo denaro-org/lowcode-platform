@@ -36,7 +36,7 @@
     </section>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { NavConfig } from '@/types'
 
 import { DoubleLeftOutlined, DoubleRightOutlined } from '@ant-design/icons-vue'

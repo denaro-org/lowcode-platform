@@ -21,7 +21,7 @@
             </div>
         </FormItem>
 
-        <FormItems
+        <AttrFormItems
             v-model:model="stateFormModel"
             :form-item-configs="formItemConfigs" />
     </AttrForm>
@@ -35,10 +35,9 @@ import { FormItem, Tooltip, message } from 'ant-design-vue'
 import { forEach } from 'lodash-es'
 import { computed } from 'vue'
 
-import AttrForm from './AttrForm.vue'
-import FormItems from './FormItems.vue'
 import styles from './index.module.scss'
 
+import { AttrForm, AttrFormItems } from '@/components'
 import { useAppDSL, useUISchema } from '@/hooks'
 
 defineOptions({

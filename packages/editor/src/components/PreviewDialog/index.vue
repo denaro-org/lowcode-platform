@@ -16,7 +16,7 @@
     </Modal>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { Modal } from 'ant-design-vue'
 import { inject, watchEffect } from 'vue'
 import WujieVue from 'wujie-vue3'

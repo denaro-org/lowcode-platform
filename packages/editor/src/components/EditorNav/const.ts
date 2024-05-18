@@ -1,10 +1,14 @@
 // 默认的侧边栏配置
 import type { NavConfig } from '@/types'
 
-import { DropboxOutlined, FileTextOutlined } from '@ant-design/icons-vue'
+import {
+    DatabaseOutlined,
+    DropboxOutlined,
+    FileTextOutlined
+} from '@ant-design/icons-vue'
 import { h } from 'vue'
 
-import { ListWarpper, PageWarpper } from './components/index'
+import { DataSource, ListWarpper, PageWarpper } from './components/index'
 
 export const defaultNavConfig: NavConfig = [
     {
@@ -18,5 +22,11 @@ export const defaultNavConfig: NavConfig = [
         name: 'basic-components',
         icon: h(DropboxOutlined),
         component: h(ListWarpper)
+    },
+    {
+        label: '数据源',
+        name: 'data-source',
+        icon: h(DatabaseOutlined),
+        component: h(DataSource)
     }
 ]

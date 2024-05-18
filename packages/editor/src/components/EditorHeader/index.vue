@@ -40,7 +40,7 @@
     <PreviewDialog v-model:visible="isShowH5Preview" />
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { PlayCircleOutlined } from '@ant-design/icons-vue'
 import { Button, Tooltip } from 'ant-design-vue'
 import { ref } from 'vue'

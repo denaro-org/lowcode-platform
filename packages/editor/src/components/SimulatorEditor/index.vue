@@ -30,7 +30,7 @@
     </section>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { EditorBlock } from '@lowcode/shared'
 
 import { ref, computed } from 'vue'

@@ -22,7 +22,7 @@
     </draggable>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { EditorComponent } from '@lowcode/shared'
 
 import { computed } from 'vue'

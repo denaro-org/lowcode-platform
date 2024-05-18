@@ -1,5 +1,5 @@
-import type { EditorProps } from '@lowcode/shared'
-import type { TabPaneProps } from 'ant-design-vue'
+import type { DataSourceCategory, EditorProps } from '@lowcode/shared'
+import type { SelectProps, TabPaneProps } from 'ant-design-vue'
 import type { Property } from 'csstype'
 import type { VNode } from 'vue'
 
@@ -77,3 +77,8 @@ export type FlexStyleValue =
     | Property.AlignContent
     | Property.JustifyContent
     | Property.AlignItems
+
+export type DataSourceCategorys = SelectProps['options'] &
+    Array<{
+        value: DataSourceCategory
+    }>
