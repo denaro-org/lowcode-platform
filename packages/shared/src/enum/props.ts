@@ -2,6 +2,8 @@
 export enum EditorPropsType {
     // 复选框
     checkbox = 'checkbox',
+    // 颜色选择器
+    color = 'color',
     // 组合类型
     group = 'group',
     // 输入框

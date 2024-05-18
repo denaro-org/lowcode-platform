@@ -7,8 +7,11 @@ import type {
 import type { ComputedRef, DeepReadonly } from 'vue'
 
 export interface IState {
+    // DSL，不可被直接修改
     appDSL: AppDSL
+    // 当前编辑的组件配置
     currentBlock: EditorBlock
+    // 当前被操作的页面
     currentPage: EditorPage
 }
 
@@ -28,4 +31,13 @@ export interface UseAppDSL {
 export interface UseUISchema {
     // 当前操作的组件配置
     currentSchema: ComputedRef<EditorComponent>
+}
+
+export interface UseDotProp {
+    // 是否是 xx.xx 的写法
+    isDotProp: boolean
+    // 属性名
+    prop: string
+    // 属性所在的对象
+    propObj: Record<string, unknown>
 }

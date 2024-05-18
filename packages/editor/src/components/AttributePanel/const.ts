@@ -48,17 +48,13 @@ export const tabList: TabListItem[] = [
                     width: createEditorNumberProp({
                         label: '宽度',
                         useAddonAfter: true,
-                        propsBind: {
-                            addonAfter: 'px'
-                        }
+                        addonAfters: ['px', '%']
                     }),
                     // 高度
                     height: createEditorNumberProp({
                         label: '高度',
                         useAddonAfter: true,
-                        propsBind: {
-                            addonAfter: 'px'
-                        }
+                        addonAfters: ['px', '%']
                     })
                 }
             },

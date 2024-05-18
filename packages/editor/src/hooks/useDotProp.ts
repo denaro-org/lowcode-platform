@@ -1,10 +1,6 @@
 // 转换 xx.xx 的写法
 
-interface UseDotProp {
-    isDotProp: boolean
-    prop: string
-    propObj: Record<string, unknown>
-}
+import type { UseDotProp } from '@/types'
 
 export const useDotProp = (
     originObj: Record<string, unknown>,

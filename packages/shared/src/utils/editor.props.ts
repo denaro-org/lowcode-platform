@@ -105,6 +105,16 @@ export const createEditorNumberProp = (
 }
 
 // ---- color 输入类型的表单项配置 ----
+type EditorColorProp = UserPropConfig<object>
+
+export const createEditorColorProp = (
+    propConfig: EditorColorProp
+): EditorProps => {
+    return {
+        type: EditorPropsType.color,
+        ...propConfig
+    }
+}
 
 // ---- group 输入类型的表单项配置 ----
 type EditorGroupProp = UserPropConfig<object> & {
