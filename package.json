@@ -3,32 +3,32 @@
     "version": "1.0.0",
     "description": "低代码平台",
     "main": "index.ts",
-    "scripts": {
-        "bootstrap": "pnpm run syncpack-fix && pnpm update -r",
-        "preinstall": "npx only-allow pnpm",
-        "lint": "eslint --ext vue,js,jsx,cjs,mjs,ts,tsx,cts,mts --fix .",
-        "prepare": "husky install",
-        "prettier": "prettier . --write",
-        "start:compile-dev": "concurrently \"pnpm run compile-dev:editor\" \"pnpm run compile-dev:varlet-ui\"",
-        "start:compile-build": "concurrently \"pnpm run compile-build:editor\" \"pnpm run compile-build:varlet-ui\"",
-        "compile-dev:editor": "pnpm --filter \"@lowcode/editor\" run dev",
-        "compile-dev:varlet-ui": "pnpm --filter \"@lowcode/varlet-ui\" run dev",
-        "compile-build:editor": "pnpm --filter \"@lowcode/editor\" run build",
-        "compile-build:varlet-ui": "pnpm --filter \"@lowcode/varlet-ui\" run build",
-        "start:example": "pnpm  --filter \"@lowcode/playgroud\" run dev",
-        "stylelint": "stylelint \"./**/*.{css,scss,sass,vue,html}\" --fix",
-        "syncpack-fix": "npx syncpack fix-mismatches --indent \"    \"",
-        "commit": "git add . && git-cz"
-    },
     "workspaces": [
         "packages/*",
         "examples/*"
     ],
+    "scripts": {
+        "bootstrap": "pnpm run syncpack-fix && pnpm update -r",
+        "commit": "git add . && git-cz",
+        "compile-build:editor": "pnpm --filter \"@lowcode/editor\" run build",
+        "compile-build:varlet-ui": "pnpm --filter \"@lowcode/varlet-ui\" run build",
+        "compile-dev:editor": "pnpm --filter \"@lowcode/editor\" run dev",
+        "compile-dev:varlet-ui": "pnpm --filter \"@lowcode/varlet-ui\" run dev",
+        "preinstall": "npx only-allow pnpm",
+        "lint": "eslint --ext vue,js,jsx,cjs,mjs,ts,tsx,cts,mts --fix .",
+        "prepare": "husky install",
+        "prettier": "prettier . --write",
+        "start:compile-build": "concurrently \"pnpm run compile-build:editor\" \"pnpm run compile-build:varlet-ui\"",
+        "start:compile-dev": "concurrently \"pnpm run compile-dev:editor\" \"pnpm run compile-dev:varlet-ui\"",
+        "start:example": "pnpm  --filter \"@lowcode/playgroud\" run dev",
+        "stylelint": "stylelint \"./**/*.{css,scss,sass,vue,html}\" --fix",
+        "syncpack-fix": "npx syncpack fix-mismatches --indent \"    \""
+    },
     "lint-staged": {
         "**/*": "prettier --write --ignore-unknown",
         "*.{vue,js,jsx,cjs,mjs,ts,tsx,cts,mts}": "eslint --fix",
-        "package.json": "sort-package-json",
-        "packages/**/package.json": "sort-package-json"
+        "package.json": "sort-package-json & npm run syncpack-fix",
+        "{packages,example}/**/package.json": "sort-package-json & npm run syncpack-fix"
     },
     "config": {
         "commitizen": {

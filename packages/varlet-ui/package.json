@@ -9,17 +9,17 @@
         },
         "./index.css": "./lib/es/style.css"
     },
-    "scripts": {
-        "dev": "vite build --mode watch --watch",
-        "build": "vite build"
-    },
+    "types": "./lib/types/index.d.ts",
     "files": [
         "lib"
     ],
-    "types": "./lib/types/index.d.ts",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite build --mode watch --watch"
+    },
     "dependencies": {
         "@lowcode/shared": "workspace:^",
-        "@varlet/ui": "^3.2.9",
+        "@varlet/ui": "^3.2.10",
         "vue": "^3.4.27"
     },
     "devDependencies": {
