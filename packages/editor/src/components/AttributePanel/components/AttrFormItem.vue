@@ -27,20 +27,24 @@
         <InputNumber
             v-model:value="stateFormModel[item.propName]"
             class="w-100"
-            v-bind="item.propsBind" />
+            v-bind="item.propsBind"
+            @change="changeAddonAfter($event, item)" />
     </template>
 </template>
 
 <script setup lang="ts">
 import type { BlockProps, EditorFormItemProps } from '@lowcode/shared'
-import type { PropType } from 'vue'
+import type { InputNumberProps } from 'ant-design-vue'
+import type { PropType, CSSProperties } from 'vue'
 
 import { EditorPropsType } from '@lowcode/shared'
 import { Select, Input, Switch, InputNumber } from 'ant-design-vue'
 
-const stateFormModel = defineModel<BlockProps>('model', {
+const stateFormModel = defineModel<
+    BlockProps | (CSSProperties & Record<string, string>)
+>('model', {
     type: Object,
-    default: () => ({})
+    required: true
 })
 defineProps({
     item: {
@@ -51,4 +55,15 @@ defineProps({
 defineOptions({
     name: 'AttrFormItem'
 })
+
+const changeAddonAfter = (
+    value: InputNumberProps['value'],
+    item: EditorFormItemProps
+) => {
+    if (item.useAddonAfter && item['__propName__']) {
+        stateFormModel.value[item['__propName__']] = value
+            ? `${value}${item.propsBind?.addonAfter ?? 'px'}`
+            : undefined
+    }
+}
 </script>

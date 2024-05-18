@@ -1,3 +1,4 @@
+import type { OnEvent } from '@lowcode/shared'
 import type { VNode } from 'vue'
 
 export interface BtnItem {
@@ -6,5 +7,5 @@ export interface BtnItem {
     // 配置的文案
     label: string
     // 绑定的 on 事件
-    on: Record<'onClick', () => void>
+    on: OnEvent
 }

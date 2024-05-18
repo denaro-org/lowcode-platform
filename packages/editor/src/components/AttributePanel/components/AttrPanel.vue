@@ -1,10 +1,5 @@
 <template>
-    <Form
-        label-align="left"
-        :model="stateFormModel"
-        auto-complete="off"
-        :label-col="{ span: 8 }"
-        :wrapper-col="{ span: 16 }">
+    <AttrForm v-model:model="stateFormModel">
         <FormItem
             label="组件 ID"
             :tooltip="`你可以利用该组件ID。对该组件进行获取和设置其属性, 组件可用属性可在控制台输入：$$refs['${currentBlock.UUID}'] 进行查看`">
@@ -29,17 +24,18 @@
         <FormItems
             v-model:model="stateFormModel"
             :form-item-configs="formItemConfigs" />
-    </Form>
+    </AttrForm>
 </template>
 
 <script setup lang="ts">
 import type { EditorFormItemProps } from '@lowcode/shared'
 
 import { CopyOutlined } from '@ant-design/icons-vue'
-import { Form, FormItem, Tooltip, message } from 'ant-design-vue'
+import { FormItem, Tooltip, message } from 'ant-design-vue'
 import { forEach } from 'lodash-es'
 import { computed } from 'vue'
 
+import AttrForm from './AttrForm.vue'
 import FormItems from './FormItems.vue'
 import styles from './index.module.scss'
 

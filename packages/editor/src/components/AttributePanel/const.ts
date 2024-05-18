@@ -47,7 +47,7 @@ export const tabList: TabListItem[] = [
                     // 宽度
                     width: createEditorNumberProp({
                         label: '宽度',
-                        tooltip: '设置当前选中元素的宽度',
+                        useAddonAfter: true,
                         propsBind: {
                             addonAfter: 'px'
                         }
@@ -55,7 +55,7 @@ export const tabList: TabListItem[] = [
                     // 高度
                     height: createEditorNumberProp({
                         label: '高度',
-                        tooltip: '设置当前选中元素的高度',
+                        useAddonAfter: true,
                         propsBind: {
                             addonAfter: 'px'
                         }

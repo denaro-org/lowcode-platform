@@ -17,9 +17,12 @@ export interface UserPropConfig<T extends object> {
     // 表单项标签名称
     label?: string
     // 绑定给 antd 的表单项 props 配置
-    propsBind?: T
-    // 表单项的提示信息
-    tooltip?: string
+    propsBind?: T & {
+        // 绑定的事件
+        on?: OnEvent
+    }
+    // 是否使用 propsBind 的 addonAfter 来补充单位（一般是绑定到 style 上的单位）
+    useAddonAfter?: boolean
 }
 
 export interface EditorProps<T extends object = object>
@@ -33,8 +36,15 @@ export interface EditorProps<T extends object = object>
 type PropsBind = SelectProps & InputProps & InputNumberProps & SwitchProps
 
 export type EditorFormItemProps = EditorProps<PropsBind> & {
+    // 开启 useAddonAfter 表单项绑定的 prop
+    __propName__?: string
     // 子项配置
     children?: EditorProps[]
     // 表单项绑定的 prop
     propName: string
 }
+
+// 绑定的事件
+export type OnEvent = Partial<
+    Record<'onChange' | 'onClick', (args: unknown) => void>
+>

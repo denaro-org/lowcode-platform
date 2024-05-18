@@ -62,7 +62,7 @@ import { flexStyleConfig } from '../const'
 
 const stateFormModel = defineModel<CSSProperties>('model', {
     type: Object,
-    default: () => ({})
+    required: true
 })
 defineOptions({
     name: 'FlexStyle'

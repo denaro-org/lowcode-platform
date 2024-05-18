@@ -34,7 +34,7 @@ export interface EditorBlock {
     // 组件的 props 配置
     props: BlockProps
     // 样式
-    styles?: CSSProperties
+    styles?: CSSProperties & Record<string, string>
 }
 
 // 页面节点

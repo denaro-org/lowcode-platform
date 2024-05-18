@@ -23,7 +23,11 @@ export const createNewBlock = (component: EditorComponent): EditorBlock => {
             paddingTop: '0',
             paddingRight: '0',
             paddingLeft: '0',
-            paddingBottom: '0'
+            paddingBottom: '0',
+            marginTop: '0',
+            marginRight: '0',
+            marginLeft: '0',
+            marginBottom: '0'
         },
         draggable: component.draggable ?? true,
         props: Object.entries(component.props ?? {}).reduce(

@@ -17,16 +17,18 @@
 
 <script setup lang="ts">
 import type { BlockProps, EditorFormItemProps } from '@lowcode/shared'
-import type { PropType } from 'vue'
+import type { CSSProperties, PropType } from 'vue'
 
 import { Select, Tooltip, FormItemRest } from 'ant-design-vue'
 import { computed, reactive } from 'vue'
 
 import AttrFormItem from './AttrFormItem.vue'
 
-const stateFormModel = defineModel<BlockProps>('model', {
+const stateFormModel = defineModel<
+    BlockProps | (CSSProperties & Record<string, string>)
+>('model', {
     type: Object,
-    default: () => ({})
+    required: true
 })
 const props = defineProps({
     item: {

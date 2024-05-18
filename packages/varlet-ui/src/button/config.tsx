@@ -82,7 +82,6 @@ const buttonConfig: EditorComponent = {
         // loading 的半径，只作用于 loading-type="circle" 时
         loadingRadius: createEditorNumberProp({
             label: 'loading 的半径',
-            tooltip: '最小值 0px, 最大值 24px',
             propsBind: {
                 min: 0,
                 max: 24,
@@ -153,7 +152,6 @@ const buttonConfig: EditorComponent = {
                     defaultValue: true
                 }),
                 createEditorNumberProp({
-                    tooltip: '最小值 0px, 最大值 24px',
                     propsBind: {
                         min: 0,
                         max: 24,

@@ -1,9 +1,6 @@
 <template>
     <template v-for="(item, index) in formItemConfigs" :key="index">
-        <FormItem
-            :name="item.propName"
-            :rules="item.rules"
-            :tooltip="item.tooltip">
+        <FormItem :name="item.propName" :rules="item.rules">
             <template #label>
                 <span class="text-ellipsis w-100" :title="item.label">
                     {{ item.label }}
@@ -21,7 +18,7 @@
 
 <script setup lang="ts">
 import type { BlockProps, EditorFormItemProps } from '@lowcode/shared'
-import type { PropType } from 'vue'
+import type { CSSProperties, PropType } from 'vue'
 
 import { EditorPropsType } from '@lowcode/shared'
 import { FormItem } from 'ant-design-vue'
@@ -32,7 +29,9 @@ import AttrGroupItem from './AttrGroupItem.vue'
 defineOptions({
     name: 'FormItems'
 })
-const stateFormModel = defineModel<BlockProps>('model', {
+const stateFormModel = defineModel<
+    BlockProps | (CSSProperties & Record<string, string>)
+>('model', {
     type: Object,
     default: () => ({})
 })

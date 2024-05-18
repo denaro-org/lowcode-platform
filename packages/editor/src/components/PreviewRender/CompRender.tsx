@@ -22,9 +22,12 @@ export default defineComponent({
             item => item.key === props.element.componentKey
         )
 
+        const elementProps = props.element.props ?? {}
+        const elementStyles = props.element.styles ?? {}
+
         return thatRender?.render({
-            styles: props.element.styles ?? {},
-            props: props.element.props ?? {},
+            styles: elementStyles,
+            props: elementProps,
             model: {},
             block: props.element,
             custom: {}
