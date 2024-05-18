@@ -1,5 +1,5 @@
 <template>
-    <Modal v-model:open="isOpen" title="新增数据源">
+    <Modal v-model:open="isOpen" title="新增数据源" destroy-on-close>
         <Form
             :model="stateFormModel"
             auto-complete="off"
@@ -12,6 +12,7 @@
 
 <script setup lang="ts">
 import { Modal, Form, FormItem } from 'ant-design-vue'
+import { PropType } from 'vue'
 
 defineOptions({
     name: 'DataSourceModel'
@@ -24,5 +25,11 @@ const isOpen = defineModel<boolean>('open', {
 const stateFormModel = defineModel('model', {
     type: Object,
     default: () => ({})
+})
+defineProps({
+    mode: {
+        type: String as PropType<'add' | 'edit'>,
+        default: 'add'
+    }
 })
 </script>

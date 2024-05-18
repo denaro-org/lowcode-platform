@@ -7,7 +7,7 @@ import type {
 import type { ComputedRef, DeepReadonly } from 'vue'
 
 export interface IState {
-    // DSL，不可被直接修改
+    // DSL, 不可被直接修改
     appDSL: AppDSL
     // 当前编辑的组件配置
     currentBlock: EditorBlock
@@ -16,15 +16,27 @@ export interface IState {
 }
 
 export interface UseAppDSL {
-    // DSL，不可被直接修改
+    /**
+     * @description DSL, 不可被直接修改
+     */
     appDSL: DeepReadonly<AppDSL>
-    // 当前页面
+    /**
+     * @description 当前页面
+     */
     currentBlock: ComputedRef<EditorBlock>
-    // 当前被操作的组件
+    /**
+     * @description 设置当前被操作的组件
+     * @param {EditorBlock} block  当前被操作的组件配置
+     */
     currentPage: ComputedRef<EditorPage>
-    // 初始化 DSL
+    /**
+     * @description 初始化 DSL
+     */
     initAppDSL: () => void
-    // 设置当前被操作的组件
+    /**
+     * @description 设置当前被操作的组件
+     * @param {EditorBlock} block  当前被操作的组件配置
+     */
     setCurrentBlock: (block: EditorBlock) => void
 }
 

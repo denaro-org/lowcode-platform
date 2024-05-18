@@ -50,7 +50,7 @@ const imageConfig: EditorComponent = {
             defaultValue: DEFAULT_FIT,
             constDict: FIT_LIST
         }),
-        // 可替换元素的内容在其内容框中的位置，等同于 object-position
+        // 可替换元素的内容在其内容框中的位置, 等同于 object-position
         position: createEditorInputProp({
             label: '可替换元素的内容在其内容框中的位置',
             defaultValue: undefined

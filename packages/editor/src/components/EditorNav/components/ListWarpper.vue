@@ -1,6 +1,6 @@
 <template>
     <section :class="[styles.listWarpper, 'flex-colum']">
-        <div :class="[styles.listSearch]">
+        <div :class="[styles.warpperSearch]">
             <InputSearch
                 v-model.value="searchValue"
                 disabled

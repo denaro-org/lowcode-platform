@@ -37,7 +37,7 @@
         </section>
     </header>
 
-    <PreviewDialog v-model:visible="isShowH5Preview" />
+    <PreviewDialog v-model:open="isOpen" />
 </template>
 
 <script setup lang="ts">
@@ -53,9 +53,9 @@ defineOptions({
     name: 'EditorHeader'
 })
 
-const isShowH5Preview = ref(false)
+const isOpen = ref(false)
 
 const runPreview = () => {
-    isShowH5Preview.value = true
+    isOpen.value = true
 }
 </script>

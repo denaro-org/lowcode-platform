@@ -67,7 +67,7 @@ const activeComponent = computed(() => {
 })
 
 const state = reactive({
-    activeName: 'basic-components',
+    activeName: 'data-source',
     isOpen: true
 })
 </script>

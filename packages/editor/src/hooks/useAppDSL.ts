@@ -16,9 +16,14 @@ const defaultValue: AppDSL = {
     pages: {
         // 页面
         '/': createNewPage({ title: '首页' })
-    }
+    },
+    dataSources: []
 }
 
+/**
+ * DSL 数据操作的 hooks
+ * @returns {UseAppDSL}
+ */
 export const initDSLData = (): UseAppDSL => {
     const localData: AppDSL = JSON.parse(localStorage.getItem(localKey) ?? '{}')
     const appDSL: AppDSL = Object.keys(localData?.pages ?? {}).length
@@ -35,18 +40,26 @@ export const initDSLData = (): UseAppDSL => {
             currentPage?.blocks?.find(item => item.focus) ?? ({} as EditorBlock)
     })
 
-    // 设置当前被操作的组件
+    /**
+     * 设置当前被操作的组件
+     * @param {EditorBlock} block  当前被操作的组件配置
+     */
     const setCurrentBlock = (block: EditorBlock): void => {
         state.currentBlock = block
         updateAppDSL(state.appDSL as AppDSL)
     }
 
-    // 更新本地存储的 appDSL
+    /**
+     * 更新本地存储的 appDSL
+     * @param {AppDSL} appDSL appDSL
+     */
     const updateAppDSL = (appDSL: AppDSL): void => {
         localStorage.setItem(localKey, JSON.stringify(appDSL))
     }
 
-    // 初始化 DSL
+    /**
+     * 初始化 DSL
+     */
     const initAppDSL = (): void => {
         window.addEventListener('beforeunload', () => {
             sessionStorage.setItem(localKey, JSON.stringify(appDSL))
@@ -62,5 +75,9 @@ export const initDSLData = (): UseAppDSL => {
     }
 }
 
+/**
+ * DSL 数据操作的 hooks 注入
+ * @returns {UseAppDSL}
+ */
 export const useAppDSL = (): UseAppDSL =>
     inject<UseAppDSL>(InitDSLDataSymbol as symbol) as UseAppDSL

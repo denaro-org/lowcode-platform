@@ -1,5 +1,5 @@
 <template>
-    <Modal v-model:open="dialogVisible" :footer="null" :closable="false">
+    <Modal v-model:open="isOpen" :footer="null" :closable="false">
         <WujieVue
             ref="preview"
             name="LowCodePreview"
@@ -29,15 +29,16 @@ defineOptions({
 })
 
 const previewUrl = inject<string>(PreviewUrlSymbol)
-const dialogVisible = defineModel<boolean>('visible', {
+const isOpen = defineModel<boolean>('open', {
     type: Boolean,
+    required: true,
     default: false
 })
 
 const { appDSL } = useAppDSL()
 
 const plugins = [
-    // vite 应用切换至子应用，有可能导致样式消失，具体原因和解决办法详见 [issue](https://github.com/Tencent/wujie/issues/434#issuecomment-1614089196)
+    // vite 应用切换至子应用, 有可能导致样式消失, 具体原因和解决办法详见 [issue](https://github.com/Tencent/wujie/issues/434#issuecomment-1614089196)
     {
         patchElementHook(element: HTMLStyleElement, iframeWindow: Window) {
             if (element.nodeName === 'STYLE') {

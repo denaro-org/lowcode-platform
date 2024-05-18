@@ -80,7 +80,7 @@ const buttonConfig: EditorComponent = {
             constDict: LOADING_TYPE_LIST,
             display: ({ model }) => !!model.loading
         }),
-        // loading 的半径，只作用于 loading-type="circle" 时
+        // loading 的半径, 只作用于 loading-type="circle" 时
         loadingRadius: createEditorNumberProp({
             label: 'loading 的半径',
             propsBind: {
@@ -103,7 +103,7 @@ const buttonConfig: EditorComponent = {
             label: 'loading 的颜色',
             display: ({ model }) => !!model.loading
         }),
-        // 自动 loading 模式，方便处理异步任务
+        // 自动 loading 模式, 方便处理异步任务
         autoLoading: createEditorSwitchProp({
             label: '自动 loading 模式',
             defaultValue: false

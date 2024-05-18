@@ -10,7 +10,7 @@ import type {
 export type SelectOptions = SelectProps['options']
 
 export interface UserPropConfig<T extends object> {
-    // 多个 addonAfter，目前仅适用于 type 为 inputNumber 的表单项
+    // 多个 addonAfter, 目前仅适用于 type 为 inputNumber 的表单项
     addonAfters?: string[]
     // 默认值
     defaultValue?: unknown
@@ -23,7 +23,7 @@ export interface UserPropConfig<T extends object> {
         // 绑定的事件
         on?: OnEvent
     }
-    // 是否使用 propsBind 的 addonAfter 来补充单位（一般是绑定到 style 上的单位），目前仅适用于 type 为 inputNumber 的表单项
+    // 是否使用 propsBind 的 addonAfter 来补充单位（一般是绑定到 style 上的单位）, 目前仅适用于 type 为 inputNumber 的表单项
     useAddonAfter?: boolean
 }
 

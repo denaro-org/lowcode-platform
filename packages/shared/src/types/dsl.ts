@@ -73,7 +73,7 @@ export type EditorPages = Record<string, EditorPage>
 // appDSL
 export interface AppDSL {
     // 数据源
-    dataSources?: DataSource[]
+    dataSources: DataSource[]
     // 页面
     pages: EditorPages
     // 节点类型
