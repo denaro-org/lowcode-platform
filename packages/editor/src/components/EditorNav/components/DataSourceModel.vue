@@ -49,14 +49,6 @@ defineProps({
     }
 })
 
-// const config = [
-//     {
-//         label: undefined,
-//         value: undefined,
-//         disabled: undefined
-//     }
-// ]
-
 const changeDataSource = (val: SelectProps['value']) => {
     const config = dataSourceConfig[val as DataSourceCategory]
     const configValue = Object.keys(config)

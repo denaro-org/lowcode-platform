@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import type { EditorFormItemProps } from '@lowcode/shared'
+import type { EditorFormItemProps, SelectOptions } from '@lowcode/shared'
 import type { InputNumberProps } from 'ant-design-vue'
 import type { PropType } from 'vue'
 
@@ -73,11 +73,14 @@ const thatModel = ref<Record<string, string>>({
 
 /**
  * @description 修改 addonAfter 配置的回调
+ * @param {InputNumberProps['value']} value 数字输入框绑定值
+ * @param {EditorFormItemProps} item 传入的表单项配置
+ * @return {void}
  */
 const changeAddonAfter = (
     value: InputNumberProps['value'],
     item: EditorFormItemProps
-) => {
+): void => {
     if (item.useAddonAfter && item['__propName__']) {
         stateFormModel.value[item['__propName__']] = value
             ? `${value}${item.propsBind?.addonAfter ?? thatModel.value['__addonAfter__'] ?? 'px'}`
@@ -87,8 +90,10 @@ const changeAddonAfter = (
 
 /**
  * @description 获取 addonAfter 的 options
+ * @param {string[]} addonAfters 传入 addonAfters 数组
+ * @return {SelectOptions}
  */
-const getAddonAfterOptions = (addonAfters: string[]) => {
+const getAddonAfterOptions = (addonAfters: string[]): SelectOptions => {
     if (!addonAfters || !Array.isArray(addonAfters)) {
         return []
     }
@@ -100,6 +105,6 @@ const getAddonAfterOptions = (addonAfters: string[]) => {
         }
     })
 
-    return result
+    return result as SelectOptions
 }
 </script>

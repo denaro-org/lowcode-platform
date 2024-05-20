@@ -38,10 +38,25 @@ export interface EditorComponent {
      * @description 组件渲染函数
      */
     render: (data: {
+        /**
+         * @description 当前选中组件配置
+         */
         block: EditorBlockData
+        /**
+         * @description 绑定的额外配置项
+         */
         custom: Record<string, unknown>
+        /**
+         * @description 绑定的表单值
+         */
         model: Record<string, unknown>
+        /**
+         * @description 绑定的 props 配置
+         */
         props: Record<string, unknown>
+        /**
+         * @description 绑定的样式
+         */
         styles: CSSProperties
     }) => () => JSX.Element
     /**

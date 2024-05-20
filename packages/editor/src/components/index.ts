@@ -12,6 +12,10 @@ export { default as CompRender } from './PreviewRender/CompRender.tsx'
 export { default as PreviewSlotItem } from './PreviewRender/PreviewSlotItem.vue'
 // 属性面板
 export { default as AttributePanel } from './AttributePanel/index.vue'
+// 画板配置
+export { default as CanvasSettings } from './CanvasSettings/index.vue'
+// 预览弹窗
+export { default as PreviewDialog } from './PreviewDialog/index.vue'
 
 // 导出表单组件
 export * from './AttrFormComp'

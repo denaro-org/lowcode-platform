@@ -43,7 +43,6 @@ export const initDSLData = (): UseAppDSL => {
     /**
      * @description 设置当前被操作的组件
      * @param {EditorBlock} block  当前被操作的组件配置
-     * @returns void
      */
     const setCurrentBlock = (block: EditorBlock): void => {
         state.currentBlock = block
@@ -53,7 +52,6 @@ export const initDSLData = (): UseAppDSL => {
     /**
      * @description 更新本地存储的 appDSL
      * @param {AppDSL} appDSL appDSL
-     * @returns void
      */
     const updateAppDSL = (appDSL: AppDSL): void => {
         localStorage.setItem(localKey, JSON.stringify(appDSL))
@@ -61,7 +59,6 @@ export const initDSLData = (): UseAppDSL => {
 
     /**
      * @description 初始化 DSL
-     * @returns void
      */
     const initAppDSL = (): void => {
         window.addEventListener('beforeunload', () => {

@@ -1,3 +1,5 @@
+import type { BtnItem } from '@/types'
+
 import {
     CloudDownloadOutlined,
     CodeOutlined,
@@ -6,8 +8,6 @@ import {
     SettingOutlined
 } from '@ant-design/icons-vue'
 import { h } from 'vue'
-
-import { type BtnItem } from '@/types'
 
 export const centerBtnList: BtnItem[] = [
     {
@@ -53,11 +53,6 @@ export const centerBtnList: BtnItem[] = [
     {
         icon: h(SettingOutlined),
         label: '画布配置',
-        on: {
-            onClick: (): void => {
-                //
-                console.log(111)
-            }
-        }
+        componentBindName: 'canvasSettings'
     }
 ]

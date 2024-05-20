@@ -12,7 +12,12 @@
                         'flex-column',
                         'flex-row-center'
                     ]"
-                    v-bind="item.on">
+                    v-bind="item.on"
+                    @click="
+                        open({
+                            name: item.componentBindName as ComponentBindName
+                        })
+                    ">
                     <Tooltip placement="bottom" :title="item.label">
                         <component :is="item.icon" :class="[styles.btnIcon]" />
                         <span class="text-ellipsis">{{ item.label }}</span>
@@ -29,7 +34,7 @@
                         type="primary"
                         shape="circle"
                         size="large"
-                        @click="runPreview">
+                        @click="open({ name: 'previewDialog' })">
                         <PlayCircleOutlined />
                     </Button>
                 </div>
@@ -37,25 +42,40 @@
         </section>
     </header>
 
-    <PreviewDialog v-model:open="isOpen" />
+    <component
+        :is="componentBind.name"
+        v-bind="componentBind.bindProps"
+        v-model:open="componentBind.open" />
 </template>
 
 <script setup lang="ts">
+import type { BindConfig, UseOpenModel, ComponentBindName } from '@/types'
+
 import { PlayCircleOutlined } from '@ant-design/icons-vue'
 import { Button, Tooltip } from 'ant-design-vue'
-import { ref } from 'vue'
+import { provide } from 'vue'
 
 import { centerBtnList } from './const'
 import styles from './index.module.scss'
-import PreviewDialog from '../PreviewDialog/index.vue'
+
+import { initOpenModel } from '@/hooks'
+import { InitOpenModelSymbol } from '@/symbol'
 
 defineOptions({
     name: 'EditorHeader'
 })
 
-const isOpen = ref(false)
+const { componentBind, openComponent } = initOpenModel()
 
-const runPreview = () => {
-    isOpen.value = true
+/**
+ * @description 打开组件
+ */
+const open = (config: BindConfig) => {
+    openComponent({
+        name: config.name,
+        open: true
+    })
 }
+
+provide<UseOpenModel>(InitOpenModelSymbol, initOpenModel())
 </script>

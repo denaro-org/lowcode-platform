@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import type { EditorFormItemProps } from '@lowcode/shared'
+import type { EditorFormItemProps, SelectOptions } from '@lowcode/shared'
 import type { PropType } from 'vue'
 
 import { Select, Tooltip, FormItemRest } from 'ant-design-vue'
@@ -44,7 +44,7 @@ const formType: Record<string, string> = {
     number: 'number'
 }
 
-const getGroupTypeOptions = computed(() => {
+const getGroupTypeOptions = computed<SelectOptions>(() => {
     const children = props.item.children
 
     return children?.map(e => ({
@@ -56,6 +56,7 @@ const getGroupTypeOptions = computed(() => {
 const state = reactive({
     groupType: getGroupTypeOptions.value?.[0].value ?? undefined
 })
+
 const formItemChildren = computed<EditorFormItemProps[]>(() => {
     const children = props.item.children
 

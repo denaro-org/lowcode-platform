@@ -4,7 +4,7 @@ import type {
     EditorComponent,
     EditorPage
 } from '@lowcode/shared'
-import type { ComputedRef, DeepReadonly } from 'vue'
+import type { ComputedRef, DeepReadonly, VNode } from 'vue'
 
 /**
  * @description state 类型
@@ -42,13 +42,11 @@ export interface UseAppDSL {
     currentPage: ComputedRef<EditorPage>
     /**
      * @description 初始化 DSL
-     * @returns void
      */
     initAppDSL: () => void
     /**
      * @description 设置当前被操作的组件
      * @param {EditorBlock} block  当前被操作的组件配置
-     * @returns void
      */
     setCurrentBlock: (block: EditorBlock) => void
 }
@@ -79,4 +77,57 @@ export interface UseDotProp {
      * @description 属性所在的对象
      */
     propObj: Record<string, unknown>
+}
+
+/**
+ * @description component 动态组件绑定值
+ */
+export interface ComponentBind {
+    /**
+     * @description 绑定的 props
+     */
+    bindProps?: {
+        /**
+         * @description 关闭时销毁 Drawer 里的子元素
+         */
+        destroyOnClose: boolean
+    }
+    /**
+     * @description 绑定的 Vue 组件
+     */
+    name: VNode | null
+    /**
+     * @description 是否是打开状态
+     */
+    open?: boolean
+}
+
+/**
+ * @description 组件名集合
+ */
+export type ComponentBindName = 'canvasSettings' | 'previewDialog'
+
+/**
+ * @description openComponent 方法的参数值
+ */
+export interface BindConfig extends Omit<ComponentBind, 'name'> {
+    /**
+     * @description 配置要展示的组件名
+     */
+    name: ComponentBindName
+}
+
+/**
+ * @description useOpenModel 方法的返回值
+ */
+export interface UseOpenModel {
+    /**
+     * @description component 动态组件绑定值
+     */
+    componentBind: ComputedRef<ComponentBind>
+    /**
+     * @description 用于同步 componentBind 绑定值, 并且打开或者关闭组件
+     * @param {BindConfig} bindConfig 配置
+     */
+    openComponent: (bindConfig: BindConfig) => void
 }
