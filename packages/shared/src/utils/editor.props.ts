@@ -9,12 +9,25 @@ import type {
 import { URL_REGEX, URL_REGEX_MSG } from './pattern.utils'
 import { EditorPropsType } from '../enum'
 
-// ---- input 输入类型的表单项配置 ----
+/**
+ * ---- input 输入类型的表单项配置 ----
+ */
+
+/**
+ * @description 输入框类型的表单项配置
+ */
 type EditorInputProp = UserPropConfig<InputProps> & {
-    // 验证规则
+    /**
+     * @description 配置的验证规则
+     */
     ruleNames?: Array<'URL'>
 }
 
+/**
+ * @description 创建一个输入框类型的表单项
+ * @param {EditorInputProp} propConfig 配置
+ * @returns {EditorProps}
+ */
 export const createEditorInputProp = (
     propConfig: EditorInputProp
 ): EditorProps => {
@@ -37,14 +50,29 @@ export const createEditorInputProp = (
     }
 }
 
-// ---- select 输入类型的表单项配置 ----
+/**
+ * ---- select 下拉框类型的表单项配置 ----
+ */
+
+/**
+ * @description 下拉框类型的表单项配置
+ */
 type EditorSelectProp = UserPropConfig<SelectProps> & {
-    // 用于生成 options 的字典
+    /**
+     * @description 用于生成 options 的字典
+     */
     constDict?: string[]
-    // 不采用字典生成, 使用 options
+    /**
+     * @description 不采用字典生成, 使用 options
+     */
     options?: SelectOptions
 }
 
+/**
+ * @description 创建一个下拉框类型的表单项
+ * @param {EditorSelectProp} propConfig 配置
+ * @returns {EditorProps}
+ */
 export const createEditorSelectProp = (
     propConfig: EditorSelectProp
 ): EditorProps => {
@@ -72,9 +100,20 @@ export const createEditorSelectProp = (
     }
 }
 
-// ---- switch 输入类型的表单项配置 ----
+/**
+ * ---- boolean 类型的表单项配置 ----
+ */
+
+/**
+ * @description boolean 类型的表单项配置
+ */
 type EditorSwitchProp = UserPropConfig<SwitchProps>
 
+/**
+ * @description 创建一个boolean 类型的表单项
+ * @param {EditorSwitchProp} propConfig 配置
+ * @returns {EditorProps}
+ */
 export const createEditorSwitchProp = (
     propConfig: EditorSwitchProp
 ): EditorProps => {
@@ -84,9 +123,20 @@ export const createEditorSwitchProp = (
     }
 }
 
-// ---- number 输入类型的表单项配置 ----
+/**
+ * ---- number 输入类型的表单项配置 ----
+ */
+
+/**
+ * @description number 输入类型的表单项配置
+ */
 type EditorNumberProp = UserPropConfig<InputNumberProps>
 
+/**
+ * @description 创建 number 输入类型的表单项
+ * @param {EditorNumberProp} propConfig 配置
+ * @returns {EditorProps}
+ */
 export const createEditorNumberProp = (
     propConfig: EditorNumberProp
 ): EditorProps => {
@@ -104,9 +154,20 @@ export const createEditorNumberProp = (
     }
 }
 
-// ---- color 输入类型的表单项配置 ----
+/**
+ * ---- 颜色选择类型的表单项配置 ----
+ */
+
+/**
+ * @description 颜色选择类型的表单项配置
+ */
 type EditorColorProp = UserPropConfig<object>
 
+/**
+ * @description 创建颜色选择类型的表单项
+ * @param {EditorColorProp} propConfig 配置
+ * @returns {EditorProps}
+ */
 export const createEditorColorProp = (
     propConfig: EditorColorProp
 ): EditorProps => {
@@ -116,12 +177,25 @@ export const createEditorColorProp = (
     }
 }
 
-// ---- group 输入类型的表单项配置 ----
+/**
+ * ---- 表单组合类型的表单项配置 ----
+ */
+
+/**
+ * @description 表单组合类型的表单项配置
+ */
 type EditorGroupProp = UserPropConfig<object> & {
-    // 子项配置
+    /**
+     * @description 表单组合子项配置
+     */
     children: EditorProps[]
 }
 
+/**
+ * @description 创建表单组合类型的表单项
+ * @param {EditorGroupProp} propConfig 配置
+ * @returns {EditorProps}
+ */
 export const createEditorGroupProp = (
     propConfig: EditorGroupProp
 ): EditorProps => {

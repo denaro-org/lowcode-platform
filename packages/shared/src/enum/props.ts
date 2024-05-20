@@ -1,4 +1,6 @@
-// 表单编辑器类型枚举
+/**
+ * @description 表单编辑器类型枚举
+ */
 export enum EditorPropsType {
     // 复选框
     checkbox = 'checkbox',

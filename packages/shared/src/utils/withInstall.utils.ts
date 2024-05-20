@@ -1,11 +1,15 @@
 import type { App, Component, Plugin } from 'vue'
 
+/**
+ * @description withInstall 方法的返回值类型
+ */
 export type ComponentWithInstall<T> = T & Plugin
 
 /**
  * 为 vue 组件设置安装方法
- * @param comp vue 组件 实例
- * @returns {SFCWithInstall<T>}
+ * @param {Component} component vue 组件 实例
+ * @param {T} target 自定义的组件注册方法
+ * @returns {ComponentWithInstall<T>}
  */
 export const withInstall = <T extends Component>(
     component: Component,
