@@ -8,14 +8,6 @@
 }
 
 // --- FlexStyle.vue ---
-.flex-style {
-    gap: 12px;
-
-    &-item {
-        gap: 8px;
-    }
-}
-
 .flex-title {
     color: var(--color-text);
 
@@ -29,10 +21,6 @@
         margin-left: 5px;
         color: #d9d9d9;
     }
-}
-
-.flex-icons {
-    gap: 12px;
 }
 
 .flex-icon {

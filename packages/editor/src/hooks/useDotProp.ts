@@ -1,7 +1,11 @@
-// 转换 xx.xx 的写法
-
 import type { UseDotProp } from '@/types'
 
+/**
+ * @description 转换 xx.xx 的写法
+ * @param originObj 源 object
+ * @param propName 输入的 prop 名
+ * @returns {UseDotProp}
+ */
 export const useDotProp = (
     originObj: Record<string, unknown>,
     propName: string

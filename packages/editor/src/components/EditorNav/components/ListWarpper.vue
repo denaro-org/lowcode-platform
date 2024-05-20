@@ -11,7 +11,7 @@
         <div class="overflow-y-auto">
             <DraggableTransitionGroup
                 v-model="uiSchema"
-                :class="[styles.listBody, 'grid-row2']"
+                :class="['grid-row2 gap-8']"
                 v-bind="draggableBind">
                 <template #item="{ element }">
                     <div

@@ -6,15 +6,27 @@ import type {
 } from '@lowcode/shared'
 import type { ComputedRef, DeepReadonly } from 'vue'
 
+/**
+ * @description state 类型
+ */
 export interface IState {
-    // DSL, 不可被直接修改
+    /**
+     * @description DSL, 不可被直接修改
+     */
     appDSL: AppDSL
-    // 当前编辑的组件配置
+    /**
+     * @description 当前编辑的组件配置
+     */
     currentBlock: EditorBlock
-    // 当前被操作的页面
+    /**
+     * @description 当前被操作的页面
+     */
     currentPage: EditorPage
 }
 
+/**
+ * @description useAppDSL 函数返回值
+ */
 export interface UseAppDSL {
     /**
      * @description DSL, 不可被直接修改
@@ -26,30 +38,45 @@ export interface UseAppDSL {
     currentBlock: ComputedRef<EditorBlock>
     /**
      * @description 设置当前被操作的组件
-     * @param {EditorBlock} block  当前被操作的组件配置
      */
     currentPage: ComputedRef<EditorPage>
     /**
      * @description 初始化 DSL
+     * @returns void
      */
     initAppDSL: () => void
     /**
      * @description 设置当前被操作的组件
      * @param {EditorBlock} block  当前被操作的组件配置
+     * @returns void
      */
     setCurrentBlock: (block: EditorBlock) => void
 }
 
+/**
+ * @description useUISchema 函数返回值
+ */
 export interface UseUISchema {
-    // 当前操作的组件配置
+    /**
+     * @description 当前操作的组件配置
+     */
     currentSchema: ComputedRef<EditorComponent>
 }
 
+/**
+ * @description 使用 xx.xx 的写法的类型
+ */
 export interface UseDotProp {
-    // 是否是 xx.xx 的写法
+    /**
+     * @description 是否是 xx.xx 的写法
+     */
     isDotProp: boolean
-    // 属性名
+    /**
+     * @description 属性名
+     */
     prop: string
-    // 属性所在的对象
+    /**
+     * @description 属性所在的对象
+     */
     propObj: Record<string, unknown>
 }

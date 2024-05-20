@@ -15,16 +15,11 @@
 .warpper-search {
     margin-top: 12px;
     margin-bottom: 12px;
-
-    &.flex {
-        gap: 22px;
-    }
 }
 
 .list-warpper {
     .list-body {
         width: 100%;
-        gap: 8px;
 
         > div {
             width: 100%;

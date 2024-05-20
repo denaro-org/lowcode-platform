@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-column-center flex-between" style="gap: 24px">
+    <div class="flex flex-column-center flex-between gap-24">
         <template v-for="(e, index) in formItemChildren" :key="index">
             <AttrFormItem v-model:model="stateFormModel" :item="e" />
         </template>
@@ -16,17 +16,15 @@
 </template>
 
 <script setup lang="ts">
-import type { BlockProps, EditorFormItemProps } from '@lowcode/shared'
-import type { CSSProperties, PropType } from 'vue'
+import type { EditorFormItemProps } from '@lowcode/shared'
+import type { PropType } from 'vue'
 
 import { Select, Tooltip, FormItemRest } from 'ant-design-vue'
 import { computed, reactive } from 'vue'
 
 import AttrFormItem from './AttrFormItem.vue'
 
-const stateFormModel = defineModel<
-    BlockProps | (CSSProperties & Record<string, string>)
->('model', {
+const stateFormModel = defineModel('model', {
     type: Object,
     required: true
 })

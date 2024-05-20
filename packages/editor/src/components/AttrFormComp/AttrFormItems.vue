@@ -17,8 +17,8 @@
 </template>
 
 <script setup lang="ts">
-import type { BlockProps, EditorFormItemProps } from '@lowcode/shared'
-import type { CSSProperties, PropType } from 'vue'
+import type { EditorFormItemProps } from '@lowcode/shared'
+import type { PropType } from 'vue'
 
 import { EditorPropsType } from '@lowcode/shared'
 import { FormItem } from 'ant-design-vue'
@@ -29,9 +29,7 @@ import AttrGroupItem from './AttrGroupItem.vue'
 defineOptions({
     name: 'AttrFormItems'
 })
-const stateFormModel = defineModel<
-    BlockProps | (CSSProperties & Record<string, string>)
->('model', {
+const stateFormModel = defineModel('model', {
     type: Object,
     default: () => ({})
 })

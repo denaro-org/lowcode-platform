@@ -1,9 +1,8 @@
 <!-- eslint-disable vue/no-v-html -->
-
 <template>
-    <div :class="[styles.flexStyle, 'flex-column']">
+    <div :class="['gap-12 flex-column']">
         <template v-for="item in flexStyleConfig" :key="item.label">
-            <div :class="[styles.flexStyleItem, 'flex-column']">
+            <div :class="['gap-8 flex-column']">
                 <div :class="[styles.flexTitle, 'flex-row w-100']">
                     <span>{{ item.label }}</span>
                     <span>
@@ -27,7 +26,7 @@
                     </Radio>
                 </div>
 
-                <div :class="[styles.flexIcons, 'flex']">
+                <div :class="['flex gap-12']">
                     <template v-for="_item in item.options" :key="_item.value">
                         <Tooltip :title="`${item.label}: ${_item.value}`">
                             <i
@@ -60,7 +59,7 @@ import { camelCase } from 'lodash-es'
 import styles from './index.module.scss'
 import { flexStyleConfig } from '../const'
 
-const stateFormModel = defineModel<CSSProperties>('model', {
+const stateFormModel = defineModel('model', {
     type: Object,
     required: true
 })

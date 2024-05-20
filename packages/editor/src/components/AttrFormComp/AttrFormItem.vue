@@ -45,17 +45,15 @@
 </template>
 
 <script setup lang="ts">
-import type { BlockProps, EditorFormItemProps } from '@lowcode/shared'
+import type { EditorFormItemProps } from '@lowcode/shared'
 import type { InputNumberProps } from 'ant-design-vue'
-import type { PropType, CSSProperties } from 'vue'
+import type { PropType } from 'vue'
 
 import { EditorPropsType } from '@lowcode/shared'
 import { Select, Input, Switch, InputNumber } from 'ant-design-vue'
 import { ref } from 'vue'
 
-const stateFormModel = defineModel<
-    BlockProps | (CSSProperties & Record<string, string>)
->('model', {
+const stateFormModel = defineModel('model', {
     type: Object,
     required: true
 })
@@ -73,6 +71,9 @@ const thatModel = ref<Record<string, string>>({
     __addonAfter__: props.item.addonAfters?.[0] ?? 'px'
 })
 
+/**
+ * @description 修改 addonAfter 配置的回调
+ */
 const changeAddonAfter = (
     value: InputNumberProps['value'],
     item: EditorFormItemProps
@@ -84,6 +85,9 @@ const changeAddonAfter = (
     }
 }
 
+/**
+ * @description 获取 addonAfter 的 options
+ */
 const getAddonAfterOptions = (addonAfters: string[]) => {
     if (!addonAfters || !Array.isArray(addonAfters)) {
         return []

@@ -21,7 +21,7 @@ const defaultValue: AppDSL = {
 }
 
 /**
- * DSL 数据操作的 hooks
+ * @description DSL 数据操作的 hooks
  * @returns {UseAppDSL}
  */
 export const initDSLData = (): UseAppDSL => {
@@ -41,8 +41,9 @@ export const initDSLData = (): UseAppDSL => {
     })
 
     /**
-     * 设置当前被操作的组件
+     * @description 设置当前被操作的组件
      * @param {EditorBlock} block  当前被操作的组件配置
+     * @returns void
      */
     const setCurrentBlock = (block: EditorBlock): void => {
         state.currentBlock = block
@@ -50,15 +51,17 @@ export const initDSLData = (): UseAppDSL => {
     }
 
     /**
-     * 更新本地存储的 appDSL
+     * @description 更新本地存储的 appDSL
      * @param {AppDSL} appDSL appDSL
+     * @returns void
      */
     const updateAppDSL = (appDSL: AppDSL): void => {
         localStorage.setItem(localKey, JSON.stringify(appDSL))
     }
 
     /**
-     * 初始化 DSL
+     * @description 初始化 DSL
+     * @returns void
      */
     const initAppDSL = (): void => {
         window.addEventListener('beforeunload', () => {
@@ -76,7 +79,7 @@ export const initDSLData = (): UseAppDSL => {
 }
 
 /**
- * DSL 数据操作的 hooks 注入
+ * @description DSL 数据操作的 hooks 注入
  * @returns {UseAppDSL}
  */
 export const useAppDSL = (): UseAppDSL =>

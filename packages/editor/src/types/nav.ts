@@ -1,15 +1,46 @@
+import type { DataSourceCategory, EditorProps } from '@lowcode/shared'
+import type { SelectProps } from 'ant-design-vue'
 import type { VNode } from 'vue'
 
-// 侧边栏的配置
+/**
+ * @description 侧边栏的配置
+ */
 interface NavItem {
-    // 渲染的组件
+    /**
+     * @description 渲染的组件
+     */
     component: VNode
-    // 图标
+    /**
+     * @description 图标
+     */
     icon?: VNode
-    // 文案
+    /**
+     * @description 文案
+     */
     label: string
-    // 名称
+    /**
+     * @description 名称
+     */
     name: string
 }
 
+/**
+ * @description 侧边栏配置集合
+ */
 export type NavConfig = NavItem[]
+
+/**
+ * @description 数据源分类下拉
+ */
+export type DataSourceCategorys = SelectProps['options'] &
+    Array<{
+        value: DataSourceCategory
+    }>
+
+/**
+ * @description 数据源表单配置
+ */
+export type DataSourceConfig = Record<
+    DataSourceCategory,
+    Record<string, EditorProps>
+>

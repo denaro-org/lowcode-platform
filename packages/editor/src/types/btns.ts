@@ -1,11 +1,20 @@
 import type { OnEvent } from '@lowcode/shared'
 import type { VNode } from 'vue'
 
+/**
+ * @description 通用的按钮配置类型
+ */
 export interface BtnItem {
-    // 显示的图标
+    /**
+     * @description 显示的图标
+     */
     icon: VNode
-    // 配置的文案
+    /**
+     * @description 配置的文案
+     */
     label: string
-    // 绑定的 on 事件
+    /**
+     * @description 绑定的 on 事件
+     */
     on: OnEvent
 }

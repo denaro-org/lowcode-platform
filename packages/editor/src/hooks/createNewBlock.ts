@@ -9,9 +9,14 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useDotProp } from './useDotProp'
 
-// 拖拽一个组件, 生成默认的配置存储到 DSL
+/**
+ * @description 拖拽一个组件, 生成默认的配置存储到 DSL
+ * @param {EditorComponent} component 传入组件配置
+ * @returns {EditorBlock}
+ */
 export const createNewBlock = (component: EditorComponent): EditorBlock => {
     return {
+        type: 'block',
         UUID: 'uuid_' + uuidv4().substring(0, 16),
         moduleName: component.moduleName,
         componentKey: component.key,

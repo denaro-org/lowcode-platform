@@ -10,12 +10,9 @@
 </template>
 
 <script setup lang="ts">
-import type { BlockProps } from '@lowcode/shared'
-import type { CSSProperties } from 'vue'
-
 import { Form } from 'ant-design-vue'
 
-const stateFormModel = defineModel<BlockProps | CSSProperties>('model', {
+const stateFormModel = defineModel('model', {
     type: Object,
     required: true
 })

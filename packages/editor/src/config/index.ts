@@ -1,4 +1,6 @@
-// 移动端的默认尺寸
+/**
+ * @description 移动端的默认尺寸
+ */
 export const MOBILE_SIZE = {
     width: 375,
     height: 812

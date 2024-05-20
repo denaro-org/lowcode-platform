@@ -1,11 +1,20 @@
 import type { EditorBlock } from '@lowcode/shared'
 
+/**
+ * @description 拖拽组件的 change 函数回调值
+ */
 export interface DraggableChangeVal {
-    // 新增内容
+    /**
+     * @description 新增内容
+     */
     added: {
-        // 新增的元素配置
+        /**
+         * @description 新增的元素配置
+         */
         element: EditorBlock
     }
-    // 新增的下标
+    /**
+     * @description 新增的下标
+     */
     newIndex: number
 }

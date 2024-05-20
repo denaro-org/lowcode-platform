@@ -1,6 +1,6 @@
 <template>
     <section :class="[styles.dataSource]">
-        <div :class="[styles.warpperSearch, 'flex flex-between']">
+        <div :class="[styles.warpperSearch, 'flex flex-between gap-22']">
             <InputSearch
                 v-model.value="state.searchValue"
                 disabled

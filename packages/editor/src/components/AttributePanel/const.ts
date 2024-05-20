@@ -3,7 +3,7 @@ import type { FlexStyleConfig, TabListItem } from '@/types'
 import { createEditorNumberProp } from '@lowcode/shared'
 import { h } from 'vue'
 
-import { AttrPanel, EventPanel, StylePanel } from '../components'
+import { AttrPanel, EventPanel, StylePanel } from './components'
 
 import AlignBaseline from '@/assets/svgs/alignBaseline.svg?raw'
 import AlignCenter from '@/assets/svgs/alignCenter.svg?raw'

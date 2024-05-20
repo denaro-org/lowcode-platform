@@ -6,6 +6,7 @@
                 :key="index"
                 :class="[
                     styles.navItem,
+                    'gap-8',
                     'flex-column',
                     'flex-center',
                     item.name === state.activeName && styles.isActive

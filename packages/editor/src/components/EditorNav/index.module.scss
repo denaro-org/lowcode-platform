@@ -12,12 +12,11 @@ $box-shadow: 2px 0 4px 0 rgb(0 0 0 / 10%);
     width: var(--editor-nav-width);
     height: 100%;
     background-color: var(--color-white);
-    border-right: $border-width solid var(--color-bgcolor);
+    border-right: $border-width solid var(--color-bgcolor); 
 
     .nav-item {
         height: 90px;
         padding: 12px;
-        gap: 8px;
         cursor: pointer;
 
         &.is-active,
