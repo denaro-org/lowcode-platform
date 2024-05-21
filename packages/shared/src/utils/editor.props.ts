@@ -96,6 +96,7 @@ export const createEditorSelectProp = (
         type: EditorPropsType.select,
         propsBind: {
             options: stateOptions,
+            showSearch: true,
             placeholder: `请选择${propConfig.label}`
         },
         ...args

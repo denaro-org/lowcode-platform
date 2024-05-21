@@ -4,6 +4,7 @@
 
 <script setup lang="ts">
 import { Icon } from '@varlet/ui'
+import '@varlet/ui/es/icon/style'
 
 import { varIconProps } from './props'
 
