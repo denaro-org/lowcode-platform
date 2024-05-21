@@ -45,6 +45,10 @@ export interface UseAppDSL {
      */
     initAppDSL: () => void
     /**
+     * @description 重置 appDSL
+     */
+    resetAppDSL: () => void
+    /**
      * @description 设置当前被操作的组件
      * @param {EditorBlock} block  当前被操作的组件配置
      */

@@ -18,18 +18,20 @@ export default defineComponent({
         const uiSchema =
             inject<EditorComponent[]>(UISchemaSymbol as symbol) ?? []
 
+        const element = props.element
+
         const thatRender = uiSchema.find(
-            item => item.key === props.element.componentKey
+            item => item.key === element.componentKey
         )
 
-        const elementProps = props.element.props ?? {}
-        const elementStyles = props.element.styles ?? {}
+        const elementProps = element.props ?? {}
+        const elementStyles = element.styles ?? {}
 
         return thatRender?.render({
             styles: elementStyles,
             props: elementProps,
             model: {},
-            block: props.element,
+            block: element,
             custom: {}
         })
     }

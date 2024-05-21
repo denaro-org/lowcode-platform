@@ -1,5 +1,5 @@
 <template>
-    <Modal
+    <Drawer
         v-model:open="isOpen"
         title="新增数据源"
         destroy-on-close
@@ -16,7 +16,7 @@
             </FormItem>
             <!--  -->
         </AttrForm>
-    </Modal>
+    </Drawer>
 </template>
 
 <script setup lang="ts">
@@ -24,7 +24,7 @@ import type { DataSourceCategory } from '@lowcode/shared'
 import type { SelectProps } from 'ant-design-vue'
 import type { PropType } from 'vue'
 
-import { Modal, FormItem, Select } from 'ant-design-vue'
+import { Drawer, FormItem, Select } from 'ant-design-vue'
 
 import { dataSourceConfig, dataSourceCategorys } from '../const'
 

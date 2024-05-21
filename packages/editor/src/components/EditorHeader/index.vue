@@ -12,12 +12,7 @@
                         'flex-column',
                         'flex-row-center'
                     ]"
-                    v-bind="item.on"
-                    @click="
-                        open({
-                            name: item.componentBindName as ComponentBindName
-                        })
-                    ">
+                    @click="btnClickOn(item)">
                     <Tooltip placement="bottom" :title="item.label">
                         <component :is="item.icon" :class="[styles.btnIcon]" />
                         <span class="text-ellipsis">{{ item.label }}</span>
@@ -34,7 +29,7 @@
                         type="primary"
                         shape="circle"
                         size="large"
-                        @click="open({ name: 'previewDialog' })">
+                        @click="openModel({ name: 'previewDialog' })">
                         <PlayCircleOutlined />
                     </Button>
                 </div>
@@ -49,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-import type { BindConfig, UseOpenModel, ComponentBindName } from '@/types'
+import type { UseOpenModel, BtnItem, BindConfig } from '@/types'
 
 import { PlayCircleOutlined } from '@ant-design/icons-vue'
 import { Button, Tooltip } from 'ant-design-vue'
@@ -58,7 +53,7 @@ import { provide } from 'vue'
 import { centerBtnList } from './const'
 import styles from './index.module.scss'
 
-import { initOpenModel } from '@/hooks'
+import { initOpenModel, useAppDSL } from '@/hooks'
 import { InitOpenModelSymbol } from '@/symbol'
 
 defineOptions({
@@ -66,15 +61,40 @@ defineOptions({
 })
 
 const { componentBind, openComponent } = initOpenModel()
+const { resetAppDSL } = useAppDSL()
 
 /**
  * @description 打开组件
  */
-const open = (config: BindConfig) => {
+const openModel = (config: BindConfig) => {
     openComponent({
         name: config.name,
         open: true
     })
+}
+
+/**
+ * @description 中间 click 操作处理
+ */
+const btnClickOn = (btnConfig: BtnItem) => {
+    const { on, componentBindName } = btnConfig
+
+    if (componentBindName) {
+        openComponent({
+            name: componentBindName,
+            open: true
+        })
+    }
+
+    if (on) {
+        const { onClick } = on
+        if (onClick && onClick instanceof Function) {
+            onClick({
+                resetAppDSL,
+                simulatorEditorCls: 'SimulatorEditorRef'
+            })
+        }
+    }
 }
 
 provide<UseOpenModel>(InitOpenModelSymbol, initOpenModel())

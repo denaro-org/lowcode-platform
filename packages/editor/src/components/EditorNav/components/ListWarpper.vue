@@ -34,11 +34,12 @@
 </template>
 
 <script setup lang="ts">
+import type { NavItem } from '@/types'
 import type { EditorComponent } from '@lowcode/shared'
 
 import { InputSearch } from 'ant-design-vue'
 import { cloneDeep } from 'lodash-es'
-import { computed, inject, ref } from 'vue'
+import { PropType, computed, inject, ref } from 'vue'
 
 import styles from './index.module.scss'
 
@@ -48,6 +49,13 @@ import { UISchemaSymbol } from '@/symbol'
 
 defineOptions({
     name: 'ListWarpper'
+})
+defineProps({
+    // 导航栏分类
+    category: {
+        type: String as PropType<NavItem['name']>,
+        default: undefined
+    }
 })
 
 const uiSchema = inject<EditorComponent[]>(UISchemaSymbol)

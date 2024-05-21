@@ -66,12 +66,22 @@ export const initDSLData = (): UseAppDSL => {
         })
     }
 
+    /**
+     * @description 重置 appDSL
+     */
+    const resetAppDSL = (): void => {
+        updateAppDSL(defaultValue)
+        state.currentPage = defaultValue.pages['/'] ?? {}
+        state.currentBlock = defaultValue.pages['/'].blocks[0] ?? []
+    }
+
     return {
         appDSL: readonly(state.appDSL),
         currentPage: computed(() => state.currentPage),
         currentBlock: computed(() => state.currentBlock),
         setCurrentBlock,
-        initAppDSL
+        initAppDSL,
+        resetAppDSL
     }
 }
 

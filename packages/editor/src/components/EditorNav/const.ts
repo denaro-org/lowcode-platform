@@ -4,7 +4,8 @@ import type { DataSourceCategorys, DataSourceConfig, NavConfig } from '@/types'
 import {
     DatabaseOutlined,
     DropboxOutlined,
-    FileTextOutlined
+    FileTextOutlined,
+    ProjectOutlined
 } from '@ant-design/icons-vue'
 import {
     createEditorGroupProp,
@@ -30,6 +31,12 @@ export const defaultNavConfig: NavConfig = [
         label: '基本组件',
         name: 'basic-components',
         icon: h(DropboxOutlined),
+        component: h(ListWarpper)
+    },
+    {
+        label: '容器组件',
+        name: 'container-component',
+        icon: h(ProjectOutlined),
         component: h(ListWarpper)
     },
     {

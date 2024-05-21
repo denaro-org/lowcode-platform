@@ -1,6 +1,9 @@
 <template>
     <section :class="[styles.simulatorContainer, 'flex', 'flex-center']">
-        <section :class="[styles.simulatorEditor]" :style="warpperStyle">
+        <section
+            id="SimulatorEditorRef"
+            :class="[styles.simulatorEditor]"
+            :style="warpperStyle">
             <DraggableTransitionGroup
                 v-model:drag="drag"
                 v-model="currentPage.blocks"

@@ -23,4 +23,20 @@
     &.focus {
         @include show-component-border;
     }
+
+    &.drag::after {
+        display: none;
+    }
+
+    &:not(.has-slot) {
+        content: '';
+    }
+
+    &.focus-with-child {
+        @include show-container-border;
+    }
+
+    i {
+        cursor: pointer;
+    }
 }

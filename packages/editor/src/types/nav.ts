@@ -5,7 +5,7 @@ import type { VNode } from 'vue'
 /**
  * @description 侧边栏的配置
  */
-interface NavItem {
+export interface NavItem {
     /**
      * @description 渲染的组件
      */
@@ -19,9 +19,9 @@ interface NavItem {
      */
     label: string
     /**
-     * @description 名称
+     * @description 分类名称
      */
-    name: string
+    name: 'page' | 'basic-components' | 'container-component' | 'data-source'
 }
 
 /**

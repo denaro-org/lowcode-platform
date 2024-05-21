@@ -1,4 +1,4 @@
-import type { ComponentBindName } from './hooks'
+import type { ComponentBindName, UseAppDSL } from './hooks'
 import type { OnEvent } from '@lowcode/shared'
 import type { VNode } from 'vue'
 
@@ -21,5 +21,14 @@ export interface BtnItem {
     /**
      * @description 绑定的 on 事件
      */
-    on?: OnEvent
+    on?: OnEvent<{
+        /**
+         * @description 重置 DSL 数据
+         */
+        resetAppDSL: UseAppDSL['resetAppDSL']
+        /**
+         * @description 画布的 HTML 节点 ID
+         */
+        simulatorEditorCls: string
+    }>
 }

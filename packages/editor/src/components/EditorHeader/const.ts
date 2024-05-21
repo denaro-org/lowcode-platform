@@ -4,10 +4,15 @@ import {
     CloudDownloadOutlined,
     CodeOutlined,
     DeleteOutlined,
+    ExclamationCircleOutlined,
     FileImageOutlined,
     SettingOutlined
 } from '@ant-design/icons-vue'
-import { h } from 'vue'
+import { saveDomAsImg } from '@lowcode/shared'
+import { Modal } from 'ant-design-vue'
+import { createVNode, h, nextTick } from 'vue'
+
+import { MOBILE_SIZE } from '@/config'
 
 export const centerBtnList: BtnItem[] = [
     {
@@ -16,7 +21,6 @@ export const centerBtnList: BtnItem[] = [
         on: {
             onClick: (): void => {
                 //
-                console.log(111)
             }
         }
     },
@@ -26,7 +30,6 @@ export const centerBtnList: BtnItem[] = [
         on: {
             onClick: (): void => {
                 //
-                console.log(111)
             }
         }
     },
@@ -34,9 +37,18 @@ export const centerBtnList: BtnItem[] = [
         icon: h(FileImageOutlined),
         label: '画布截图',
         on: {
-            onClick: (): void => {
-                //
-                console.log(111)
+            onClick: async ({ simulatorEditorCls }): Promise<void> => {
+                await nextTick(async () => {
+                    const simulatorEditorEl = document.getElementById(
+                        simulatorEditorCls as string
+                    )
+
+                    simulatorEditorEl &&
+                        (await saveDomAsImg(simulatorEditorEl, {
+                            width: MOBILE_SIZE.width,
+                            height: MOBILE_SIZE.height
+                        }))
+                })
             }
         }
     },
@@ -44,9 +56,17 @@ export const centerBtnList: BtnItem[] = [
         icon: h(DeleteOutlined),
         label: '清空画布',
         on: {
-            onClick: (): void => {
-                //
-                console.log(111)
+            onClick: ({ resetAppDSL }): void => {
+                Modal.confirm({
+                    title: '警告',
+                    icon: createVNode(ExclamationCircleOutlined),
+                    content: '清空画布后将无法恢复, 确认清空吗？',
+                    okText: '确认',
+                    cancelText: '取消',
+                    onOk: () => {
+                        resetAppDSL()
+                    }
+                })
             }
         }
     },
