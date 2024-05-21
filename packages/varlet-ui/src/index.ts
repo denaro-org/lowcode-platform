@@ -3,6 +3,8 @@ import type { App } from 'vue'
 
 import TmVarButton from './button'
 import TmVarEllipsis from './ellipsis'
+import TmVarFab from './fab'
+import TmVarIcon from './icon'
 import TmVarImage from './image'
 
 interface Module {
@@ -21,7 +23,7 @@ modulesKeys.forEach(([key, module]) => {
     uiSchema[name] = module?.default || module
 })
 
-const components = [TmVarButton, TmVarEllipsis, TmVarImage]
+const components = [TmVarButton, TmVarEllipsis, TmVarImage, TmVarFab, TmVarIcon]
 
 const install = (app: App): void => {
     components.forEach(component => {
@@ -29,7 +31,7 @@ const install = (app: App): void => {
     })
 }
 
-export { uiSchema, TmVarButton, TmVarEllipsis, TmVarImage }
+export { uiSchema, TmVarButton, TmVarEllipsis, TmVarImage, TmVarFab, TmVarIcon }
 
 export default {
     install

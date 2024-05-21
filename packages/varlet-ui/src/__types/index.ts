@@ -3,3 +3,4 @@
 export type * from './button'
 export type * from './ellipsis'
 export type * from './image'
+export type * from './icon'
