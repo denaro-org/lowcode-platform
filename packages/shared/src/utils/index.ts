@@ -1,2 +1,5 @@
 export * from './withInstall.utils'
 export * from './editor.props'
+export * from './dom.utils'
+export * from './is.utils'
+export * from './transition.utils'

@@ -14,6 +14,7 @@ export type SelectOptions = SelectProps['options']
 
 /**
  * @description 使用创建方法来创建表单项的创建方法配置
+ * @type {T extends object} propsBind 组件绑定的自定义类型
  */
 export interface UserPropConfig<T extends object> {
     /**
@@ -90,6 +91,6 @@ export type EditorFormItemProps = EditorProps<PropsBind> & {
 /**
  * @description 绑定的事件
  */
-export type OnEvent = Partial<
-    Record<'onChange' | 'onClick', (args: unknown) => void>
+export type OnEvent<T extends object = object> = Partial<
+    Record<'onChange' | 'onClick', (...args: T[]) => void | Promise<void>>
 >

@@ -5,6 +5,8 @@
     "main": "index.ts",
     "devDependencies": {
         "ant-design-vue": "^4.2.1",
-        "vue": "^3.4.27"
+        "vue": "^3.4.27",
+        "html2canvas": "^1.4.1",
+        "lodash-es": "^4.17.21"
     }
 }

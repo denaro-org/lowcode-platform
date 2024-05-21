@@ -6,7 +6,8 @@ import type { App, Component, Plugin } from 'vue'
 export type ComponentWithInstall<T> = T & Plugin
 
 /**
- * 为 vue 组件设置安装方法
+ * @description 为 vue 组件设置安装方法
+ * @import import { withInstall } from '@lowcode/shared'
  * @param {Component} component vue 组件 实例
  * @param {T} target 自定义的组件注册方法
  * @returns {ComponentWithInstall<T>}

@@ -10,7 +10,7 @@ import { URL_REGEX, URL_REGEX_MSG } from './pattern.utils'
 import { EditorPropsType } from '../enum'
 
 /**
- * ---- input 输入类型的表单项配置 ----
+ * !!!---- input 输入类型的表单项配置 ----
  */
 
 /**
@@ -25,6 +25,7 @@ type EditorInputProp = UserPropConfig<InputProps> & {
 
 /**
  * @description 创建一个输入框类型的表单项
+ * @import import { createEditorInputProp } from '@lowcode/shared'
  * @param {EditorInputProp} propConfig 配置
  * @returns {EditorProps}
  */
@@ -51,7 +52,7 @@ export const createEditorInputProp = (
 }
 
 /**
- * ---- select 下拉框类型的表单项配置 ----
+ * !!!---- select 下拉框类型的表单项配置 ----
  */
 
 /**
@@ -70,6 +71,7 @@ type EditorSelectProp = UserPropConfig<SelectProps> & {
 
 /**
  * @description 创建一个下拉框类型的表单项
+ * @import import { createEditorSelectProp } from '@lowcode/shared'
  * @param {EditorSelectProp} propConfig 配置
  * @returns {EditorProps}
  */
@@ -101,7 +103,7 @@ export const createEditorSelectProp = (
 }
 
 /**
- * ---- boolean 类型的表单项配置 ----
+ * !!!---- boolean 类型的表单项配置 ----
  */
 
 /**
@@ -111,6 +113,7 @@ type EditorSwitchProp = UserPropConfig<SwitchProps>
 
 /**
  * @description 创建一个boolean 类型的表单项
+ * @import import { createEditorSwitchProp } from '@lowcode/shared'
  * @param {EditorSwitchProp} propConfig 配置
  * @returns {EditorProps}
  */
@@ -124,7 +127,7 @@ export const createEditorSwitchProp = (
 }
 
 /**
- * ---- number 输入类型的表单项配置 ----
+ * !!!---- number 输入类型的表单项配置 ----
  */
 
 /**
@@ -134,6 +137,7 @@ type EditorNumberProp = UserPropConfig<InputNumberProps>
 
 /**
  * @description 创建 number 输入类型的表单项
+ * @import import { createEditorNumberProp } from '@lowcode/shared'
  * @param {EditorNumberProp} propConfig 配置
  * @returns {EditorProps}
  */
@@ -155,7 +159,7 @@ export const createEditorNumberProp = (
 }
 
 /**
- * ---- 颜色选择类型的表单项配置 ----
+ * !!!---- 颜色选择类型的表单项配置 ----
  */
 
 /**
@@ -165,6 +169,7 @@ type EditorColorProp = UserPropConfig<object>
 
 /**
  * @description 创建颜色选择类型的表单项
+ * @import import { createEditorColorProp } from '@lowcode/shared'
  * @param {EditorColorProp} propConfig 配置
  * @returns {EditorProps}
  */
@@ -178,7 +183,7 @@ export const createEditorColorProp = (
 }
 
 /**
- * ---- 表单组合类型的表单项配置 ----
+ * !!!---- 表单组合类型的表单项配置 ----
  */
 
 /**
@@ -193,6 +198,7 @@ type EditorGroupProp = UserPropConfig<object> & {
 
 /**
  * @description 创建表单组合类型的表单项
+ * @import import { createEditorGroupProp } from '@lowcode/shared'
  * @param {EditorGroupProp} propConfig 配置
  * @returns {EditorProps}
  */
