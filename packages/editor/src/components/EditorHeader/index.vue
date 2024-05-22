@@ -65,24 +65,33 @@ const { resetAppDSL } = useAppDSL()
 
 /**
  * @description 打开组件
+ * @param {BindConfig} config 绑定配置
  */
 const openModel = (config: BindConfig) => {
     openComponent({
         name: config.name,
-        open: true
+        open: true,
+        bindProps: config.bindProps
     })
 }
 
 /**
  * @description 中间 click 操作处理
+ * @param {BtnItem} btnConfig 按钮配置
  */
 const btnClickOn = (btnConfig: BtnItem) => {
-    const { on, componentBindName } = btnConfig
+    const { on, componentBindName, label, bindProps, ...args } = btnConfig
 
     if (componentBindName) {
-        openComponent({
+        openModel({
             name: componentBindName,
-            open: true
+            ...(componentBindName && {
+                bindProps: {
+                    title: label,
+                    ...bindProps
+                }
+            }),
+            ...args
         })
     }
 

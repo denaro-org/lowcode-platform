@@ -2,7 +2,7 @@
     <LowCodeEditor :ui-schema="uiSchema" :preview-url="previewUrl" />
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { LowCodeEditor } from '@lowcode/editor'
 import { uiSchema } from '@lowcode/varlet-ui'
 import '@lowcode/editor/index.css'

@@ -8,7 +8,7 @@
         "examples/*"
     ],
     "scripts": {
-        "bootstrap": "pnpm run syncpack-fix && pnpm update -r",
+        "bootstrap": "pnpm run syncpack-fix && pnpm update -r && pnpm run start:compile-build",
         "commit": "git add . && git-cz",
         "compile-build:editor": "pnpm --filter \"@lowcode/editor\" run build",
         "compile-build:varlet-ui": "pnpm --filter \"@lowcode/varlet-ui\" run build",
@@ -48,7 +48,7 @@
         "concurrently": "^8.2.2",
         "eslint": "8.57.0",
         "husky": "^9.0.11",
-        "lint-staged": "^15.2.2",
+        "lint-staged": "^15.2.4",
         "sort-package-json": "^2.10.0",
         "syncpack": "^12.3.2",
         "typescript": "^5.4.5",

@@ -62,7 +62,7 @@ export const initDSLData = (): UseAppDSL => {
      */
     const initAppDSL = (): void => {
         window.addEventListener('beforeunload', () => {
-            sessionStorage.setItem(localKey, JSON.stringify(appDSL))
+            localStorage.setItem(localKey, JSON.stringify(appDSL))
         })
     }
 
@@ -70,9 +70,11 @@ export const initDSLData = (): UseAppDSL => {
      * @description 重置 appDSL
      */
     const resetAppDSL = (): void => {
-        updateAppDSL(defaultValue)
+        state.appDSL = defaultValue
         state.currentPage = defaultValue.pages['/'] ?? {}
         state.currentBlock = defaultValue.pages['/'].blocks[0] ?? []
+
+        updateAppDSL(state.appDSL as AppDSL)
     }
 
     return {

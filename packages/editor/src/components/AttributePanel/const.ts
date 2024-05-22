@@ -53,6 +53,14 @@ export const tabList: TabListItem[] = [
                         label: '高度',
                         useAddonAfter: true,
                         addonAfters: ['px', '%']
+                    }),
+                    // 字体大小
+                    fontSize: createEditorNumberProp({
+                        label: '字体大小',
+                        useAddonAfter: true,
+                        propsBind: {
+                            addonAfter: 'px'
+                        }
                     })
                 }
             },

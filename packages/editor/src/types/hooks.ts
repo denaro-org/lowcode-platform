@@ -92,10 +92,14 @@ export interface ComponentBind {
      */
     bindProps?: {
         /**
-         * @description 关闭时销毁 Drawer 里的子元素
+         * @description 关闭时销毁子元素
          */
-        destroyOnClose: boolean
-    }
+        destroyOnClose?: boolean
+        /**
+         * @description 标题
+         */
+        title?: string
+    } & Record<string, unknown>
     /**
      * @description 绑定的 Vue 组件
      */
@@ -109,7 +113,7 @@ export interface ComponentBind {
 /**
  * @description 组件名集合
  */
-export type ComponentBindName = 'canvasSettings' | 'previewDialog'
+export type ComponentBindName = 'canvasSettings' | 'previewDialog' | 'seeCode'
 
 /**
  * @description openComponent 方法的参数值

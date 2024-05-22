@@ -1,4 +1,4 @@
-import type { ComponentBindName, UseAppDSL } from './hooks'
+import type { ComponentBind, ComponentBindName, UseAppDSL } from './hooks'
 import type { OnEvent } from '@lowcode/shared'
 import type { VNode } from 'vue'
 
@@ -6,6 +6,10 @@ import type { VNode } from 'vue'
  * @description 通用的按钮配置类型
  */
 export interface BtnItem {
+    /**
+     * @description 绑定的 props
+     */
+    bindProps?: ComponentBind['bindProps']
     /**
      * @description 配置要展示的组件名
      */

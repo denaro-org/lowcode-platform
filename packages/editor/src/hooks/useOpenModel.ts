@@ -8,7 +8,7 @@ import type { VNodes } from '@lowcode/shared'
 
 import { computed, h, inject, reactive } from 'vue'
 
-import { CanvasSettings, PreviewDialog } from '@/components'
+import { CanvasSettings, PreviewDialog, SeeCode } from '@/components'
 import { InitOpenModelSymbol } from '@/symbol'
 
 /**
@@ -25,7 +25,9 @@ export const initOpenModel = (): UseOpenModel => {
         // 画布配置的组件
         canvasSettings: h(CanvasSettings),
         // 预览组件
-        previewDialog: h(PreviewDialog)
+        previewDialog: h(PreviewDialog),
+        // 查看代码组件
+        seeCode: h(SeeCode)
     }
 
     /**

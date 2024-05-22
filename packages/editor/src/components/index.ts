@@ -16,6 +16,10 @@ export { default as AttributePanel } from './AttributePanel/index.vue'
 export { default as CanvasSettings } from './CanvasSettings/index.vue'
 // 预览弹窗
 export { default as PreviewDialog } from './PreviewDialog/index.vue'
+// 查看代码
+export { default as SeeCode } from './SeeCode/index.vue'
+// 编辑器
+export { default as MonacoEditor } from './MonacoEditor/index.vue'
 
 // 导出表单组件
 export * from './AttrFormComp'

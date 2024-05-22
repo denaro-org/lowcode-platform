@@ -47,6 +47,7 @@ export type FlexStyleConfig =
 
 /**
  * @description flex 子项配置
+ * @type {T} 配置的值类型
  */
 type FlexOptions<T> = Array<{
     /**

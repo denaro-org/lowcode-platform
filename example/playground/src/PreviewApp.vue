@@ -2,7 +2,7 @@
     <LowCodePreview :app-dsl="appDSL" :ui-schema="uiSchema" />
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { WujieProps } from '@lowcode/shared'
 
 import { LowCodePreview } from '@lowcode/editor'

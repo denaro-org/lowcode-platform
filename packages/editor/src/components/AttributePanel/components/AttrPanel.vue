@@ -31,6 +31,7 @@
 import type { EditorFormItemProps } from '@lowcode/shared'
 
 import { CopyOutlined } from '@ant-design/icons-vue'
+import { useClipboard } from '@vueuse/core'
 import { FormItem, Tooltip, message } from 'ant-design-vue'
 import { forEach } from 'lodash-es'
 import { computed } from 'vue'
@@ -79,13 +80,10 @@ const stateFormModel = computed({
 
 // 复制到剪贴板
 const copyToClipboard = (text: string) => {
-    const input = document.createElement('input')
-    input.value = text
-    document.body.appendChild(input)
-    input.select()
-    document.execCommand('copy')
-    document.body.removeChild(input)
+    const { copy } = useClipboard({ source: text })
 
-    message.success(`${text} 复制成功 !!!`)
+    copy()
+        .then(() => message.success(`${text} 复制成功 !!!`))
+        .catch(err => message.error(`复制失败：${err}`))
 }
 </script>

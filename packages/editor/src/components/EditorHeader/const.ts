@@ -18,19 +18,17 @@ export const centerBtnList: BtnItem[] = [
     {
         icon: h(CodeOutlined),
         label: '生成代码',
-        on: {
-            onClick: (): void => {
-                //
-            }
+        componentBindName: 'seeCode',
+        bindProps: {
+            editorType: 'GenVueCode'
         }
     },
     {
         icon: h(CloudDownloadOutlined),
         label: '查看 DSL JSON',
-        on: {
-            onClick: (): void => {
-                //
-            }
+        componentBindName: 'seeCode',
+        bindProps: {
+            editorType: 'AppDSL'
         }
     },
     {
