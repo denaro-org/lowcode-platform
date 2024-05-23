@@ -1,5 +1,5 @@
 <template>
-    <Drawer v-model:open="isOpen" placement="right" v-bind="$attrs" width="80%">
+    <Drawer v-model:open="isOpen" placement="right" v-bind="$attrs" width="60%">
         <MonacoEditor :editor-type="editorType" />
     </Drawer>
 </template>

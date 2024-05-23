@@ -32,7 +32,8 @@ export const createNewBlock = (component: EditorComponent): EditorBlock => {
             marginTop: '0',
             marginRight: '0',
             marginLeft: '0',
-            marginBottom: '0'
+            marginBottom: '0',
+            textAlign: 'left'
         },
         draggable: component.draggable ?? true,
         props: Object.entries(component.props ?? {}).reduce(

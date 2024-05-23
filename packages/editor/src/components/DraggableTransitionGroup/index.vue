@@ -73,9 +73,4 @@ const dragOptions = computed(() => ({
     background: #c8ebfb;
     opacity: 0.5;
 }
-
-.list-group {
-    height: 100%;
-    min-height: 40px;
-}
 </style>

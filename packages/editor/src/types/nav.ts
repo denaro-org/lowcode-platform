@@ -1,4 +1,8 @@
-import type { DataSourceCategory, EditorProps } from '@lowcode/shared'
+import type {
+    ComponentModules,
+    DataSourceCategory,
+    EditorProps
+} from '@lowcode/shared'
 import type { SelectProps } from 'ant-design-vue'
 import type { VNode } from 'vue'
 
@@ -19,9 +23,14 @@ export interface NavItem {
      */
     label: string
     /**
+     * @description 组件所属的模块（基础组件、容器组件）
+     * 可选值: keyof ComponentModules
+     */
+    moduleName?: keyof ComponentModules
+    /**
      * @description 分类名称
      */
-    name: 'page' | 'basic-components' | 'container-component' | 'data-source'
+    name: 'page' | 'basic-components' | 'container-components' | 'data-source'
 }
 
 /**

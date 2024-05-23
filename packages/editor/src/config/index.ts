@@ -1,3 +1,5 @@
+import type { NavItem } from '@/types'
+
 /**
  * @description 移动端的默认尺寸
  */
@@ -12,3 +14,8 @@ export const MOBILE_SIZE = {
 export enum CacheEnum {
     APP_DSL = 'APP_DSL'
 }
+
+/**
+ * @description 侧边栏默认选中
+ */
+export const NavDefaultValue: NavItem['name'] = 'container-components'

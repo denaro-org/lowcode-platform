@@ -40,7 +40,26 @@
 
     <!-- color -->
     <template v-if="item.type === EditorPropsType.color">
-        <!--  -->
+        <InputGroup compact>
+            <Input
+                v-model:value="stateFormModel[item.propName]"
+                type="color"
+                v-bind="item.propsBind"
+                style="width: 30%" />
+            <Input
+                v-model:value="stateFormModel[item.propName]"
+                readonly
+                style="width: 70%" />
+        </InputGroup>
+    </template>
+
+    <!-- radioGroup -->
+    <template v-if="item.type === EditorPropsType.radioGroup">
+        <RadioGroup
+            v-model:value="stateFormModel[item.propName]"
+            button-style="solid"
+            option-type="button"
+            v-bind="item.propsBind" />
     </template>
 </template>
 
@@ -50,7 +69,14 @@ import type { InputNumberProps } from 'ant-design-vue'
 import type { PropType } from 'vue'
 
 import { EditorPropsType } from '@lowcode/shared'
-import { Select, Input, Switch, InputNumber } from 'ant-design-vue'
+import {
+    Select,
+    Input,
+    Switch,
+    InputNumber,
+    RadioGroup,
+    InputGroup
+} from 'ant-design-vue'
 import { ref } from 'vue'
 
 const stateFormModel = defineModel('model', {

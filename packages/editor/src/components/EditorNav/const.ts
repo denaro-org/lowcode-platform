@@ -30,12 +30,14 @@ export const defaultNavConfig: NavConfig = [
     {
         label: '基本组件',
         name: 'basic-components',
+        moduleName: 'baseWidgets',
         icon: h(DropboxOutlined),
         component: h(ListWarpper)
     },
     {
         label: '容器组件',
-        name: 'container-component',
+        name: 'container-components',
+        moduleName: 'containerComponents',
         icon: h(ProjectOutlined),
         component: h(ListWarpper)
     },

@@ -31,7 +31,9 @@
                     <DoubleLeftOutlined v-if="state.isOpen" />
                     <DoubleRightOutlined v-else />
                 </div>
-                <component :is="activeComponent" />
+                <component
+                    :is="activeComponentConfig.component"
+                    :category="activeComponentConfig.moduleName" />
             </section>
         </section>
     </section>
@@ -46,6 +48,8 @@ import { PropType, computed, reactive } from 'vue'
 
 import { defaultNavConfig } from './const'
 import styles from './index.module.scss'
+
+import { NavDefaultValue } from '@/config'
 
 defineOptions({
     name: 'EditorNav'
@@ -62,13 +66,18 @@ const stateNavConfig = computed(() => {
     return merge(defaultNavConfig, props.navConfig)
 })
 // 当前激活的导航对应渲染
-const activeComponent = computed(() => {
-    return stateNavConfig.value.find(item => item.name === state.activeName)
-        ?.component
+const activeComponentConfig = computed(() => {
+    const componentConfig = stateNavConfig.value.find(
+        item => item.name === state.activeName
+    )
+    return {
+        component: componentConfig?.component,
+        moduleName: componentConfig?.moduleName
+    }
 })
 
 const state = reactive({
-    activeName: 'data-source',
+    activeName: NavDefaultValue,
     isOpen: true
 })
 </script>

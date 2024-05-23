@@ -1,6 +1,6 @@
 import type { FlexStyleConfig, TabListItem } from '@/types'
 
-import { createEditorNumberProp } from '@lowcode/shared'
+import { createEditorNumberProp, createRadioGroupProp } from '@lowcode/shared'
 import { h } from 'vue'
 
 import { AttrPanel, EventPanel, StylePanel } from './components'
@@ -20,8 +20,11 @@ import FlexDirectionColumn from '@/assets/svgs/flexDirectionColumn.svg?raw'
 import FlexDirectionColumnReverse from '@/assets/svgs/flexDirectionColumnReverse.svg?raw'
 import FlexDirectionRow from '@/assets/svgs/flexDirectionRow.svg?raw'
 import FlexDirectionRowReverse from '@/assets/svgs/flexDirectionRowReverse.svg?raw'
+import FlexNoWrap from '@/assets/svgs/flexNoWrap.svg?raw'
+import FlexWrap from '@/assets/svgs/flexWrap.svg?raw'
 import JustifyCenter from '@/assets/svgs/justifyCenter.svg?raw'
 import JustifyEnd from '@/assets/svgs/justifyEnd.svg?raw'
+import JustifySpaceAround from '@/assets/svgs/justifySpaceAround.svg?raw'
 import JustifySpaceBetween from '@/assets/svgs/justifySpaceBetween.svg?raw'
 import JustifySpaceEvenly from '@/assets/svgs/justifySpaceEvenly.svg?raw'
 import JustifyStart from '@/assets/svgs/justifyStart.svg?raw'
@@ -58,8 +61,27 @@ export const tabList: TabListItem[] = [
                     fontSize: createEditorNumberProp({
                         label: '字体大小',
                         useAddonAfter: true,
+                        addonAfters: ['px', 'rem', 'em']
+                    }),
+                    // 对齐
+                    textAlign: createRadioGroupProp({
+                        label: '对齐方式',
+                        defaultValue: 'left',
                         propsBind: {
-                            addonAfter: 'px'
+                            options: [
+                                {
+                                    label: '左对齐',
+                                    value: 'left'
+                                },
+                                {
+                                    label: '居中',
+                                    value: 'center'
+                                },
+                                {
+                                    label: '右对齐',
+                                    value: 'right'
+                                }
+                            ]
                         }
                     })
                 }
@@ -67,6 +89,10 @@ export const tabList: TabListItem[] = [
             {
                 title: 'Flex 弹性布局',
                 key: 'flex-style'
+            },
+            {
+                title: '盒子',
+                key: 'box-style'
             }
         ]
     },
@@ -106,10 +132,12 @@ export const flexStyleConfig: FlexStyleConfig[] = [
         defaultValue: 'nowrap',
         options: [
             {
-                value: 'nowrap'
+                value: 'nowrap',
+                icon: FlexNoWrap
             },
             {
-                value: 'wrap'
+                value: 'wrap',
+                icon: FlexWrap
             }
         ]
     },
@@ -130,12 +158,12 @@ export const flexStyleConfig: FlexStyleConfig[] = [
                 icon: AlignEnd
             },
             {
-                value: 'space-between',
-                icon: AlignSpaceBetween
-            },
-            {
                 value: 'space-around',
                 icon: AlignSpaceAround
+            },
+            {
+                value: 'space-between',
+                icon: AlignSpaceBetween
             },
             {
                 value: 'stretch',
@@ -164,7 +192,8 @@ export const flexStyleConfig: FlexStyleConfig[] = [
                 icon: JustifySpaceBetween
             },
             {
-                value: 'space-around'
+                value: 'space-around',
+                icon: JustifySpaceAround
             },
             {
                 value: 'space-evenly',

@@ -8,36 +8,46 @@
                 placeholder="请输入关键词" />
         </div>
 
-        <div class="overflow-y-auto">
-            <DraggableTransitionGroup
-                v-model="uiSchema"
-                :class="['grid-row2 gap-8']"
-                v-bind="draggableBind">
-                <template #item="{ element }">
-                    <div
-                        :class="styles.listItem"
-                        :data-label="element.label"
-                        :title="element.label">
+        <div
+            :class="[
+                styles.listBody,
+                'overflow-y-auto',
+                listSchema.length === 0 && 'flex flex-center'
+            ]">
+            <template v-if="listSchema.length">
+                <DraggableTransitionGroup
+                    v-model="listSchema"
+                    :class="['grid-row2 gap-8']"
+                    v-bind="draggableBind">
+                    <template #item="{ element }">
                         <div
-                            :class="[
-                                styles.itemPreview,
-                                'flex',
-                                'flex-center'
-                            ]">
-                            <component :is="element.preview" />
+                            :class="styles.listItem"
+                            :data-label="element.label"
+                            :title="element.label">
+                            <div
+                                :class="[
+                                    styles.itemPreview,
+                                    'flex',
+                                    'flex-center'
+                                ]">
+                                <component :is="element.preview" />
+                            </div>
                         </div>
-                    </div>
-                </template>
-            </DraggableTransitionGroup>
+                    </template>
+                </DraggableTransitionGroup>
+            </template>
+
+            <template v-else>
+                <Empty description="组件列表为空" />
+            </template>
         </div>
     </section>
 </template>
 
 <script setup lang="ts">
-import type { NavItem } from '@/types'
-import type { EditorComponent } from '@lowcode/shared'
+import type { ComponentModules, EditorComponent } from '@lowcode/shared'
 
-import { InputSearch } from 'ant-design-vue'
+import { InputSearch, Empty } from 'ant-design-vue'
 import { cloneDeep } from 'lodash-es'
 import { PropType, computed, inject, ref } from 'vue'
 
@@ -50,15 +60,18 @@ import { UISchemaSymbol } from '@/symbol'
 defineOptions({
     name: 'ListWarpper'
 })
-defineProps({
+const props = defineProps({
     // 导航栏分类
     category: {
-        type: String as PropType<NavItem['name']>,
+        type: String as PropType<keyof ComponentModules>,
         default: undefined
     }
 })
 
-const uiSchema = inject<EditorComponent[]>(UISchemaSymbol)
+const uiSchema = inject<EditorComponent[]>(UISchemaSymbol) ?? []
+const listSchema = computed(() => {
+    return uiSchema.filter(item => item.moduleName === props.category)
+})
 const searchValue = ref('')
 
 // 克隆组件节点信息
