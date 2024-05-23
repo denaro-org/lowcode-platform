@@ -2,6 +2,7 @@ import type { EditorComponent, EditorComponents } from '@lowcode/shared'
 import type { App } from 'vue'
 
 import TmVarButton from './button'
+import TmVarButtonGroup from './button-group'
 import TmVarEllipsis from './ellipsis'
 import TmVarIcon from './icon'
 import TmVarImage from './image'
@@ -22,7 +23,13 @@ modulesKeys.forEach(([key, module]) => {
     uiSchema[name] = module?.default || module
 })
 
-const components = [TmVarButton, TmVarEllipsis, TmVarIcon, TmVarImage]
+const components = [
+    TmVarButton,
+    TmVarButtonGroup,
+    TmVarEllipsis,
+    TmVarIcon,
+    TmVarImage
+]
 
 const install = (app: App): void => {
     components.forEach(component => {
@@ -30,7 +37,14 @@ const install = (app: App): void => {
     })
 }
 
-export { uiSchema, TmVarButton, TmVarEllipsis, TmVarIcon, TmVarImage }
+export {
+    uiSchema,
+    TmVarButton,
+    TmVarButtonGroup,
+    TmVarEllipsis,
+    TmVarIcon,
+    TmVarImage
+}
 
 export default {
     install

@@ -159,9 +159,11 @@ const buttonConfig: EditorComponent = {
             defaultValue: true,
             children: [
                 createEditorSwitchProp({
+                    label: '',
                     defaultValue: true
                 }),
                 createEditorNumberProp({
+                    label: '',
                     propsBind: {
                         min: 0,
                         max: 24,

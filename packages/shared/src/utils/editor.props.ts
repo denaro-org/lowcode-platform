@@ -1,4 +1,9 @@
-import type { EditorProps, SelectOptions, UserPropConfig } from '../types'
+import type {
+    EditorComponent,
+    EditorProps,
+    SelectOptions,
+    UserPropConfig
+} from '../types'
 import type {
     InputNumberProps,
     InputProps,
@@ -9,7 +14,6 @@ import type {
 
 import { URL_REGEX, URL_REGEX_MSG } from './pattern.utils'
 import { EditorPropsType } from '../enum'
-
 /**
  * !!!---- input 输入类型的表单项配置 ----
  */
@@ -50,7 +54,7 @@ export const createEditorInputProp = (
             placeholder: `请输入${propConfig.label}`,
             ...propsBind
         },
-        rules,
+        ...(propConfig.ruleNames && { rules }),
         ...propConfig
     }
 }
@@ -239,6 +243,46 @@ export const createRadioGroupProp = (
 ): EditorProps => {
     return {
         type: EditorPropsType.radioGroup,
+        ...propConfig
+    }
+}
+
+/**
+ * !!!---- array 类型的表单项配置 ----
+ */
+
+/**
+ * @description array 类型的表单配置
+ */
+type EditorArrGroupProp = UserPropConfig<object> & {
+    /**
+     * @description 折叠项标题
+     */
+    collapseHeader: string
+    /**
+     * @description 表单组合子项配置
+     */
+    props: EditorComponent['props']
+}
+
+/**
+ * @description 创建 array 类型的表单
+ * @import import { createArrGrouppProp } from '@lowcode/shared'
+ * @param {EditorArrGroupProp} propConfig 配置
+ * @returns {EditorProps}
+ */
+export const createArrGrouppProp = (
+    propConfig: EditorArrGroupProp
+): EditorProps => {
+    const { defaultValue, collapseHeader } = propConfig
+
+    return {
+        type: EditorPropsType.arrGroup,
+        ...(Array.isArray(defaultValue) && {
+            collapseOptions: defaultValue.map((item, index) => ({
+                label: `${collapseHeader}__${index + 1}`
+            }))
+        }),
         ...propConfig
     }
 }

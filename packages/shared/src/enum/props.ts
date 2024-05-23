@@ -2,6 +2,8 @@
  * @description 表单编辑器类型枚举
  */
 export enum EditorPropsType {
+    // 数组类型
+    arrGroup = 'arr-group',
     // 复选框
     checkboxGroup = 'checkbox-group',
     // 颜色选择器

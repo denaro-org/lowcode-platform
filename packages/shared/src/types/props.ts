@@ -1,3 +1,4 @@
+import type { EditorComponent } from './editor'
 import type { EditorPropsType } from '../enum'
 import type {
     FormItemProps,
@@ -14,6 +15,16 @@ import type {
 export type SelectOptions = SelectProps['options']
 
 /**
+ * @description 基础类型
+ */
+export type BaseValue = string | boolean | number | object
+
+/**
+ * @description 默认值
+ */
+export type DefaultValue = BaseValue | BaseValue[]
+
+/**
  * @description 使用创建方法来创建表单项的创建方法配置
  * @type {T extends object} propsBind 组件绑定的自定义类型
  */
@@ -25,7 +36,7 @@ export interface UserPropConfig<T extends object> {
     /**
      * @description 默认值
      */
-    defaultValue?: unknown
+    defaultValue?: DefaultValue
     /**
      * @description 用于定义表单项显隐的函数
      * @param {Record<string, unknown>} model 绑定的表单值
@@ -35,7 +46,7 @@ export interface UserPropConfig<T extends object> {
     /**
      * @description 表单项标签名称
      */
-    label?: string
+    label: string
     /**
      * @description 绑定给 antd 的表单项 props 配置
      */
@@ -56,6 +67,23 @@ export interface UserPropConfig<T extends object> {
  */
 export interface EditorProps<T extends object = object>
     extends UserPropConfig<T> {
+    /**
+     * @description 用于配置折叠项的配置
+     */
+    collapseOptions?: Array<{
+        /**
+         * @description 折叠项标题
+         */
+        label: string
+        /**
+         * @description 折叠项值
+         */
+        value?: string | number
+    }>
+    /**
+     * @description 表单组合子项配置
+     */
+    props?: EditorComponent['props']
     /**
      * @description 表单验证规则
      */
