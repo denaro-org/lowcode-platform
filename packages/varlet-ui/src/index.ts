@@ -22,7 +22,7 @@ modulesKeys.forEach(([key, module]) => {
     uiSchema[name] = module?.default || module
 })
 
-const components = [TmVarButton, TmVarEllipsis, TmVarImage, TmVarIcon]
+const components = [TmVarButton, TmVarEllipsis, TmVarIcon, TmVarImage]
 
 const install = (app: App): void => {
     components.forEach(component => {
@@ -30,7 +30,7 @@ const install = (app: App): void => {
     })
 }
 
-export { uiSchema, TmVarButton, TmVarEllipsis, TmVarImage, TmVarIcon }
+export { uiSchema, TmVarButton, TmVarEllipsis, TmVarIcon, TmVarImage }
 
 export default {
     install

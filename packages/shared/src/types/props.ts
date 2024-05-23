@@ -3,6 +3,7 @@ import type {
     FormItemProps,
     InputNumberProps,
     InputProps,
+    RadioGroupProps,
     SelectProps,
     SwitchProps
 } from 'ant-design-vue'
@@ -68,7 +69,11 @@ export interface EditorProps<T extends object = object>
 /**
  * @description 表单的 props 绑定值类型
  */
-type PropsBind = SelectProps & InputProps & InputNumberProps & SwitchProps
+type PropsBind = SelectProps &
+    InputProps &
+    InputNumberProps &
+    SwitchProps &
+    RadioGroupProps
 
 /**
  * @description 表单项配置类型

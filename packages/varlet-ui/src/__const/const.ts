@@ -201,3 +201,17 @@ export const ICON_LIST = [
     'xml'
 ]
 export const DEFAULT_ICON = 'information'
+
+// justify
+export const JUSTIFY_LIST = [
+    'flex-start',
+    'flex-end',
+    'center',
+    'space-between',
+    'space-around'
+]
+export const DEFAULT_JUSTIFY = 'flex-start'
+
+// align
+export const ALIGN_LIST = ['flex-start', 'flex-end', 'center']
+export const DEFAULT_ALIGN = 'flex-start'

@@ -2,6 +2,7 @@ import type { EditorProps, SelectOptions, UserPropConfig } from '../types'
 import type {
     InputNumberProps,
     InputProps,
+    RadioGroupProps,
     SelectProps,
     SwitchProps
 } from 'ant-design-vue'
@@ -33,6 +34,8 @@ export const createEditorInputProp = (
     propConfig: EditorInputProp
 ): EditorProps => {
     const rules: EditorProps['rules'] = []
+    const { propsBind } = propConfig
+
     if (propConfig.ruleNames?.includes('URL')) {
         rules.push({
             pattern: URL_REGEX,
@@ -44,7 +47,8 @@ export const createEditorInputProp = (
     return {
         type: EditorPropsType.input,
         propsBind: {
-            placeholder: `请输入${propConfig.label}`
+            placeholder: `请输入${propConfig.label}`,
+            ...propsBind
         },
         rules,
         ...propConfig
@@ -78,7 +82,7 @@ type EditorSelectProp = UserPropConfig<SelectProps> & {
 export const createEditorSelectProp = (
     propConfig: EditorSelectProp
 ): EditorProps => {
-    const { constDict, options, ...args } = propConfig
+    const { constDict, options, propsBind, ...args } = propConfig
 
     let stateOptions: SelectOptions = options ?? []
     // 从字典中生成默认的 options
@@ -97,7 +101,8 @@ export const createEditorSelectProp = (
         propsBind: {
             options: stateOptions,
             showSearch: true,
-            placeholder: `请选择${propConfig.label}`
+            placeholder: `请选择${propConfig.label}`,
+            ...propsBind
         },
         ...args
     }
@@ -208,6 +213,32 @@ export const createEditorGroupProp = (
 ): EditorProps => {
     return {
         type: EditorPropsType.group,
+        ...propConfig
+    }
+}
+
+/**
+ * !!!---- radio-grounp 类型的表单项配置 ----
+ */
+
+/**
+ * @description radio-grounp 类型的表单配置
+ */
+type EditorRadioGroupProp = UserPropConfig<RadioGroupProps> & {
+    //
+}
+
+/**
+ * @description 创建 radio-grounp 类型的表单
+ * @import import { createRadioGroupProp } from '@lowcode/shared'
+ * @param {EditorRadioGroupProp} propConfig 配置
+ * @returns {EditorProps}
+ */
+export const createRadioGroupProp = (
+    propConfig: EditorRadioGroupProp
+): EditorProps => {
+    return {
+        type: EditorPropsType.radioGroup,
         ...propConfig
     }
 }

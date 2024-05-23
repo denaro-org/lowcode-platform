@@ -3,7 +3,7 @@
  */
 export enum EditorPropsType {
     // 复选框
-    checkbox = 'checkbox',
+    checkboxGroup = 'checkbox-group',
     // 颜色选择器
     color = 'color',
     // 组合类型
@@ -13,7 +13,7 @@ export enum EditorPropsType {
     // 数字输入框
     number = 'number',
     // 单选框
-    radio = 'radio',
+    radioGroup = 'radio-group',
     // 下拉框
     select = 'select',
     // 开关

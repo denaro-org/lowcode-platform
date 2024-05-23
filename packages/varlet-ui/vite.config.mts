@@ -53,6 +53,19 @@ export default defineConfig(({ mode }) => {
                 prefix: 'TmVar'
             })
         ],
+        css: {
+            modules: {
+                localsConvention: 'camelCase' // 默认只支持驼峰, 修改为同时支持横线和驼峰
+            },
+            preprocessorOptions: {
+                scss: {
+                    charset: false
+                },
+                less: {
+                    charset: false
+                }
+            }
+        },
         resolve: {
             alias: [
                 {
