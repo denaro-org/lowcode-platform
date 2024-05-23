@@ -46,10 +46,21 @@
                 type="color"
                 v-bind="item.propsBind"
                 style="width: 30%" />
-            <Input
-                v-model:value="stateFormModel[item.propName]"
-                readonly
-                style="width: 70%" />
+
+            <FormItemRest>
+                <Input
+                    v-model:value="stateFormModel[item.propName]"
+                    readonly
+                    style="width: calc(70% - 32px)" />
+            </FormItemRest>
+
+            <Button
+                :disabled="!stateFormModel[item.propName]"
+                @click="clearModel(item)">
+                <template #icon>
+                    <CloseCircleOutlined />
+                </template>
+            </Button>
         </InputGroup>
     </template>
 
@@ -61,6 +72,14 @@
             option-type="button"
             v-bind="item.propsBind" />
     </template>
+
+    <!-- arrGroup -->
+    <template v-if="item.type === EditorPropsType.arrGroup">
+        <ArrGroup
+            v-model:value="stateFormModel[item.propName]"
+            :item="item"
+            v-bind="item.propsBind" />
+    </template>
 </template>
 
 <script setup lang="ts">
@@ -68,16 +87,21 @@ import type { EditorFormItemProps, SelectOptions } from '@lowcode/shared'
 import type { InputNumberProps } from 'ant-design-vue'
 import type { PropType } from 'vue'
 
+import { CloseCircleOutlined } from '@ant-design/icons-vue'
 import { EditorPropsType } from '@lowcode/shared'
 import {
+    FormItemRest,
     Select,
     Input,
     Switch,
     InputNumber,
     RadioGroup,
-    InputGroup
+    InputGroup,
+    Button
 } from 'ant-design-vue'
 import { ref } from 'vue'
+
+import ArrGroup from './ArrGroup.vue'
 
 const stateFormModel = defineModel('model', {
     type: Object,
@@ -132,5 +156,13 @@ const getAddonAfterOptions = (addonAfters: string[]): SelectOptions => {
     })
 
     return result as SelectOptions
+}
+
+/**
+ * @description 用于手动清空表单项值
+ */
+const clearModel = (item: EditorFormItemProps) => {
+    const { propName } = item
+    stateFormModel.value[propName] = undefined
 }
 </script>

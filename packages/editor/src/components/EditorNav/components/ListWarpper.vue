@@ -11,17 +11,17 @@
         <div
             :class="[
                 styles.listBody,
-                'overflow-y-auto',
+                'w-100 overflow-y-auto',
                 listSchema.length === 0 && 'flex flex-center'
             ]">
             <template v-if="listSchema.length">
                 <DraggableTransitionGroup
                     v-model="listSchema"
-                    :class="['grid-row2 gap-8']"
+                    class="grid-column2 gap-8"
                     v-bind="draggableBind">
                     <template #item="{ element }">
                         <div
-                            :class="styles.listItem"
+                            :class="[styles.listItem, 'w-100']"
                             :data-label="element.label"
                             :title="element.label">
                             <div

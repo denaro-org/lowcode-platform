@@ -7,6 +7,7 @@
             <DraggableTransitionGroup
                 v-model:drag="drag"
                 v-model="currentPage.blocks"
+                class="h-100"
                 v-bind="draggableBind">
                 <template #item="{ element: outElement }">
                     <div

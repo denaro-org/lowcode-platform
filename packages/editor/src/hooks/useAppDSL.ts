@@ -1,7 +1,7 @@
 import type { IState, UseAppDSL } from '@/types'
-import type { AppDSL, EditorBlock } from '@lowcode/shared'
+import type { AppDSL, EditorBlock, EditorPage } from '@lowcode/shared'
 
-import { computed, inject, reactive, readonly } from 'vue'
+import { computed, inject, reactive } from 'vue'
 
 import { createNewPage } from './createNewPage'
 
@@ -46,44 +46,63 @@ export const initDSLData = (): UseAppDSL => {
      */
     const setCurrentBlock = (block: EditorBlock): void => {
         state.currentBlock = block
-        updateAppDSL(state.appDSL as AppDSL)
     }
 
     /**
-     * @description 更新本地存储的 appDSL
-     * @param {AppDSL} appDSL appDSL
+     * @description 更新pages下面的blocks
+     * @param {string} path 页面路径
+     * @param {EditorBlock[]} blocks 页面下的 blocks 配置
      */
-    const updateAppDSL = (appDSL: AppDSL): void => {
-        localStorage.setItem(localKey, JSON.stringify(appDSL))
+    const updatePageBlock = (path = '', blocks: EditorBlock[] = []): void => {
+        state.appDSL.pages[path].blocks = blocks
+    }
+
+    /**
+     * @description 设置当前被操作的页面
+     * @param {EditorPage} page 当前被操作的页面配置
+     */
+    const setCurrentPage = (page: EditorPage): void => {
+        state.currentPage = page
     }
 
     /**
      * @description 初始化 DSL
+     * @param {AppDSL} appDSL appDSL
      */
-    const initAppDSL = (): void => {
+    const initAppDSL = (appDSL: AppDSL): void => {
         window.addEventListener('beforeunload', () => {
-            localStorage.setItem(localKey, JSON.stringify(appDSL))
+            sessionStorage.setItem(localKey, JSON.stringify(appDSL))
         })
+    }
+
+    /**
+     * @description 使用自定义JSON覆盖整个项目
+     * @param {AppDSL} appDSL appDSL
+     */
+    const overrideProject = (appDSL: AppDSL): void => {
+        state.appDSL = typeof appDSL === 'string' ? JSON.parse(appDSL) : appDSL
+        sessionStorage.setItem(localKey, JSON.stringify(appDSL))
     }
 
     /**
      * @description 重置 appDSL
      */
     const resetAppDSL = (): void => {
-        state.appDSL = defaultValue
-        state.currentPage = defaultValue.pages['/'] ?? {}
-        state.currentBlock = defaultValue.pages['/'].blocks[0] ?? []
-
-        updateAppDSL(state.appDSL as AppDSL)
+        overrideProject(defaultValue)
+        setCurrentPage(defaultValue.pages['/'] ?? {})
+        setCurrentBlock(defaultValue.pages['/'].blocks[0] ?? {})
     }
 
     return {
-        appDSL: readonly(state.appDSL),
+        appDSL: computed(() => state.appDSL),
         currentPage: computed(() => state.currentPage),
         currentBlock: computed(() => state.currentBlock),
         setCurrentBlock,
+        setCurrentPage,
+        overrideProject,
         initAppDSL,
-        resetAppDSL
+        resetAppDSL,
+        updatePageBlock
     }
 }
 

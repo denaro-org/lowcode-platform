@@ -52,7 +52,7 @@ const { appDSL } = useAppDSL()
 const code = computed(() => {
     switch (props.editorType) {
         case 'AppDSL':
-            return JSON.stringify(appDSL, null, 2)
+            return JSON.stringify(appDSL.value, null, 2)
         default:
             return ''
     }

@@ -5,6 +5,7 @@ import type {
     PropValue
 } from '@lowcode/shared'
 
+import { EditorPropsType } from '@lowcode/shared'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useDotProp } from './useDotProp'
@@ -43,6 +44,38 @@ export const createNewBlock = (component: EditorComponent): EditorBlock => {
                     propObj[prop] = prev[propName] =
                         propSchema?.defaultValue as unknown as PropValue
                 }
+                if (
+                    propSchema.type === EditorPropsType.arrGroup &&
+                    propSchema.props &&
+                    Object.keys(propSchema.props).length > 0
+                ) {
+                    const defaultValues = Object.entries(
+                        propSchema.props
+                    ).reduce((_prev: BlockProps, [_propName, _propSchema]) => {
+                        const { propObj: _propObj, prop: _prop } = useDotProp(
+                            _prev,
+                            _propName
+                        )
+
+                        if (_propSchema?.defaultValue) {
+                            _propObj[_prop] = _prev[_propName] =
+                                _propSchema?.defaultValue as unknown as PropValue
+                        }
+                        return _prev
+                    }, {})
+
+                    if (Array.isArray(propObj[prop])) {
+                        propObj[prop] = (propObj[prop] as object[])?.map(
+                            item => {
+                                return {
+                                    ...defaultValues,
+                                    ...item
+                                }
+                            }
+                        )
+                    }
+                }
+
                 return prev
             },
             {}

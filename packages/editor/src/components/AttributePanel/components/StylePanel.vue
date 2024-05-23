@@ -1,5 +1,5 @@
 <template>
-    <div :class="[]">
+    <div>
         <Collapse v-model:activeKey="activeKey" :bordered="false" accordion>
             <CollapsePanel
                 v-for="item in childrenConfig"

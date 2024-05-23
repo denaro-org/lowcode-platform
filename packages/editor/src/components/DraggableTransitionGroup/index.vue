@@ -1,7 +1,7 @@
 <template>
     <draggable
         v-model="list"
-        :class="['list-group', isDrag && 'is-drag']"
+        :class="[isDrag && 'is-drag']"
         :component-data="{
             tag: 'ul',
             type: 'transition-group',
@@ -14,7 +14,7 @@
         @end="isDrag = false">
         <template #item="item">
             <div
-                :class="{ 'item-drag': item.element.draggable }"
+                :class="[item.element.draggable && 'item-drag', 'h-max']"
                 :data-el="item.element.draggable">
                 <slot name="item" v-bind="item"></slot>
             </div>

@@ -4,7 +4,7 @@ import type {
     EditorComponent,
     EditorPage
 } from '@lowcode/shared'
-import type { ComputedRef, DeepReadonly, VNode } from 'vue'
+import type { ComputedRef, VNode } from 'vue'
 
 /**
  * @description state 类型
@@ -31,7 +31,7 @@ export interface UseAppDSL {
     /**
      * @description DSL, 不可被直接修改
      */
-    appDSL: DeepReadonly<AppDSL>
+    appDSL: ComputedRef<AppDSL>
     /**
      * @description 当前页面
      */
@@ -42,8 +42,14 @@ export interface UseAppDSL {
     currentPage: ComputedRef<EditorPage>
     /**
      * @description 初始化 DSL
+     * @param {AppDSL} appDSL appDSL
      */
-    initAppDSL: () => void
+    initAppDSL: (appDSL: AppDSL) => void
+    /**
+     * @description 使用自定义JSON覆盖整个项目
+     * @param {AppDSL} appDSL appDSL
+     */
+    overrideProject: (appDSL: AppDSL) => void
     /**
      * @description 重置 appDSL
      */
@@ -53,6 +59,17 @@ export interface UseAppDSL {
      * @param {EditorBlock} block  当前被操作的组件配置
      */
     setCurrentBlock: (block: EditorBlock) => void
+    /**
+     * @description 设置当前被操作的页面
+     * @param {EditorPage} page 当前被操作的页面配置
+     */
+    setCurrentPage: (page: EditorPage) => void
+    /**
+     * @description 更新pages下面的blocks
+     * @param {string} path 页面路径
+     * @param {EditorBlock[]} blocks 页面下的 blocks 配置
+     */
+    updatePageBlock: (path: string, blocks: EditorBlock[]) => void
 }
 
 /**

@@ -1,23 +1,27 @@
 <template>
-    <section :class="[styles.lowCodeEditor, 'flex-column']">
-        <!-- 头部 -->
-        <EditorHeader />
+    <ConfigProvider :locale="zhCN">
+        <section :class="[styles.lowCodeEditor, 'flex-column']">
+            <!-- 头部 -->
+            <EditorHeader />
 
-        <section :class="[styles.editorBody, 'flex-row']">
-            <!-- 左边组件选择区域 -->
-            <EditorNav />
-            <!-- 中间渲染区域 -->
-            <SimulatorEditor />
-            <!-- 右边属性配置 -->
-            <AttributePanel />
+            <section :class="[styles.editorBody, 'flex-row']">
+                <!-- 左边组件选择区域 -->
+                <EditorNav />
+                <!-- 中间渲染区域 -->
+                <SimulatorEditor />
+                <!-- 右边属性配置 -->
+                <AttributePanel />
+            </section>
         </section>
-    </section>
+    </ConfigProvider>
 </template>
 
 <script setup lang="ts">
 import type { EditorComponent, EditorComponents } from '@lowcode/shared'
 import type { PropType } from 'vue'
 
+import { ConfigProvider } from 'ant-design-vue'
+import zhCN from 'ant-design-vue/es/locale/zh_CN'
 import { onMounted, provide } from 'vue'
 
 import {
@@ -50,9 +54,9 @@ const props = defineProps({
     }
 })
 
-const { initAppDSL } = initDSLData()
+const { initAppDSL, appDSL } = initDSLData()
 onMounted(() => {
-    initAppDSL()
+    initAppDSL(appDSL.value)
 })
 
 window.$$refs = {}
