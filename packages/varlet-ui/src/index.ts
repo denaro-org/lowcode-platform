@@ -2,7 +2,7 @@ import type { EditorComponent, EditorComponents } from '@lowcode/shared'
 import type { App } from 'vue'
 
 import TmVarButton from './button'
-import TmVarButtonGroup from './button-group'
+import TmVarButtonGroup from './buttonGroup'
 import TmVarEllipsis from './ellipsis'
 import TmVarIcon from './icon'
 import TmVarImage from './image'
