@@ -12,5 +12,5 @@ defineOptions({
     name: 'PlaygroundApp'
 })
 
-const previewUrl = ref('http://localhost:5173/preview.html')
+const previewUrl = ref('./preview')
 </script>

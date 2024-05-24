@@ -12,9 +12,9 @@
 
 <script setup lang="ts">
 import { Image } from '@varlet/ui'
+import '@varlet/ui/es/image/style'
 
 import { varImageProps } from './props'
-import '@varlet/ui/es/image/style'
 
 defineOptions({
     name: 'TmVarImage'

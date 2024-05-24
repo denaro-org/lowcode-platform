@@ -1,0 +1,29 @@
+.data-source-body {
+    height: calc(100% - 32px - 24px);
+
+    .setting-warpper {
+        flex: 1;
+    }
+
+    .is-empty {
+        height: calc(100% - 24px - 24px - 1px);
+    }
+}
+
+.drag-item {
+    margin-bottom: 12px;
+
+&:last-child {
+    margin-bottom: 0;
+}
+
+    &-icon {
+        font-size: 16px;
+        color: var(--color-icon);
+        cursor: pointer;
+
+        &:hover {
+            color: var(--color-primary);
+        }
+    }
+}

@@ -18,4 +18,4 @@ export enum CacheEnum {
 /**
  * @description 侧边栏默认选中
  */
-export const NavDefaultValue: NavItem['name'] = 'basic-components'
+export const NavDefaultValue: NavItem['name'] = 'data-source'

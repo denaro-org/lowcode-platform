@@ -6,6 +6,7 @@ import TmVarButtonGroup from './buttonGroup'
 import TmVarEllipsis from './ellipsis'
 import TmVarIcon from './icon'
 import TmVarImage from './image'
+import TmVarSelect from './select'
 
 interface Module {
     default: EditorComponent
@@ -28,7 +29,8 @@ const components = [
     TmVarButtonGroup,
     TmVarEllipsis,
     TmVarIcon,
-    TmVarImage
+    TmVarImage,
+    TmVarSelect
 ]
 
 const install = (app: App): void => {
@@ -43,7 +45,8 @@ export {
     TmVarButtonGroup,
     TmVarEllipsis,
     TmVarIcon,
-    TmVarImage
+    TmVarImage,
+    TmVarSelect
 }
 
 export default {

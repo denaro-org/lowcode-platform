@@ -20,6 +20,8 @@ export { default as PreviewDialog } from './PreviewDialog/index.vue'
 export { default as SeeCode } from './SeeCode/index.vue'
 // 编辑器
 export { default as MonacoEditor } from './MonacoEditor/index.vue'
+// 数据源编辑
+export { default as DataSourceModel } from './DataSourceModel/index.vue'
 
 // 导出表单组件
 export * from './AttrFormComp'

@@ -18,8 +18,9 @@
 import { InputSearch, Button } from 'ant-design-vue'
 import { reactive } from 'vue'
 
-import DataSourceModel from './DataSourceModel.vue'
 import styles from './index.module.scss'
+
+import { DataSourceModel } from '@/components'
 
 defineOptions({
     name: 'DataSource'

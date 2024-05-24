@@ -9,14 +9,7 @@
             name="LowCodePreview"
             :url="previewUrl"
             :props="{ appDSL }"
-            :plugins="plugins"
-            :preload-app="{
-                name: 'PreviewApp',
-                props: {
-                    appDSL
-                },
-                plugins
-            }" />
+            :plugins="plugins" />
     </Modal>
 </template>
 

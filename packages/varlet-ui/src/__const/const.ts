@@ -13,6 +13,10 @@ export const DEFAULT_TYPE = 'primary'
 export const SIZE_LIST = ['normal', 'mini', 'small', 'large']
 export const DEFAULT_SIZE = 'normal'
 
+// 适用于移动端表单的尺寸
+export const FORM_SIZE_LIST = ['normal', 'small']
+export const DEFAULT_FORM_SIZE = 'normal'
+
 // 通用的原生类型
 export const NATIVE_TYPE_LIST = ['button', 'submit', 'reset']
 export const DEFAULT_NATIVE_TYPE = 'button'
@@ -215,3 +219,18 @@ export const DEFAULT_JUSTIFY = 'flex-start'
 // align
 export const ALIGN_LIST = ['flex-start', 'flex-end', 'center']
 export const DEFAULT_ALIGN = 'flex-start'
+
+// variant
+export const VARIANT_LIST = ['standard', 'outlined']
+export const DEFAULT_VARIANT = 'standard'
+
+// validate-trigger
+export const VALIDATE_TRIGGER_LIST = [
+    'onFocus',
+    'onBlur',
+    'onChange',
+    'onClick',
+    'onClear',
+    'onClose'
+]
+export const DEFAULT_VALIDATE_TRIGGER = ['onChange', 'onClear', 'onClose']
