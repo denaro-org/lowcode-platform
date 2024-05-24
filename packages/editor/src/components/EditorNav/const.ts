@@ -69,7 +69,10 @@ export const dataSourceConfig: DataSourceConfig = {
         }),
         value: createEditorGroupProp({
             label: 'value',
-            children: [createEditorInputProp({}), createEditorNumberProp({})]
+            children: [
+                createEditorInputProp({ label: '' }),
+                createEditorNumberProp({ label: '' })
+            ]
         }),
         disabled: createEditorSwitchProp({
             label: 'disabled'

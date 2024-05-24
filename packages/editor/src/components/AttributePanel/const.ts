@@ -1,6 +1,6 @@
 import type { FlexStyleConfig, TabListItem } from '@/types'
 
-import { createEditorNumberProp, createRadioGroupProp } from '@lowcode/shared'
+import { createEditorNumberProp } from '@lowcode/shared'
 import { h } from 'vue'
 
 import { AttrPanel, EventPanel, StylePanel } from './components'
@@ -62,28 +62,28 @@ export const tabList: TabListItem[] = [
                         label: '字体大小',
                         useAddonAfter: true,
                         addonAfters: ['px', 'rem', 'em']
-                    }),
-                    // 对齐
-                    textAlign: createRadioGroupProp({
-                        label: '对齐方式',
-                        defaultValue: 'left',
-                        propsBind: {
-                            options: [
-                                {
-                                    label: '左对齐',
-                                    value: 'left'
-                                },
-                                {
-                                    label: '居中',
-                                    value: 'center'
-                                },
-                                {
-                                    label: '右对齐',
-                                    value: 'right'
-                                }
-                            ]
-                        }
                     })
+                    // 对齐
+                    // textAlign: createRadioGroupProp({
+                    //     label: '对齐方式',
+                    //     defaultValue: 'left',
+                    //     propsBind: {
+                    //         options: [
+                    //             {
+                    //                 label: '左对齐',
+                    //                 value: 'left'
+                    //             },
+                    //             {
+                    //                 label: '居中',
+                    //                 value: 'center'
+                    //             },
+                    //             {
+                    //                 label: '右对齐',
+                    //                 value: 'right'
+                    //             }
+                    //         ]
+                    //     }
+                    // })
                 }
             },
             {

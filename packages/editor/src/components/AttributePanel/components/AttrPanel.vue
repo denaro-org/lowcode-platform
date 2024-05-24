@@ -13,7 +13,7 @@
                     <i
                         :class="[styles.copyIcon]"
                         @click="
-                            copyToClipboard(`$$refs['${currentBlock.UUID}`)
+                            copyToClipboard(`$$refs['${currentBlock.UUID}']`)
                         ">
                         <CopyOutlined />
                     </i>

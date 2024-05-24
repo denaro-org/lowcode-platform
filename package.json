@@ -8,7 +8,7 @@
         "examples/*"
     ],
     "scripts": {
-        "bootstrap": "pnpm run syncpack-fix && pnpm update -r && pnpm run start:compile-build",
+        "bootstrap": "pnpm update --latest -r && pnpm run syncpack-fix && pnpm i && pnpm run start:compile-build",
         "commit": "git add . && git-cz",
         "compile-build:editor": "pnpm --filter \"@lowcode/editor\" run build",
         "compile-build:varlet-ui": "pnpm --filter \"@lowcode/varlet-ui\" run build",
@@ -35,13 +35,16 @@
             "path": "cz-git"
         }
     },
+    "overrides": {
+        "eslint-config-love": "47.0.0"
+    },
     "devDependencies": {
-        "@denaro-config/config-commitlint": "^1.4.6",
-        "@denaro-config/config-cz-git": "^1.4.6",
-        "@denaro-config/eslint-config-typescript": "^1.4.6",
-        "@denaro-config/eslint-config-vue3": "^1.4.6",
-        "@denaro-config/prettier": "^1.4.6",
-        "@denaro-config/stylelint-scss": "^1.4.6",
+        "@denaro-config/config-commitlint": "^1.4.8",
+        "@denaro-config/config-cz-git": "^1.4.8",
+        "@denaro-config/eslint-config-typescript": "^1.4.8",
+        "@denaro-config/eslint-config-vue3": "^1.4.8",
+        "@denaro-config/prettier": "^1.4.8",
+        "@denaro-config/stylelint-scss": "^1.4.8",
         "@types/node": "^20.12.12",
         "@vitejs/plugin-vue": "^5.0.4",
         "@vitejs/plugin-vue-jsx": "^3.1.0",

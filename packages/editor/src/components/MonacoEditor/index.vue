@@ -62,7 +62,7 @@ const code = computed(() => {
  * @description 复制代码
  */
 const copyDSL = () => {
-    const { copy } = useClipboard({ source: JSON.stringify(appDSL, null, 2) })
+    const { copy } = useClipboard({ source: JSON.stringify(appDSL.value, null, 2) })
 
     copy()
         .then(() => message.success('复制成功 !!!'))

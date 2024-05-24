@@ -228,9 +228,7 @@ export const createEditorGroupProp = (
 /**
  * @description radio-grounp 类型的表单配置
  */
-type EditorRadioGroupProp = UserPropConfig<RadioGroupProps> & {
-    //
-}
+type EditorRadioGroupProp = UserPropConfig<RadioGroupProps>
 
 /**
  * @description 创建 radio-grounp 类型的表单

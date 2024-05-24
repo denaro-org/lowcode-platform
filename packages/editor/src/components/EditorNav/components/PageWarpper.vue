@@ -28,8 +28,8 @@ const { appDSL } = useAppDSL()
 
 // 所有的页面
 const pages = computed(() =>
-    Object.keys(appDSL.pages).map(key => ({
-        title: appDSL.pages[key].title,
+    Object.keys(appDSL.value.pages).map(key => ({
+        title: appDSL.value.pages[key].title,
         key: key
     }))
 )
